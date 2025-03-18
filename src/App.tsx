@@ -2,6 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from './components/DropdownMenue'  // Make sure the path is correct
 
 function App() {
   const [count, setCount] = useState(0)
@@ -17,10 +18,26 @@ function App() {
         </a>
       </div>
       <h1>ZaraPI</h1>
-      <div className="card">
+      
+      {/* Flexbox container to align the DropdownMenu and button */}
+      <div className="button-container">
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <button>Open Dropdown</button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuItem>Item 1</DropdownMenuItem>
+            <DropdownMenuItem>Item 2</DropdownMenuItem>
+            <DropdownMenuItem>Item 3</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
+      </div>
+
+      <div className="card">
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
