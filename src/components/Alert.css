@@ -1,0 +1,53 @@
+/* src/Alert.css */
+
+.fixed {
+    position: fixed;
+  }
+  
+  .bottom-5 {
+    bottom: 20px;
+  }
+  
+  
+  .transform {
+    transform: translateX(-50%);
+  }
+  
+  .w-96 {
+    width: 24rem;
+  }
+  
+  .rounded-lg {
+    border-radius: 0.75rem;
+  }
+  
+  .border {
+    border-width: 1px;
+  }
+  
+  .px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .py-3 {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+  
+  .text-sm {
+    font-size: 0.875rem;
+  }
+  
+  .bg-blue-500 {
+    background-color: #3b82f6;
+  }
+  
+  .bg-red-500 {
+    background-color: #ef4444;
+  }
+  
+  .text-white {
+    color: white;
+  }
+  
