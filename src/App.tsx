@@ -4,6 +4,8 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from './components/DropdownMenue'
 import { Alert, AlertTitle, AlertDescription } from "./components/ui/alert"
+import { Slider } from "./components/slider"
+
 
 function App() {
   const [count, setCount] = useState(0)
@@ -46,7 +48,7 @@ function App() {
           count is {count}
         </button>
       </div>
-
+      <Slider defaultValue={[33]} max={100} step={1} />
       <div className="card">
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
