@@ -2,7 +2,8 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from './components/DropdownMenue'  // Make sure the path is correct
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from './components/DropdownMenue'
+import { Alert, AlertTitle, AlertDescription } from "./components/ui/alert"
 
 function App() {
   const [count, setCount] = useState(0)
@@ -19,7 +20,16 @@ function App() {
       </div>
       <h1>ZaraPI</h1>
       
-      {/* Flexbox container to align the DropdownMenu and button */}
+
+      ShowAlert && (
+        <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 w-full max-w-sm">
+          <Alert>
+            <AlertTitle>Notification</AlertTitle>
+            <AlertDescription>The button has been pressed {count} times</AlertDescription>
+          </Alert>
+        </div>
+      )
+    
       <div className="button-container">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
