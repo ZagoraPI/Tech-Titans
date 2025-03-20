@@ -6,6 +6,13 @@ import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuIte
 import { Alert, AlertTitle, AlertDescription } from "./components/ui/alert";
 import TextBox from "./components/TextBox";
 
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "./components/ui/Accordion.tsx"
+
 function App() {
   const [count, setCount] = useState(0);
 
@@ -42,13 +49,23 @@ function App() {
           </DropdownMenuContent>
         </DropdownMenu>
 
-        <button onClick={() => setCount((count) => count + 1)}>
+
+        <button onClick={() => setCount((count) => count + 1)} style={{ marginBottom: "10px" }}>
           count is {count}
         </button>
 
         <TextBox count1={count} style={{ color: 'white', backgroundColor: 'blue' }} />
 
       </div>
+
+      <Accordion type="single" collapsible>
+        <AccordionItem value="item-1">
+          <AccordionTrigger>Is it accessible?</AccordionTrigger>
+          <AccordionContent>
+            Yes. It adheres to the WAI-ARIA design pattern.
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
 
       <div className="card">
         <p>
