@@ -4,6 +4,8 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from './components/DropdownMenue'
 import { Alert, AlertTitle, AlertDescription } from "./components/ui/alert"
+import { Button } from "./components/button"
+
 
 function App() {
   const [count, setCount] = useState(0)
@@ -46,6 +48,8 @@ function App() {
           count is {count}
         </button>
       </div>
+      <Button variant="outline">Button</Button>
+
 
       <div className="card">
         <p>
