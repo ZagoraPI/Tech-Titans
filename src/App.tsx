@@ -55,8 +55,6 @@ function App() {
         </button>
       </div>
 
-      <p></p>
-
       <Accordion type="single" collapsible>
         <AccordionItem value="item-1">
           <AccordionTrigger>Is it accessible?</AccordionTrigger>
