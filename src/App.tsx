@@ -4,7 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from './components/DropdownMenue'
 import { Alert, AlertTitle, AlertDescription } from "./components/ui/alert"
-import { Slider } from "./components/slider"
+import { Slider } from "./components/ui/slider"
 
 
 function App() {
