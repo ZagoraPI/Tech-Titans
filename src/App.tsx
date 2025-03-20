@@ -5,12 +5,13 @@ import './App.css';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from './components/DropdownMenue';
 import { Alert, AlertTitle, AlertDescription } from "./components/ui/alert";
 import TextBox from "./components/TextBox";
+import { HristoComponent } from "./components/HristoComponent";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <>
+    <div>
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -21,7 +22,7 @@ function App() {
       </div>
       <h1>ZaraPI</h1>
 
-      {count > 0 && (
+      {count > 5 && (
         <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 w-full max-w-sm">
           <Alert>
             <AlertTitle>Notification</AlertTitle>
@@ -50,6 +51,11 @@ function App() {
 
       </div>
 
+      <div className="">
+
+      <HristoComponent/>
+      </div>
+
       <div className="card">
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
@@ -58,7 +64,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-    </>
+    </div>
   );
 }
 
