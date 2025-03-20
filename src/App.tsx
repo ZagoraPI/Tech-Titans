@@ -1,12 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from './components/DropdownMenue'
-import { Alert, AlertTitle, AlertDescription } from "./components/ui/alert"
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "./components/DropdownMenue";
+import { Alert, AlertTitle, AlertDescription } from "./components/ui/alert";
+import { Badge, badgeVariants } from "./components/ui/badge"; // ✅ Imported Badge
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <>
@@ -19,17 +25,19 @@ function App() {
         </a>
       </div>
       <h1>ZaraPI</h1>
-      
 
-      ShowAlert && (
+      {/* ✅ Fixed incorrect ShowAlert syntax */}
+      {count > 0 && (
         <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 w-full max-w-sm">
           <Alert>
             <AlertTitle>Notification</AlertTitle>
-            <AlertDescription>The button has been pressed {count} times</AlertDescription>
+            <AlertDescription>
+              The button has been pressed {count} times
+            </AlertDescription>
           </Alert>
         </div>
-      )
-    
+      )}
+
       <div className="button-container">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -47,6 +55,9 @@ function App() {
         </button>
       </div>
 
+      {/* ✅ Corrected Badge usage */}
+      <Badge variant="outline">Badge</Badge>
+
       <div className="card">
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
@@ -56,7 +67,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
