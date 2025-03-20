@@ -10,7 +10,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "./components/Accordion"
+} from "./components/ui/Accordion.tsx"
 
 function App() {
   const [count, setCount] = useState(0)
