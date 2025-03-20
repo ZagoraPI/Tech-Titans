@@ -50,10 +50,12 @@ function App() {
         </DropdownMenu>
 
 
-        <button onClick={() => setCount((count) => count + 1)}>
+        <button onClick={() => setCount((count) => count + 1)} style={{ marginBottom: "10px" }}>
           count is {count}
         </button>
       </div>
+
+      <p></p>
 
       <Accordion type="single" collapsible>
         <AccordionItem value="item-1">
