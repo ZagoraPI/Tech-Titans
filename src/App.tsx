@@ -4,6 +4,9 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from './components/DropdownMenue'
 import { Alert, AlertTitle, AlertDescription } from "./components/ui/alert"
+import { Avatar, AvatarFallback, AvatarImage } from "./components/ui/avatar"
+
+
 
 function App() {
   const [count, setCount] = useState(0)
@@ -46,6 +49,11 @@ function App() {
           count is {count}
         </button>
       </div>
+
+      <Avatar>
+  <AvatarImage src="https://github.com/shadcn.png" />
+  <AvatarFallback>CN</AvatarFallback>
+</Avatar>
 
       <div className="card">
         <p>
