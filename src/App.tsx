@@ -4,9 +4,13 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from './components/DropdownMenue'
 import { Alert, AlertTitle, AlertDescription } from "./components/ui/alert"
+import { Checkbox } from "./components/ui/checkbox"
+
+
 
 function App() {
   const [count, setCount] = useState(0)
+  const [showAlert, setShowAlert] = useState(true)
 
   return (
     <>
@@ -19,17 +23,16 @@ function App() {
         </a>
       </div>
       <h1>ZaraPI</h1>
-      
 
-      ShowAlert && (
+      {showAlert && (
         <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 w-full max-w-sm">
           <Alert>
             <AlertTitle>Notification</AlertTitle>
             <AlertDescription>The button has been pressed {count} times</AlertDescription>
           </Alert>
         </div>
-      )
-    
+      )}
+
       <div className="button-container">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -46,6 +49,18 @@ function App() {
           count is {count}
         </button>
       </div>
+
+      <div className="App">
+      <div className="flex items-center space-x-2">
+        <Checkbox id="terms" />
+        <label
+          htmlFor="terms"
+          className="text-sm font-medium leading-none"
+        >
+          Accept terms and conditions
+        </label>
+      </div>
+    </div>
 
       <div className="card">
         <p>
