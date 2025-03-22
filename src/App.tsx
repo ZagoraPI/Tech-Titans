@@ -3,7 +3,8 @@ import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 import { Alert, AlertTitle, AlertDescription } from "./components/ui/alert";
-import TheJj from './components/TheJj';
+import { Avatar, AvatarFallback, AvatarImage } from "./components/VladilenaTest";
+import TextBox from "./components/TextBox";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -28,8 +29,21 @@ function App() {
           </Alert>
         </div>
       )}
+      
+      <Avatar>
+  <AvatarImage src="https://cdn.discordapp.com/attachments/1295438251188031558/1352925497629081702/Screenshot_5.png?ex=67dfc98e&is=67de780e&hm=92a9804b6a4852814f9d276baa08850ae39422961a4a558879dd50e61a698de6&" />
+  <AvatarFallback>CN</AvatarFallback>
+</Avatar>
+    
+      <div className="card">
 
-      <TheJj />
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+
+        <TextBox count1={count} style={{ color: 'white', backgroundColor: 'blue' }} />
+
+      </div>
 
       <div className="card">
         <p>
