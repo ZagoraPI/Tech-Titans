@@ -2,9 +2,8 @@ import { useState } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from './components/DropdownMenue';
 import { Alert, AlertTitle, AlertDescription } from "./components/ui/alert";
-import TextBox from "./components/TextBox";
+import TheJj from './components/TheJj';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -29,26 +28,8 @@ function App() {
           </Alert>
         </div>
       )}
-    
-      <div className="button-container">
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-        <button>Open Dropdown</button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>
-        <DropdownMenuItem>Item 1</DropdownMenuItem>
-        <DropdownMenuItem>Item 2</DropdownMenuItem>
-        <DropdownMenuItem>Item 3</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
 
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-
-        <TextBox count1={count} style={{ color: 'white', backgroundColor: 'blue' }} />
-
-      </div>
+      <TheJj />
 
       <div className="card">
         <p>
