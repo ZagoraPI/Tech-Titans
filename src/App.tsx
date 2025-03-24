@@ -5,11 +5,18 @@ import { Avatar, AvatarImage } from "./components/VladilenaTest";
 import TextBox from "./components/TextBox";
 import { ThemeSwitch } from "./components/Niki_Components/ThemeSwitch.tsx";
 import TheJj from "./components/TheJj.tsx";
+import { Calendar } from './components/Bozhilkata_components/Calendar.tsx';
+import BozhilkataApp from './components/Bozhilkata_components/UseState.tsx';
 function App() {
   const [count, setCount] = useState(0);
 
   return (
   <>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <Calendar></Calendar>
+        <div style={{marginTop : "100px", marginLeft: '40px'}}><BozhilkataApp></BozhilkataApp></div>
+
+        </div>
             <div className="justify-center flex flex-row">
                 <ThemeSwitch />
                 <TheJj />
