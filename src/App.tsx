@@ -7,14 +7,23 @@ import { ThemeSwitch } from "./components/Niki_Components/ThemeSwitch.tsx";
 import TheJj from "./components/TheJj.tsx";
 import { Calendar } from './components/Bozhilkata_components/Calendar.tsx';
 import BozhilkataApp from './components/Bozhilkata_components/UseState.tsx';
+import React from 'react';
+
 function App() {
   const [count, setCount] = useState(0);
+  const [date, setDate] = React.useState<Date | undefined>(new Date()) //Bozhilkata datePicker
 
   return (
-  <>
+  <>    
+
         <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <Calendar></Calendar>
+        <Calendar mode="single"
+                  selected={date}
+                  onSelect={setDate}
+                  className="rounded-md border shadow">
+        </Calendar>
         <div style={{marginTop : "100px", marginLeft: '40px'}}><BozhilkataApp></BozhilkataApp></div>
+
 
         </div>
             <div className="justify-center flex flex-row">
