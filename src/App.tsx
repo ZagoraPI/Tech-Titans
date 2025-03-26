@@ -6,6 +6,8 @@ import { ThemeSwitch } from "./components/Niki_Components/ThemeSwitch.tsx";
 import TextBox from "./components/TextBox.tsx";
 import TheJj from "./components/TheJj.tsx";
 import AlexGifShower from "./components/Alex_Components/AlexGifShower.tsx";
+import { Bozhilkata } from "./components/BozhilkataComp.tsx"
+import { Button } from "@/components/ui/button"
 
 function App() {
   const [count, setCount] = useState(0);
@@ -13,6 +15,27 @@ function App() {
   <>
             <div>                
               <AlexGifShower />
+            </div>
+=======
+
+
+function App() {
+  const [count, setCount] = useState(0);
+  const [activated, setActivated] = useState(false);
+
+  return (
+  <>        
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+
+              <Bozhilkata></Bozhilkata>
+
+              <div style={{marginBottom: "50px", marginLeft: "40px"}}>
+            <h2> Bozhilkata React UseState HOOK :</h2>
+            <p>I am {activated ? "on"  : "off"}.</p>
+            <Button type="button" onClick = { () => setActivated(activated ? false : true)}>
+              {activated ? "Deactivate me!" : "Activate me!"}</Button>
+            </div>
+
             </div>
             <div className="justify-center flex flex-row">
                 <ThemeSwitch />
