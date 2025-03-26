@@ -1,15 +1,19 @@
-import { useState } from 'react';
 import './App.css';
+import { useState } from 'react';
 import { Alert, AlertTitle, AlertDescription } from "./components/ui/alert";
 import { Avatar, AvatarImage } from "./components/VladilenaTest";
-import TextBox from "./components/TextBox";
 import { ThemeSwitch } from "./components/Niki_Components/ThemeSwitch.tsx";
+import TextBox from "./components/TextBox.tsx";
 import TheJj from "./components/TheJj.tsx";
+import AlexGifShower from "./components/Alex_Components/AlexGifShower.tsx";
+
 function App() {
   const [count, setCount] = useState(0);
-
   return (
   <>
+            <div>                
+              <AlexGifShower />
+            </div>
             <div className="justify-center flex flex-row">
                 <ThemeSwitch />
                 <TheJj />
