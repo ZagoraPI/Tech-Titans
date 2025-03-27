@@ -104,7 +104,16 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+.light {
+  background-color: white;
+  color: black;
+}
 
+
+.dark {
+  background-color: black;
+  color: white;
+}
 .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
