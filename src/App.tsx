@@ -1,15 +1,13 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from './components/DropdownMenue'
-import { Alert, AlertTitle, AlertDescription } from "./components/ui/alert"
-import { Avatar, AvatarFallback, AvatarImage } from "./components/ui/avatar"
-
-
+import { useState } from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import './App.css';
+import { Alert, AlertTitle, AlertDescription } from "./components/ui/alert";
+import { Avatar, AvatarFallback, AvatarImage } from "./components/VladilenaTest";
+import TextBox from "./components/TextBox";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <>
@@ -22,32 +20,29 @@ function App() {
         </a>
       </div>
       <h1>ZaraPI</h1>
-      
 
-      ShowAlert && (
+      {count > 0 && (
         <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 w-full max-w-sm">
           <Alert>
             <AlertTitle>Notification</AlertTitle>
             <AlertDescription>The button has been pressed {count} times</AlertDescription>
           </Alert>
         </div>
-      )
+      )}
+      
+      <Avatar>
+  <AvatarImage src="https://cdn.discordapp.com/attachments/1295438251188031558/1352925497629081702/Screenshot_5.png?ex=67dfc98e&is=67de780e&hm=92a9804b6a4852814f9d276baa08850ae39422961a4a558879dd50e61a698de6&" />
+  <AvatarFallback>CN</AvatarFallback>
+</Avatar>
     
-      <div className="button-container">
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <button>Open Dropdown</button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            <DropdownMenuItem>Item 1</DropdownMenuItem>
-            <DropdownMenuItem>Item 2</DropdownMenuItem>
-            <DropdownMenuItem>Item 3</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+      <div className="card">
 
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
+
+        <TextBox count1={count} style={{ color: 'white', backgroundColor: 'blue' }} />
+
       </div>
 
       <Avatar>
@@ -64,7 +59,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
