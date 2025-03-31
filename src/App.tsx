@@ -1,4 +1,4 @@
-import './App.css';
+import "./App.css";
 import { useState } from 'react';
 import { Alert, AlertTitle, AlertDescription } from "./components/ui/alert";
 import { Avatar, AvatarImage } from "./components/VladilenaTest";
@@ -9,6 +9,8 @@ import AlexGifShower from "./components/Alex_Components/AlexGifShower.tsx";
 import AlexPfpIcon from "./components/Alex_Components/AlexPfpIcon.tsx";
 import { Bozhilkata } from "./components/BozhilkataComp.tsx"
 import { Button } from "@/components/ui/button"
+import Ilko  from "@/components/ilkoComponent.tsx"
+
 
 function App() {
   
@@ -16,8 +18,11 @@ function App() {
   const [activated, setActivated] = useState(false);
 
   return (
-  <>
-            <div>                
+  <>  
+  
+            <div style={{margin:"200px"}}><Ilko/></div>         
+            
+               <div>                     
               <AlexGifShower />
             </div>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
