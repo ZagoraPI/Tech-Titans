@@ -1,58 +1,65 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 import './App.css';
+import { useState } from 'react';
 import { Alert, AlertTitle, AlertDescription } from "./components/ui/alert";
-import { Avatar, AvatarFallback, AvatarImage } from "./components/VladilenaTest";
-import TextBox from "./components/TextBox";
-import TheJj from './components/TheJj';
-import { Avatar2, AvatarImage2, AvatarFallback2 } from "./components/preslyComp";
-
+import { Avatar, AvatarImage } from "./components/VladilenaTest";
+import { ThemeSwitch } from "./components/Niki_Components/ThemeSwitch.tsx";
+import TextBox from "./components/TextBox.tsx";
+import TheJj from "./components/TheJj.tsx";
+import AlexGifShower from "./components/Alex_Components/AlexGifShower.tsx";
+import AlexPfpIcon from "./components/Alex_Components/AlexPfpIcon.tsx";
+import { Bozhilkata } from "./components/BozhilkataComp.tsx"
+import { Button } from "@/components/ui/button"
 
 
 function App() {
+  
   const [count, setCount] = useState(0);
+  const [activated, setActivated] = useState(false);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>ZaraPI</h1>
+  <>
+            <div>                
+              <AlexGifShower />
+            </div>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <AlexPfpIcon />
+            <Bozhilkata/>
 
-      {count > 0 && (
-        <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 w-full max-w-sm">
-          <Alert>
-            <AlertTitle>Notification</AlertTitle>
-            <AlertDescription>The button has been pressed {count} times</AlertDescription>
-          </Alert>
-        </div>
-      )}
+              <div style={{marginBottom: "50px", marginLeft: "40px"}}>
+            <h2> Bozhilkata React UseState HOOK :</h2>
+            <p>I am {activated ? "on"  : "off"}.</p>
+            <Button type="button" onClick = { () => setActivated(activated ? false : true)}>
+              {activated ? "Deactivate me!" : "Activate me!"}</Button>
+            </div>
+
+            </div>
+            <div className="justify-center flex flex-row">
+                <ThemeSwitch />
+                <TheJj />
+            </div>
       
-      <Avatar>
-  <AvatarImage src="https://cdn.discordapp.com/attachments/1295438251188031558/1352925497629081702/Screenshot_5.png?ex=67dfc98e&is=67de780e&hm=92a9804b6a4852814f9d276baa08850ae39422961a4a558879dd50e61a698de6&" />
-  <AvatarFallback>CN</AvatarFallback>
-</Avatar>
-    <TheJj />
-      <div className="card">
+            {count > 0 && (
+              <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 w-full max-w-sm">
+                <Alert>
+                  <AlertTitle>Notification</AlertTitle>
+                  <AlertDescription>The button has been pressed {count} times</AlertDescription>
+                </Alert>
+              </div>
+            )}  
+            
+            <div className="fixed top-4 left-0 w-full max-w-sm">
+            <Avatar>
+              <AvatarImage src="https://files.oaiusercontent.com/file-UisNwbknrK2KrChFkh4yeD?se=2025-03-24T18%3A45%3A57Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Da6b89eec-1753-439d-a668-72afbd00e0d3.webp&sig=fyQSamTsow1CzY1JNig7tgiyRKy3CGgx9owIp3tZbbA%3D"  />
+            </Avatar>
+            </div>
+  
+            <div className="card">
+              <button onClick={() => setCount((count) => count + 1)}>
+                count is {count}
+              </button>
+              <TextBox count1={count} style={{ color: 'white', backgroundColor: 'blue' }} />
+            </div>
 
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-
-        <TextBox count1={count} style={{ color: 'white', backgroundColor: 'blue' }} />
-
-      </div>
-
-      <Avatar2>
-  <AvatarImage2 src="https://www.google.com/search?client=firefox-b-d&sca_esv=f65d9110a0398786&sxsrf=AHTn8zp6hIa_clSkv2JPWcVyQFs0Ajq3QA:1743420725843&q=Obi-Wan+Kenobi&udm=2&fbs=ABzOT_CCa5PZmZETgXiAcfM3dJo0qt65_0p2uIRtMEksxKqvYQOPyupSd6aUmm8d72bP0-HVliid4BAIrgHQcQeqmQ9hzkuxNIwG79JBhV3st0vZaIdlUAAcPsuia7OQWv8WanlNQSRB02EOBDxz7Ai7bX_HZ7zLRqHINSFqBaKuWNuFFfCMvYXB_JWDl85xapUb3iBHdXgk8r33Crg8-SA7seEflx54dkLK0NSA5Jjnw1IHmdmWVnMnTHaMYSyYClw3--NzdjaB&sa=X&ved=2ahUKEwjM8rqonLSMAxWLSvEDHe9cOD8QtKgLegQIERAB&biw=1920&bih=919&dpr=1#vhid=5f6CYKG2e268RM&vssid=mosaic" />
-  <AvatarFallback2>:3</AvatarFallback2>
-</Avatar2>
     </>
   );
 }
