@@ -59,7 +59,7 @@ function App() {
               </button>
               <TextBox count1={count} style={{ color: 'white', backgroundColor: 'blue' }} />
             </div>
-
+            
     </>
   );
 }
