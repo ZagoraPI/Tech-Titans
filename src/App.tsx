@@ -9,6 +9,7 @@ import AlexGifShower from "./components/Alex_Components/AlexGifShower.tsx";
 import AlexPfpIcon from "./components/Alex_Components/AlexPfpIcon.tsx";
 import { Bozhilkata } from "./components/BozhilkataComp.tsx"
 import { Button } from "@/components/ui/button"
+import {Accordion, AccordionContent, AccordionItem, AccordionTrigger, } from "@/components/preslyComp"
 
 
 function App() {
@@ -60,6 +61,15 @@ function App() {
               <TextBox count1={count} style={{ color: 'white', backgroundColor: 'blue' }} />
             </div>
             
+            <Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Is it accessible?</AccordionTrigger>
+    <AccordionContent>
+      Yes. It adheres to the WAI-ARIA design pattern.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
     </>
   );
 }

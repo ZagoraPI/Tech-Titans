@@ -1,40 +1,55 @@
 import * as React from "react"
-import * as preslyComp from "@radix-ui/react-avatar"
+import * as AccordionPrimitive from "@radix-ui/react-accordion"
+import { ChevronDown } from "lucide-react"
 
-const Avatar2 = React.forwardRef<
-  React.ElementRef<typeof preslyComp.Root>,
-  React.ComponentPropsWithoutRef<typeof preslyComp.Root>
->(({ className = "", ...props }, ref) => (
-  <preslyComp.Root
+import { cn } from "@/lib/utils"
+
+const Accordion = AccordionPrimitive.Root
+
+const AccordionItem = React.forwardRef<
+  React.ElementRef<typeof AccordionPrimitive.Item>,
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
+>(({ className, ...props }, ref) => (
+  <AccordionPrimitive.Item
     ref={ref}
-    className={`relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full ${className}`}
+    className={cn("border-b", className)}
     {...props}
   />
 ))
-Avatar2.displayName = preslyComp.Root.displayName
+AccordionItem.displayName = "AccordionItem"
 
-const AvatarImage2 = React.forwardRef<
-  React.ElementRef<typeof preslyComp.Image>,
-  React.ComponentPropsWithoutRef<typeof preslyComp.Image>
->(({ className = "", ...props }, ref) => (
-  <preslyComp.Image
-    ref={ref}
-    className={`aspect-square h-full w-full ${className}`}
-    {...props}
-  />
+const AccordionTrigger = React.forwardRef<
+  React.ElementRef<typeof AccordionPrimitive.Trigger>,
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
+>(({ className, children, ...props }, ref) => (
+  <AccordionPrimitive.Header className="flex">
+    <AccordionPrimitive.Trigger
+      ref={ref}
+      className={cn(
+        "flex flex-1 items-center justify-between py-4 text-sm font-medium transition-all hover:underline text-left [&[data-state=open]>svg]:rotate-180",
+        className
+      )}
+      {...props}
+    >
+      {children}
+      <ChevronDown className="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200" />
+    </AccordionPrimitive.Trigger>
+  </AccordionPrimitive.Header>
 ))
-AvatarImage2.displayName = preslyComp.Image.displayName
+AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName
 
-const AvatarFallback2 = React.forwardRef<
-  React.ElementRef<typeof preslyComp.Fallback>,
-  React.ComponentPropsWithoutRef<typeof preslyComp.Fallback>
->(({ className = "", ...props }, ref) => (
-  <preslyComp.Fallback
+const AccordionContent = React.forwardRef<
+  React.ElementRef<typeof AccordionPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>
+>(({ className, children, ...props }, ref) => (
+  <AccordionPrimitive.Content
     ref={ref}
-    className={`flex h-full w-full items-center justify-center rounded-full bg-muted ${className}`}
+    className="overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
     {...props}
-  />
+  >
+    <div className={cn("pb-4 pt-0", className)}>{children}</div>
+  </AccordionPrimitive.Content>
 ))
-AvatarFallback2.displayName = preslyComp.Fallback.displayName
+AccordionContent.displayName = AccordionPrimitive.Content.displayName
 
-export { Avatar2, AvatarImage2, AvatarFallback2 }
+export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }
