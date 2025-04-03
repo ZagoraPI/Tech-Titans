@@ -10,16 +10,20 @@ import AlexPfpIcon from "./components/Alex_Components/AlexPfpIcon.tsx";
 import { Bozhilkata } from "./components/BozhilkataComp.tsx"
 import { Button } from "@/components/ui/button"
 import Martin from './components/MartinComp.tsx';
+import { ButtonDemo } from "@/components/LuboComponents/LuboScrollable.tsx"
 
 function App() {
   
   const [count, setCount] = useState(0);
   const [activated, setActivated] = useState(false);
+ 
 
   return (
   <>
 
-           <Martin></Martin>
+<div>
+            </div>
+             <Martin></Martin>
             <div>                
               <AlexGifShower />
             </div>
@@ -53,7 +57,10 @@ function App() {
             <Avatar>
               <AvatarImage src="https://files.oaiusercontent.com/file-UisNwbknrK2KrChFkh4yeD?se=2025-03-24T18%3A45%3A57Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Da6b89eec-1753-439d-a668-72afbd00e0d3.webp&sig=fyQSamTsow1CzY1JNig7tgiyRKy3CGgx9owIp3tZbbA%3D"  />
             </Avatar>
-            </div>
+            </div>\
+
+            <ButtonDemo/>
+
   
             <div className="card">
               <button onClick={() => setCount((count) => count + 1)}>
