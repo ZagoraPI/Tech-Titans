@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import "./App.css";
+import { useState } from 'react';
 import { Alert, AlertTitle, AlertDescription } from "./components/ui/alert";
 import { Avatar, AvatarImage } from "./components/VladilenaTest";
 import { ThemeSwitch } from "./components/Niki_Components/ThemeSwitch.tsx";
@@ -10,6 +10,7 @@ import AlexPfpIcon from "./components/Alex_Components/AlexPfpIcon.tsx";
 import { Bozhilkata } from "./components/BozhilkataComp.tsx"
 import { Button } from "@/components/ui/button"
 import Martin from './components/MartinComp.tsx';
+import { MartinForm } from './components/Martin-Form/MartinForm.tsx';
 
 function App() {
   
@@ -18,7 +19,8 @@ function App() {
 
   return (
   <>
-
+        <div style={{position: 'fixed', bottom: '20px', right: '20px',}}> <MartinForm></MartinForm>
+           </div>
            <Martin></Martin>
             <div>                
               <AlexGifShower />
