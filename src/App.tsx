@@ -5,27 +5,32 @@ import './App.css'
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from './components/DropdownMenue'
 import { Alert, AlertTitle, AlertDescription } from "./components/ui/alert"
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "./components/ui/Accordion.tsx"
-
 function App() {
-  const [count, setCount] = useState(0)
+  
+  const [count, setCount] = useState(0);
+  const [activated, setActivated] = useState(false);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>ZaraPI</h1>
+  <>
+            <div>                
+              <AlexGifShower />
+            </div>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <AlexPfpIcon />
+            <Bozhilkata/>
+
+              <div style={{marginBottom: "50px", marginLeft: "40px"}}>
+            <h2> Bozhilkata React UseState HOOK :</h2>
+            <p>I am {activated ? "on"  : "off"}.</p>
+            <Button type="button" onClick = { () => setActivated(activated ? false : true)}>
+              {activated ? "Deactivate me!" : "Activate me!"}</Button>
+            </div>
+
+            </div>
+            <div className="justify-center flex flex-row">
+                <ThemeSwitch />
+                <TheJj />
+            </div>
       
 
       ShowAlert && (
@@ -49,20 +54,10 @@ function App() {
           </DropdownMenuContent>
         </DropdownMenu>
 
-
-        <button onClick={() => setCount((count) => count + 1)} style={{ marginBottom: "10px" }}>
+        <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
       </div>
-
-      <Accordion type="single" collapsible>
-        <AccordionItem value="item-1">
-          <AccordionTrigger>Is it accessible?</AccordionTrigger>
-          <AccordionContent>
-            Yes. It adheres to the WAI-ARIA design pattern.
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
 
       <div className="card">
         <p>
@@ -73,7 +68,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
