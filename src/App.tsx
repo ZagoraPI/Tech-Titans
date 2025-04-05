@@ -23,7 +23,7 @@ function App() {
 
 
 
-        <div style={{position: 'fixed', bottom: '20px', right: '20px',top:"630px"}}> 
+        <div style={{position: 'fixed', bottom: '80px', right: '20px',}}> 
             <PetarForm></PetarForm>
           </div>
 
