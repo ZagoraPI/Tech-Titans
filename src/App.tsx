@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import "./App.css";
+import { useState } from 'react';
 import { Alert, AlertTitle, AlertDescription } from "./components/ui/alert";
 import { Avatar, AvatarImage } from "./components/VladilenaTest";
 import { ThemeSwitch } from "./components/Niki_Components/ThemeSwitch.tsx";
@@ -11,6 +11,7 @@ import { Bozhilkata } from "./components/BozhilkataComp.tsx"
 import { Button } from "@/components/ui/button"
 import Martin from './components/MartinComp.tsx';
 
+import { PetarForm } from './components/Petar(Bozhilkata)-Form/PetarForm.tsx';
 function App() {
   
   const [count, setCount] = useState(0);
@@ -18,6 +19,14 @@ function App() {
 
   return (
   <>
+          
+
+
+
+        <div style={{position: 'fixed', bottom: '20px', right: '20px',top:"630px"}}> 
+            <PetarForm></PetarForm>
+          </div>
+
 
            <Martin></Martin>
             <div>                
