@@ -1,5 +1,5 @@
-import './App.css';
 import { useState } from 'react';
+import "./App.css";
 import { Alert, AlertTitle, AlertDescription } from "./components/ui/alert";
 import { Avatar, AvatarImage } from "./components/VladilenaTest";
 import { ThemeSwitch } from "./components/Niki_Components/ThemeSwitch.tsx";
@@ -9,9 +9,10 @@ import AlexGifShower from "./components/Alex_Components/AlexGifShower.tsx";
 import AlexPfpIcon from "./components/Alex_Components/AlexPfpIcon.tsx";
 import { Bozhilkata } from "./components/BozhilkataComp.tsx"
 import { Button } from "@/components/ui/button"
-import {Accordion, AccordionContent, AccordionItem, AccordionTrigger, } from "@/components/Presly_Components/Accordion.tsx" 
+import Martin from './components/MartinComp.tsx';
 
 
+import {Accordion, AccordionContent, AccordionItem, AccordionTrigger, } from "@/components/Presly_Components/Accordion.tsx"
 import {PreslyForm} from "@/components/Presly_Components/Presly-Form.tsx"
 function App() {
   
@@ -20,6 +21,14 @@ function App() {
 
   return (
   <>
+
+
+
+
+
+
+<div style={{position: 'fixed', top: '150px', right: '600px',}}><PreslyForm></PreslyForm></div>
+           <Martin></Martin>
             <div>                
               <AlexGifShower />
             </div>
