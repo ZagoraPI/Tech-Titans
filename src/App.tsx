@@ -11,6 +11,7 @@ import { Bozhilkata } from "./components/BozhilkataComp.tsx"
 import { Button } from "@/components/ui/button"
 import Martin from './components/MartinComp.tsx';
 import { MartinForm } from './components/Martin-Form/MartinForm.tsx';
+import { PetarForm } from './components/Petar(Bozhilkata)-Form/PetarForm.tsx';
 
 function App() {
   
@@ -19,8 +20,14 @@ function App() {
 
   return (
   <>
+
+        <div style={{position: 'fixed', bottom: '80px', right: '20px',}}> 
+          <PetarForm></PetarForm>
+        </div>
+
         <div style={{position: 'fixed', bottom: '20px', right: '20px',}}> <MartinForm></MartinForm>
            </div>
+
            <Martin></Martin>
             <div>                
               <AlexGifShower />
