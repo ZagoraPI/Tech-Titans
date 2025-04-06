@@ -6,7 +6,7 @@ interface CheckboxInputProps {
 
 export const CheckboxI: React.FC<CheckboxInputProps> = ({ id }) => {
   return (
-    <input type="checkbox" id={id} />
+    <input type="checkbox" id={id} aria-label="Checkbox" />
   );
 };
 
