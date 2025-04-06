@@ -18,8 +18,4 @@ function Input({ className, type, ...props }: React.ComponentProps<"input">) {
   )
 }
 
-<<<<<<< HEAD
 export { Input }
-=======
-export { Input }
->>>>>>> 7fe3fbce5659400402e01d0036e0216dd30316ac
