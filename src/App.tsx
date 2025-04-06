@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button"
 import Martin from './components/MartinComp.tsx';
 import { MartinForm } from './components/Martin-Form/MartinForm.tsx';
 import { PetarForm } from './components/Petar(Bozhilkata)-Form/PetarForm.tsx';
+import { StefanForm } from "./components/stefanform/STEFANFORM.tsx";
 
 function App() {
   
@@ -20,6 +21,10 @@ function App() {
 
   return (
   <>
+
+<div style={{position: 'fixed', bottom: '200px', right: '20px',}}> 
+          <StefanForm></StefanForm>
+        </div>
 
         <div style={{position: 'fixed', bottom: '80px', right: '20px',}}> 
           <PetarForm></PetarForm>
