@@ -13,6 +13,14 @@ import Martin from './components/MartinComp.tsx';
 import { MartinForm } from './components/Martin-Form/MartinForm.tsx';
 import { PetarForm } from './components/Petar(Bozhilkata)-Form/PetarForm.tsx';
 
+
+
+
+
+
+import { NaskoForm } from "./components/Nasko_Comps/Nasko-form.tsx";
+import { Naskocomp } from "./components/Nasko_Comps/Nasko-badge.tsx";
+
 function App() {
   
   const [count, setCount] = useState(0);
@@ -27,6 +35,11 @@ function App() {
 
         <div style={{position: 'fixed', bottom: '20px', right: '20px',}}> <MartinForm></MartinForm>
            </div>
+
+           <div style={{position: 'fixed', bottom: '260px', right: '20px',}}> 
+          <NaskoForm></NaskoForm>
+        </div>
+          <Naskocomp></Naskocomp>
 
            <Martin></Martin>
             <div>                
