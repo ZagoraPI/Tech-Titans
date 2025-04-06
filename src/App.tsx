@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import "./App.css";
+import { useState } from 'react';
 import { Alert, AlertTitle, AlertDescription } from "./components/ui/alert";
 import { Avatar, AvatarImage } from "./components/VladilenaTest";
 import { ThemeSwitch } from "./components/Niki_Components/ThemeSwitch.tsx";
@@ -21,13 +21,8 @@ function App() {
 
   return (
   <>
-
-
-
-
-
-
 <div style={{position: 'fixed', top: '150px', right: '600px',}}><PreslyForm></PreslyForm></div>
+
            <Martin></Martin>
             <div>                
               <AlexGifShower />
