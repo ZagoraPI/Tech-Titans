@@ -5,6 +5,8 @@ import { useState } from 'react';
 import { Alert, AlertTitle, AlertDescription } from "./components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage } from "./components/VladilenaTest";
+import { Checkbox } from "./components/Checkbox.tsx";
+import { Popover, PopoverContent, PopoverTrigger } from "./components/Popover.tsx";
 
 // Custom Components
 import { ThemeSwitch } from "./components/Niki_Components/ThemeSwitch.tsx";
@@ -16,6 +18,7 @@ import { Bozhilkata } from "./components/BozhilkataComp.tsx";
 import Martin from './components/MartinComp.tsx';
 import { MartinForm } from './components/Martin-Form/MartinForm.tsx';
 import { PetarForm } from './components/Petar(Bozhilkata)-Form/PetarForm.tsx';
+import { HrisaForm } from "./components/HrisaForm/Hrisa-form.tsx";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -36,9 +39,19 @@ function App() {
       <div style={{ position: 'fixed', bottom: '20px', right: '20px' }}>
         <MartinForm />
       </div>
+      <div style={{ position: 'fixed', bottom: '120px', right: '40px' }}>
+        <HrisaForm />
+      </div>
 
       <Martin />
       <AlexGifShower />
+
+     <Checkbox />
+      
+        <Popover>
+          <PopoverTrigger>Open</PopoverTrigger>
+          <PopoverContent>Place content for the popover here.</PopoverContent>
+        </Popover>
 
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <Bozhilkata />
