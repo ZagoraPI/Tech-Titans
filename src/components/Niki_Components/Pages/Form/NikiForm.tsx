@@ -16,7 +16,7 @@ interface FormData {
   message: string;
 }
 
-function ContactForm() {
+function NikiForm() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   
   const [formData, setFormData] = useState<FormData>({
@@ -45,7 +45,6 @@ function ContactForm() {
       message: ''
     });
     console.clear();
-    // Close dialog
     setIsOpen(false);
   };
 
@@ -104,4 +103,4 @@ function ContactForm() {
   );
 }
 
-export default ContactForm;
+export default NikiForm;
