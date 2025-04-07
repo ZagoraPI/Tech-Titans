@@ -19,14 +19,13 @@ interface FormData {
 
 function ContactForm() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-
+  
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     message: ''
   });
 
-  
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
