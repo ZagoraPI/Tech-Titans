@@ -1,0 +1,42 @@
+.form-field {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .form-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: white; /* Changed from #374151 to white */
+    text-align: right;
+  }
+  
+  .form-input,
+  .form-textarea {
+    width: 100%;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.375rem;
+    padding: 0.5rem;
+    font-size: 0.875rem;
+    color: white; /* Make input text white */
+    background-color: #1f2937; /* Optional: dark background for inputs */
+  }
+  
+  .form-input:focus,
+  .form-textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+  }
+  
+  @media (max-width: 640px) {
+    .form-field {
+      grid-template-columns: 1fr;
+    }
+  
+    .form-label {
+      text-align: left;
+    }
+  }
+  

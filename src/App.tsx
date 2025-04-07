@@ -16,6 +16,7 @@ import { Bozhilkata } from "./components/BozhilkataComp.tsx";
 import Martin from './components/MartinComp.tsx';
 import { MartinForm } from './components/Martin-Form/MartinForm.tsx';
 import { PetarForm } from './components/Petar(Bozhilkata)-Form/PetarForm.tsx';
+import  NikiForm  from './components/Niki_Components/Pages/Form/NikiForm.tsx';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -65,6 +66,12 @@ function App() {
           </Alert>
         </div>
       )}
+
+<div className="app-container">
+      <div className="bottom-left-container">
+        <NikiForm />
+      </div>
+    </div>
 
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
