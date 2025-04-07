@@ -4,6 +4,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
+  DialogDescription,
   DialogFooter,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -16,15 +17,16 @@ interface FormData {
   message: string;
 }
 
-function NikiForm() {
+function ContactForm() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  
+
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     message: ''
   });
 
+  
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -51,13 +53,16 @@ function NikiForm() {
   return (
     <div className="form-container">
       <Button onClick={() => setIsOpen(true)}>
-        Open Form
+        Niki
       </Button>
 
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
             <DialogTitle>Contact Form</DialogTitle>
+            <DialogDescription>
+              Fill out the form below to submit your information.
+            </DialogDescription>
           </DialogHeader>
           
           <div className="grid gap-4 py-4">
@@ -103,4 +108,4 @@ function NikiForm() {
   );
 }
 
-export default NikiForm;
+export default ContactForm;
