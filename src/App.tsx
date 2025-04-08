@@ -1,12 +1,10 @@
 import "./App.css";
 import { useState } from 'react';
 
-// UI Components
 import { Alert, AlertTitle, AlertDescription } from "./components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage } from "./components/VladilenaTest";
 
-// Custom Components
 import { ThemeSwitch } from "./components/Niki_Components/ThemeSwitch.tsx";
 import TextBox from "./components/TextBox.tsx";
 import TheJj from "./components/TheJj.tsx";
