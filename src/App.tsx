@@ -16,6 +16,7 @@ import { Bozhilkata } from "./components/BozhilkataComp.tsx";
 import Martin from './components/MartinComp.tsx';
 import { MartinForm } from './components/Martin-Form/MartinForm.tsx';
 import { PetarForm } from './components/Petar(Bozhilkata)-Form/PetarForm.tsx';
+import { TheJjForm } from './components/The_Jj-Form/TheJjForm.tsx';
 
 import { HrisaForm } from "./components/HrisaForm/Hrisa-form.tsx";
 
@@ -43,6 +44,11 @@ function App() {
       <div style={{ position: 'fixed', bottom: '120px', right: '40px' }}>
         <HrisaForm />
       </div>
+       {
+    <div className="p-4">
+      <TheJjForm />
+    </div>
+}
 
       <Martin />
       <AlexGifShower />
