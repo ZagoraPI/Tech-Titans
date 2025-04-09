@@ -1,13 +1,13 @@
 import "./App.css";
 import { useState } from 'react';
 
-// UI Components
 import { Alert, AlertTitle, AlertDescription } from "./components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage } from "./components/VladilenaTest";
 import {Accordion, AccordionContent, AccordionItem, AccordionTrigger, } from "@/components/Presly_Components/Accordion.tsx"
+import { Checkbox } from "./components/Checkbox.tsx";
+import { Popover, PopoverContent, PopoverTrigger } from "./components/Popover.tsx";
 
-// Custom Components
 import { ThemeSwitch } from "./components/Niki_Components/ThemeSwitch.tsx";
 import TextBox from "./components/TextBox.tsx";
 import TheJj from "./components/TheJj.tsx";
@@ -18,12 +18,18 @@ import Martin from './components/MartinComp.tsx';
 import { MartinForm } from './components/Martin-Form/MartinForm.tsx';
 import { PetarForm } from './components/Petar(Bozhilkata)-Form/PetarForm.tsx';
 import {PreslyForm} from "@/components/Presly_Components/Presly-Form.tsx"
+import { TheJjForm } from './components/The_Jj-Form/TheJjForm.tsx';
+import  NikiForm  from './components/Niki_Components/Form/NikiForm.tsx';
+
+import { HrisaForm } from "./components/HrisaForm/Hrisa-form.tsx";
+
 
 function App() {
   const [count, setCount] = useState(0);
   const [activated, setActivated] = useState(false);
 
   return (
+
     <>
       <div className="fixed top-16 left-16">
       <AlexPfpIcon />
@@ -38,9 +44,24 @@ function App() {
       <div style={{ position: 'fixed', bottom: '20px', right: '20px' }}>
         <MartinForm />
       </div>
+      <div style={{ position: 'fixed', bottom: '120px', right: '40px' }}>
+        <HrisaForm />
+      </div>
+       {
+    <div className="p-4">
+      <TheJjForm />
+    </div>
+}
 
       <Martin />
       <AlexGifShower />
+
+     <Checkbox />
+      
+        <Popover>
+          <PopoverTrigger>Open</PopoverTrigger>
+          <PopoverContent>Place content for the popover here.</PopoverContent>
+        </Popover>
 
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <Bozhilkata />
@@ -120,6 +141,12 @@ function App() {
         </button>
         <TextBox count1={count} style={{ color: 'white', backgroundColor: 'blue' }} />
       </div>
+
+      <div className="app-container">
+      <div className="bottom-left-container">
+        <NikiForm />
+      </div>
+    </div>
     </>
   );
 }
