@@ -24,6 +24,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^3.6.0",
+    "framer-motion": "^12.6.3",
     "lucide-react": "^0.483.0",
     "react": "^19.0.0",
     "react-day-picker": "^9.6.3",
@@ -35,6 +36,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
+    "@types/date-fns": "^2.5.3",
     "@types/node": "^22.13.13",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
