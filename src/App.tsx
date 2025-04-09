@@ -2,7 +2,7 @@ import "./App.css";
 import { useState } from 'react';
 
 import { Alert, AlertTitle, AlertDescription } from "./components/ui/alert";
-import { Button } from "@/components/ui/button";
+import { Button } from "./components/ui/button";
 import { Avatar, AvatarImage } from "./components/VladilenaTest";
 import { Checkbox } from "./components/Checkbox.tsx";
 import { Popover, PopoverContent, PopoverTrigger } from "./components/Popover.tsx";
@@ -20,6 +20,7 @@ import { TheJjForm } from './components/The_Jj-Form/TheJjForm.tsx';
 import  NikiForm  from './components/Niki_Components/Form/NikiForm.tsx';
 
 import { HrisaForm } from "./components/HrisaForm/Hrisa-form.tsx";
+import {ButtonDemo} from "./components/LubchoComponents/LubchoButton.tsx";
 
 
 function App() {
@@ -86,6 +87,8 @@ function App() {
           </Alert>
         </div>
       )}
+
+      <ButtonDemo/>
 
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
