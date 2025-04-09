@@ -14,10 +14,10 @@ import {
 } from "@/components/ui/sheet"
 
 const formFields = [
-  { id: "name", label: "Name", type: "text", placeholder: "Your full name" },
-  { id: "email", label: "Email", type: "email", placeholder: "you@example.com" },
-  { id: "yearOfBirth", label: "Year of Birth", type: "text", placeholder: "1990" },
-  { id: "city", label: "City", type: "text", placeholder: "Your city" },
+  { id: "name", label: "Name", type: "text", placeholder: "Your name" },
+  { id: "email", label: "Email", type: "email", placeholder: "email@example.com" },
+  { id: "yearOfBirth", label: "Year of Birth", type: "text", placeholder: "2000" },
+  { id: "city", label: "City", type: "text", placeholder: "Your City" },
 ];
 
 export function PreslyForm() {
