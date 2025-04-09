@@ -17,6 +17,7 @@ import Martin from './components/MartinComp.tsx';
 import { MartinForm } from './components/Martin-Form/MartinForm.tsx';
 import { PetarForm } from './components/Petar(Bozhilkata)-Form/PetarForm.tsx';
 import { TheJjForm } from './components/The_Jj-Form/TheJjForm.tsx';
+import  NikiForm  from './components/Niki_Components/Form/NikiForm.tsx';
 
 import { HrisaForm } from "./components/HrisaForm/Hrisa-form.tsx";
 
@@ -92,6 +93,12 @@ function App() {
         </button>
         <TextBox count1={count} style={{ color: 'white', backgroundColor: 'blue' }} />
       </div>
+
+      <div className="app-container">
+      <div className="bottom-left-container">
+        <NikiForm />
+      </div>
+    </div>
     </>
   );
 }
