@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Alert, AlertTitle, AlertDescription } from "./components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage } from "./components/VladilenaTest";
+
 import { Checkbox } from "./components/Checkbox.tsx";
 import { Popover, PopoverContent, PopoverTrigger } from "./components/Popover.tsx";
 
@@ -40,6 +41,7 @@ function App() {
       <div style={{ position: 'fixed', bottom: '20px', right: '20px' }}>
         <MartinForm />
       </div>
+
       <div style={{ position: 'fixed', bottom: '120px', right: '40px' }}>
         <HrisaForm />
       </div>
@@ -47,12 +49,16 @@ function App() {
       <Martin />
       <AlexGifShower />
 
-     <Checkbox />
       
-        <Popover>
+      
+      <Checkbox />
+
+      
+      <Popover>
           <PopoverTrigger>Open</PopoverTrigger>
           <PopoverContent>Place content for the popover here.</PopoverContent>
-        </Popover>
+      </Popover>
+
 
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <Bozhilkata />
