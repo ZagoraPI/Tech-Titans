@@ -13,31 +13,38 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 
+const formFields = [
+  { id: "name", label: "Name", type: "text", placeholder: "Your full name" },
+  { id: "email", label: "Email", type: "email", placeholder: "you@example.com" },
+  { id: "yearOfBirth", label: "Year of Birth", type: "text", placeholder: "1990" },
+  { id: "city", label: "City", type: "text", placeholder: "Your city" },
+];
+
 export function PreslyForm() {
   const initialFormState = {
     name: "",
     username: "",
     email: "",
     password: "",
-  }
+  };
 
-  const [formData, setFormData] = useState(initialFormState)
-  const [open, setOpen] = useState(false)
+  const [formData, setFormData] = useState(initialFormState);
+  const [open, setOpen] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.id]: e.target.value })
-  }
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
 
   const handleSubmit = () => {
-    console.log("Form Data:", formData)
-    setFormData(initialFormState)
-    setOpen(false)
-  }
+    console.log("Form Data:", formData);
+    setFormData(initialFormState);
+    setOpen(false);
+  };
 
   const handleCancel = () => {
-    setFormData(initialFormState)
-    setOpen(false)
-  }
+    setFormData(initialFormState);
+    setOpen(false);
+  };
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -51,20 +58,15 @@ export function PreslyForm() {
         </SheetHeader>
 
         <div className="grid gap-6 py-6 px-2 w-full max-w-md mx-auto">
-          {[
-            { id: "name", label: "Name", type: "text", placeholder: "Your full name" },
-            { id: "username", label: "Username", type: "text", placeholder: "@username" },
-            { id: "email", label: "Email", type: "email", placeholder: "you@example.com" },
-            { id: "password", label: "Password", type: "password", placeholder: "••••••••" },
-          ].map(({ id, label, type, placeholder }) => (
-            <div key={id} className="grid gap-2">
-              <Label htmlFor={id}>{label}</Label>
+          {formFields.map((field) => (
+            <div key={field.id}>
+              <Label htmlFor={field.id}>{field.label}</Label>
               <Input
-                id={id}
-                type={type}
-                value={(formData as any)[id]}
+                id={field.id}
+                type={field.type}
+                placeholder={field.placeholder}
+                value={formData[field.id as keyof typeof formData] || ""}
                 onChange={handleChange}
-                placeholder={placeholder}
               />
             </div>
           ))}
@@ -84,5 +86,5 @@ export function PreslyForm() {
         </SheetFooter>
       </SheetContent>
     </Sheet>
-  )
+  );
 }
