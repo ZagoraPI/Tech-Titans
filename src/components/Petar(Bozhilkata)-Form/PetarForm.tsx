@@ -20,6 +20,14 @@ export function PetarForm() {
     city: "",
   }
 
+  const Fields = [
+    { id: "name", label: "Name", type: "text", placeholder: "Your full name" },
+    { id: "email", label: "Email", type: "email", placeholder: "you@example.com" },
+    { id: "yearOfBirth", label: "Year of Birth", type: "text", placeholder: "1990" },
+    { id: "city", label: "City", type: "text", placeholder: "Your city" },
+  ]
+    
+
   const [formData, setFormData] = useState(initialFormState)
   const [open, setOpen] = useState(false)
 
@@ -50,12 +58,8 @@ export function PetarForm() {
         </SheetHeader>
 
         <div className="grid gap-6 px-2 w-full max-w-md mx-auto py-6 ">
-          {[
-            { id: "name", label: "Name", type: "text", placeholder: "Your full name" },
-            { id: "email", label: "Email", type: "email", placeholder: "you@example.com" },
-            { id: "yearOfBirth", label: "Year of Birth", type: "text", placeholder: "1990" },
-            { id: "city", label: "City", type: "text", placeholder: "Your city" },
-          ].map(({ id, label, type, placeholder }) => (
+          {    
+          Fields.map(({ id, label, type, placeholder }) => (
             <div key={id} className="grid gap-2">
               <Label htmlFor={id}>{label}</Label>
               <Input
