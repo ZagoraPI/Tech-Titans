@@ -21,7 +21,6 @@ import { AlexForm } from './components/Alex_Components/AlexForm.tsx';
 import  NikiForm  from './components/Niki_Components/Form/NikiForm.tsx';
 
 import { HrisaForm } from "./components/HrisaForm/Hrisa-form.tsx";
-import { SaturnForm } from "@/components/SaturnForm/SaturnForm.tsx";
 
 
 function App() {
@@ -47,9 +46,6 @@ function App() {
       <div style={{ position: 'fixed', bottom: '120px', right: '40px' }}>
         <HrisaForm />
       </div>
-        <div style={{ position: 'fixed', bottom: '160px', right: '40px' }}>
-            <SaturnForm />
-        </div>
        {
     <div className="p-4">
       <TheJjForm />
