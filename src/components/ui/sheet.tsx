@@ -10,13 +10,11 @@ function Sheet({ ...props }: React.ComponentProps<typeof SheetPrimitive.Root>) {
   return <SheetPrimitive.Root data-slot="sheet" {...props} />
 }
 
-
 function SheetTrigger({
   ...props
 }: React.ComponentProps<typeof SheetPrimitive.Trigger>) {
   return <SheetPrimitive.Trigger data-slot="sheet-trigger" {...props} />
 }
-
 
 function SheetClose({
   ...props
@@ -24,13 +22,11 @@ function SheetClose({
   return <SheetPrimitive.Close data-slot="sheet-close" {...props} />
 }
 
-
 function SheetPortal({
   ...props
 }: React.ComponentProps<typeof SheetPrimitive.Portal>) {
   return <SheetPrimitive.Portal data-slot="sheet-portal" {...props} />
 }
-
 
 function SheetOverlay({
   className,
@@ -47,7 +43,6 @@ function SheetOverlay({
     />
   )
 }
-
 
 function SheetContent({
   className,
@@ -86,7 +81,6 @@ function SheetContent({
   )
 }
 
-
 function SheetHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
@@ -97,7 +91,6 @@ function SheetHeader({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-
 function SheetFooter({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
@@ -107,7 +100,6 @@ function SheetFooter({ className, ...props }: React.ComponentProps<"div">) {
     />
   )
 }
-
 
 function SheetTitle({
   className,
@@ -122,7 +114,6 @@ function SheetTitle({
   )
 }
 
-
 function SheetDescription({
   className,
   ...props
@@ -135,7 +126,6 @@ function SheetDescription({
     />
   )
 }
-
 
 export {
   Sheet,
