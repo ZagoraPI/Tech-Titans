@@ -22,6 +22,7 @@ import  NikiForm  from './components/Niki_Components/Form/NikiForm.tsx';
 
 import { HrisaForm } from "./components/HrisaForm/Hrisa-form.tsx";
 import { SaturnForm } from "@/components/SaturnForm/SaturnForm.tsx";
+import { EgorkaForm } from "@/components/Egorka-Form/EgorkaForm.tsx";
 
 
 function App() {
@@ -49,6 +50,9 @@ function App() {
       </div>
         <div style={{ position: 'fixed', bottom: '160px', right: '40px' }}>
             <SaturnForm />
+        </div>
+        <div style={{ position: 'fixed', bottom: '200px', right: '40px' }}>
+            <EgorkaForm />
         </div>
        {
     <div className="p-4">
