@@ -19,9 +19,11 @@ import { PetarForm } from './components/Petar(Bozhilkata)-Form/PetarForm.tsx';
 import { TheJjForm } from './components/The_Jj-Form/TheJjForm.tsx';
 import { AlexForm } from './components/Alex_Components/AlexForm.tsx';
 import  NikiForm  from './components/Niki_Components/Form/NikiForm.tsx';
+import { ButtonDemo } from "./components/LubchoComponents2.0/LubchoButton.tsx";
 
 import { HrisaForm } from "./components/HrisaForm/Hrisa-form.tsx";
 import { SaturnForm } from "@/components/SaturnForm/SaturnForm.tsx";
+import { LubchoForm } from "./components/LubchoComponents2.0/LubchoButtonSumbit.tsx";
 
 
 function App() {
@@ -38,6 +40,9 @@ function App() {
         </Avatar>
       </div>
 
+      <ButtonDemo/>
+
+
       <div style={{ position: 'fixed', bottom: '80px', right: '20px' }}>
         <PetarForm />
       </div>
@@ -50,10 +55,15 @@ function App() {
         <div style={{ position: 'fixed', bottom: '160px', right: '40px' }}>
             <SaturnForm />
         </div>
+        
+        <LubchoForm/>
+
        {
     <div className="p-4">
       <TheJjForm />
     </div>
+
+    
 }
 
       <Martin />
@@ -82,6 +92,7 @@ function App() {
         <ThemeSwitch />
         <TheJj />
       </div>
+
 
       {count > 0 && (
         <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 w-full max-w-sm">
