@@ -21,8 +21,30 @@ export function PreslyForm() {
     city: "",
   };
 
+
   const [formData, setFormData] = useState(initialFormState);
   const [open, setOpen] = useState(false);
+  const [emailError, setEmailError] = useState("");
+  const emailRegex = /^[^@\s]+@(gmail\.com|yahoo\.com|email\.com)$/;
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = e.target;
+    setFormData({ ...formData, [id]: value });
+
+    if (id === "email") {
+      if (value && !emailRegex.test(value)) {
+        setEmailError("Email must be @gmail.com, @yahoo.com, or @email.com");
+      } else {
+        setEmailError("");
+      }
+    }
+  };
+
+  const handleSubmit = () => {
+    if (!emailRegex.test(formData.email)) {
+      setEmailError("Please use a valid email ending in @gmail.com, @yahoo.com, or @email.com");
+      return;
+    }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -69,10 +91,14 @@ export function PreslyForm() {
             <Input
               id="email"
               type="email"
-              placeholder="email@example.com"
+              placeholder="your@email.com"
               value={formData.email}
               onChange={handleChange}
+              className={emailError ? "border-red-500" : ""}
             />
+            {emailError && (
+              <p className="text-sm text-red-500 mt-1">{emailError}</p>
+            )}
           </div>
 
           
@@ -115,4 +141,5 @@ export function PreslyForm() {
       </SheetContent>
     </Sheet>
   );
+ }
 }
