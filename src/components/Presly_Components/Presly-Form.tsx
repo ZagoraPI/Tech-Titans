@@ -13,19 +13,12 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 
-const formFields = [
-  { id: "name", label: "Name", type: "text", placeholder: "Your name" },
-  { id: "email", label: "Email", type: "email", placeholder: "email@example.com" },
-  { id: "yearOfBirth", label: "Year of Birth", type: "text", placeholder: "2000" },
-  { id: "city", label: "City", type: "text", placeholder: "Your City" },
-];
-
 export function PreslyForm() {
   const initialFormState = {
     name: "",
-    username: "",
     email: "",
-    password: "",
+    yearOfBirth: "",
+    city: "",
   };
 
   const [formData, setFormData] = useState(initialFormState);
@@ -58,18 +51,53 @@ export function PreslyForm() {
         </SheetHeader>
 
         <div className="grid gap-6 py-6 px-2 w-full max-w-md mx-auto">
-          {formFields.map((field) => (
-            <div key={field.id}>
-              <Label htmlFor={field.id}>{field.label}</Label>
-              <Input
-                id={field.id}
-                type={field.type}
-                placeholder={field.placeholder}
-                value={formData[field.id as keyof typeof formData] || ""}
-                onChange={handleChange}
-              />
-            </div>
-          ))}
+          {/* Name Field */}
+          <div>
+            <Label htmlFor="name">Name</Label>
+            <Input
+              id="name"
+              type="text"
+              placeholder="Your name"
+              value={formData.name}
+              onChange={handleChange}
+            />
+          </div>
+
+          {/* Email Field */}
+          <div>
+            <Label htmlFor="email">Email</Label>
+            <Input
+              id="email"
+              type="email"
+              placeholder="email@example.com"
+              value={formData.email}
+              onChange={handleChange}
+            />
+          </div>
+
+          {/* Year of Birth */}
+          <div>
+            <Label htmlFor="yearOfBirth">Year of Birth</Label>
+            <Input
+              id="yearOfBirth"
+              type="text"
+              placeholder="2000"
+              value={formData.yearOfBirth}
+              onChange={handleChange}
+            />
+          </div>
+
+          {/* City Field */}
+          <div>
+            <Label htmlFor="city">City</Label>
+            <Input
+              id="city"
+              type="text"
+              placeholder="Your City"
+              value={formData.city}
+              onChange={handleChange}
+            />
+          </div>
         </div>
 
         <SheetFooter className="flex justify-end gap-4 px-2">
