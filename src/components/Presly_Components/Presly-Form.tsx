@@ -51,19 +51,19 @@ export function PreslyForm() {
         </SheetHeader>
 
         <div className="grid gap-6 py-6 px-2 w-full max-w-md mx-auto">
-          {/* Name Field */}
+          
           <div>
             <Label htmlFor="name">Name</Label>
             <Input
               id="name"
               type="text"
-              placeholder="Your name"
+              placeholder="What's Your Name?"
               value={formData.name}
               onChange={handleChange}
             />
           </div>
 
-          {/* Email Field */}
+          
           <div>
             <Label htmlFor="email">Email</Label>
             <Input
@@ -75,19 +75,19 @@ export function PreslyForm() {
             />
           </div>
 
-          {/* Year of Birth */}
+          
           <div>
             <Label htmlFor="yearOfBirth">Year of Birth</Label>
             <Input
               id="yearOfBirth"
-              type="text"
+              type="date"
               placeholder="2000"
               value={formData.yearOfBirth}
               onChange={handleChange}
             />
           </div>
 
-          {/* City Field */}
+          
           <div>
             <Label htmlFor="city">City</Label>
             <Input
@@ -103,12 +103,12 @@ export function PreslyForm() {
         <SheetFooter className="flex justify-end gap-4 px-2">
           <SheetClose asChild>
             <Button variant="outline" onClick={handleCancel}>
-              Cancel
+              Ain't It
             </Button>
           </SheetClose>
           <SheetClose asChild>
             <Button type="submit" onClick={handleSubmit}>
-              Confirm
+              Ya Sure?
             </Button>
           </SheetClose>
         </SheetFooter>
