@@ -21,11 +21,22 @@ export function PreslyForm() {
     city: "",
   };
 
-
   const [formData, setFormData] = useState(initialFormState);
   const [open, setOpen] = useState(false);
   const [emailError, setEmailError] = useState("");
   const emailRegex = /^[^@\s]+@(gmail\.com|yahoo\.com|email\.com)$/;
+
+  const isFormValid = () => {
+    const { name, email, yearOfBirth, city } = formData;
+    return (
+      name.trim() !== "" &&
+      email.trim() !== "" &&
+      yearOfBirth.trim() !== "" &&
+      city.trim() !== "" &&
+      emailRegex.test(email)
+    );
+  };
+  
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
@@ -123,17 +134,21 @@ export function PreslyForm() {
         </div>
 
         <SheetFooter className="flex justify-end gap-4 px-2">
-          <SheetClose asChild>
-            <Button variant="outline" onClick={handleCancel}>
-              Ain't It
-            </Button>
-          </SheetClose>
-          <SheetClose asChild>
-            <Button type="submit" onClick={handleSubmit}>
-              Ya Sure?
-            </Button>
-          </SheetClose>
-        </SheetFooter>
+  <SheetClose asChild>
+    <Button variant="outline" onClick={handleCancel}>
+      Cancel
+    </Button>
+  </SheetClose>
+  <SheetClose asChild>
+    <Button
+      type="submit"
+      onClick={handleSubmit}
+      disabled={!isFormValid()}
+    >
+      Confirm
+    </Button>
+  </SheetClose>
+</SheetFooter>
       </SheetContent>
     </Sheet>
   );
