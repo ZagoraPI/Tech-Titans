@@ -46,18 +46,14 @@ export function PreslyForm() {
       return;
     }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.id]: e.target.value });
-  };
-
-  const handleSubmit = () => {
-    console.log("Form Data:", formData);
-    setFormData(initialFormState);
-    setOpen(false);
-  };
+  console.log("Form Data:", formData);
+  setFormData(initialFormState);
+  setOpen(false);
+};
 
   const handleCancel = () => {
     setFormData(initialFormState);
+    setEmailError("");
     setOpen(false);
   };
 
@@ -142,4 +138,3 @@ export function PreslyForm() {
     </Sheet>
   );
  }
-}
