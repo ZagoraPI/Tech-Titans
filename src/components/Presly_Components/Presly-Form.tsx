@@ -136,7 +136,7 @@ export function PreslyForm() {
         <SheetFooter className="flex justify-end gap-4 px-2">
   <SheetClose asChild>
     <Button variant="outline" onClick={handleCancel}>
-      Cancel
+      Ain't It
     </Button>
   </SheetClose>
   <SheetClose asChild>
@@ -145,7 +145,7 @@ export function PreslyForm() {
       onClick={handleSubmit}
       disabled={!isFormValid()}
     >
-      Confirm
+      Ya Sure?
     </Button>
   </SheetClose>
 </SheetFooter>
