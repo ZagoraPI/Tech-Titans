@@ -12,21 +12,21 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 
-export function PetarForm() {
-  const initialFormState = {
+
+export function HrisaForm() {
+  interface FormData {
+    name: string
+    email: string
+    yearOfBirth: string
+    city: string
+  }
+
+  const initialFormState: FormData = {
     name: "",
     email: "",
     yearOfBirth: "",
     city: "",
   }
-
-  const Fields = [
-    { id: "name", label: "Name", type: "text", placeholder: "Your full name" },
-    { id: "email", label: "Email", type: "email", placeholder: "you@example.com" },
-    { id: "yearOfBirth", label: "Year of Birth", type: "text", placeholder: "1990" },
-    { id: "city", label: "City", type: "text", placeholder: "Your city" },
-  ]
-    
 
   const [formData, setFormData] = useState(initialFormState)
   const [open, setOpen] = useState(false)
@@ -49,7 +49,7 @@ export function PetarForm() {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Button variant="outline">Petar</Button>
+        <Button variant="outline">Hrisa</Button>
       </SheetTrigger>
       <SheetContent className="flex flex-col justify-center">
         <SheetHeader className="pt-4  mt-[-230px] "> 
@@ -58,14 +58,17 @@ export function PetarForm() {
         </SheetHeader>
 
         <div className="grid gap-6 px-2 w-full max-w-md mx-auto py-6 ">
-          {    
-          Fields.map(({ id, label, type, placeholder }) => (
+          {[
+            { id: "name", label: "Name", type: "text", placeholder: "Your full name" },
+            { id: "email", label: "Email", type: "email", placeholder: "you@example.com" },
+            { id: "yearOfBirth", label: "Year of Birth", type: "text", placeholder: "1990" }
+          ].map(({ id, label, type, placeholder }) => (
             <div key={id} className="grid gap-2">
               <Label htmlFor={id}>{label}</Label>
               <Input
                 id={id}
                 type={type}
-                value={(formData as any)[id]}
+                value={formData[id as keyof FormData]}
                 onChange={handleChange}
                 placeholder={placeholder}
               />
