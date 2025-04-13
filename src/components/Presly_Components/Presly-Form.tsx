@@ -45,23 +45,25 @@ export function PreslyForm() {
 
     if (id === "email") {
       if (value && !emailRegex.test(value)) {
-        setEmailError("Email must be @gmail.com, @yahoo.com, or @email.com");
+        setEmailError("Email must be @gmail.com, @yahoo.com, @email.com, @abv.bg or anything else");
       } else {
         setEmailError("");
       }
     }
   };
-
+  
   const handleSubmit = () => {
-    if (!emailRegex.test(formData.email)) {
-      setEmailError("Please use a valid email ending in @gmail.com, @yahoo.com, or @email.com");
+    if (!isFormValid()) {
+      if (!emailRegex.test(formData.email)) {
+        setEmailError("Please use a valid email ending in @gmail.com, @yahoo.com, @email.com, @abv.bg or anything else");
+      }
       return;
     }
-
-  console.log("Form Data:", formData);
-  setFormData(initialFormState);
-  setOpen(false);
-};
+  
+    console.log("Form Data:", formData);
+    setFormData(initialFormState);
+    setOpen(false);
+  };
 
   const handleCancel = () => {
     setFormData(initialFormState);
@@ -77,7 +79,7 @@ export function PreslyForm() {
       <SheetContent className="flex flex-col justify-center">
         <SheetHeader>
           <SheetTitle>Sign up</SheetTitle>
-          <SheetDescription>Fill out the form to create an account.</SheetDescription>
+          <SheetDescription>Fill out the form to create an account Pwease :3</SheetDescription>
         </SheetHeader>
 
         <div className="grid gap-6 py-6 px-2 w-full max-w-md mx-auto">
