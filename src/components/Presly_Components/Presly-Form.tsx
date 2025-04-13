@@ -24,7 +24,8 @@ export function PreslyForm() {
   const [formData, setFormData] = useState(initialFormState);
   const [open, setOpen] = useState(false);
   const [emailError, setEmailError] = useState("");
-  const emailRegex = /^[^@\s]+@(gmail\.com|yahoo\.com|email\.com)$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 
   const isFormValid = () => {
     const { name, email, yearOfBirth, city } = formData;
