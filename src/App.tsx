@@ -16,6 +16,14 @@ import { Bozhilkata } from "./components/BozhilkataComp.tsx";
 import Martin from './components/MartinComp.tsx';
 import { MartinForm } from './components/Martin-Form/MartinForm.tsx';
 import { PetarForm } from './components/Petar(Bozhilkata)-Form/PetarForm.tsx';
+import { TheJjForm } from './components/The_Jj-Form/TheJjForm.tsx';
+import { AlexForm } from './components/Alex_Components/AlexForm.tsx';
+import  NikiForm  from './components/Niki_Components/Form/NikiForm.tsx';
+
+import { HrisaForm } from "./components/HrisaForm/Hrisa-form.tsx";
+import { SaturnForm } from "@/components/SaturnForm/SaturnForm.tsx";
+
+
 
 function App() {
   const [count, setCount] = useState(0);
@@ -37,6 +45,9 @@ function App() {
       <div style={{ position: 'fixed', bottom: '120px', right: '40px' }}>
         <HrisaForm />
       </div>
+        <div style={{ position: 'fixed', bottom: '160px', right: '40px' }}>
+            <SaturnForm />
+        </div>
        {
     <div className="p-4">
       <TheJjForm />
@@ -86,10 +97,10 @@ function App() {
         <TextBox count1={count} style={{ color: 'white', backgroundColor: 'blue' }} />
       </div>
 
-      <div className="app-container">
+  
       <div className="bottom-left-container">
         <NikiForm />
-      </div>
+        <AlexForm />
     </div>
     </>
   );
