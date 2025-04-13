@@ -17,7 +17,7 @@ export function PreslyForm() {
   const initialFormState = {
     name: "",
     email: "",
-    yearOfBirth: "",
+    dateOfBirth: "",
     city: "",
   };
 
@@ -28,11 +28,11 @@ export function PreslyForm() {
 
 
   const isFormValid = () => {
-    const { name, email, yearOfBirth, city } = formData;
+    const { name, email, dateOfBirth, city } = formData;
     return (
       name.trim() !== "" &&
       email.trim() !== "" &&
-      yearOfBirth.trim() !== "" &&
+      dateOfBirth.trim() !== "" &&
       city.trim() !== "" &&
       emailRegex.test(email)
     );
@@ -118,7 +118,7 @@ export function PreslyForm() {
               id="dateOfBirth"
               type="date"
               placeholder="09/09/2008"
-              value={formData.yearOfBirth}
+              value={formData.dateOfBirth}
               onChange={handleChange}
             />
           </div>
