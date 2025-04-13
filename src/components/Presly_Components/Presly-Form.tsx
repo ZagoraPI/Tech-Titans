@@ -113,11 +113,11 @@ export function PreslyForm() {
 
           
           <div>
-            <Label htmlFor="yearOfBirth">Year of Birth</Label>
+            <Label htmlFor="dateOfBirth">Date of Birth</Label>
             <Input
-              id="yearOfBirth"
+              id="dateOfBirth"
               type="date"
-              placeholder="2000"
+              placeholder="09/09/2008"
               value={formData.yearOfBirth}
               onChange={handleChange}
             />
