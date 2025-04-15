@@ -6,7 +6,7 @@ import  NikiForm  from '@/components/Niki_Components/Form/NikiForm.tsx';
 
 const FormSelectionPage: React.FC = () => {
   return (
-    <div className="h-screen flex flex-col items-center justify-center bg-gradient-to-r from-purple-600 to-blue-600">
+    <div className="width 100vw h-screen flex flex-col items-center justify-center bg-gradient-to-r ">
       <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-lg p-8 shadow-xl max-w-md w-full">
         <h1 className="text-3xl font-bold text-center text-white mb-8">Select a Form</h1>
         

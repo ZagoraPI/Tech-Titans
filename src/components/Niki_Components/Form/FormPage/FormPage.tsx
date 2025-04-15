@@ -3,16 +3,25 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Alert, AlertTitle, AlertDescription} from '@/components/ui/alert';
 import './FormPage.css'; 
 
 const NikiFormPage: React.FC = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-
+  const [submitted, setSubmitted] = useState(false);
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log({ email, message });
+    setSubmitted(true);
+    
+    setEmail('');
+    setMessage('');
+    
+    setTimeout(() => {
+        setSubmitted(false);
+      }, 5000);
   };
   
   return (
@@ -82,6 +91,15 @@ const NikiFormPage: React.FC = () => {
           </Link>
         </div>
       </div>
+      {submitted && (
+  <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 w-full max-w-sm">
+    <Alert className="bg-white/20 backdrop-blur-sm border border-white/30 text-white font-bold">
+      <AlertTitle>Notification</AlertTitle>
+      <AlertDescription>The Form was sent</AlertDescription>
+    </Alert>
+  </div>
+)}
+
     </div>
   );
 };
