@@ -99,8 +99,13 @@ const NikiFormPage: React.FC = () => {
     </Alert>
   </div>
 )}
-
-    </div>
+{/* change '/' to home page later */}
+  <Link to="/" className="fixed top-4 left-1/2 transform -translate-x-1/2 w-full max-w-sm">
+      <Button variant="outline" className="glass-back-button">
+        Home
+      </Button>
+  </Link>
+        </div>
   );
 };
 
