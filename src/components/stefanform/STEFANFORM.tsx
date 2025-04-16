@@ -45,7 +45,7 @@ export function StefanForm () {
 
     if (id === "email") {
       if (value && !emailRegex.test(value)) {
-        setEmailError("Email must be @gmail.com, @yahoo.com, @email.com, @abv.bg or anything else");
+        setEmailError("Email must be valid!");
       } else {
         setEmailError("");
       }
@@ -55,7 +55,7 @@ export function StefanForm () {
   const handleSubmit = () => {
     if (!isFormValid()) {
       if (!emailRegex.test(formData.email)) {
-        setEmailError("Please use a valid email ending in @gmail.com, @yahoo.com, @email.com, @abv.bg or anything else");
+        setEmailError("Please use a valid email");
       }
       return;
     }
@@ -74,12 +74,12 @@ export function StefanForm () {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Button variant="outline">Presly</Button>
+        <Button variant="outline">Stefan</Button>
       </SheetTrigger>
       <SheetContent className="flex flex-col justify-center">
         <SheetHeader>
           <SheetTitle>Sign up</SheetTitle>
-          <SheetDescription>Fill out the form to create an account Pwease :3</SheetDescription>
+          <SheetDescription>Fill out the form to create an account</SheetDescription>
         </SheetHeader>
 
         <div className="grid gap-6 py-6 px-2 w-full max-w-md mx-auto">
@@ -139,7 +139,7 @@ export function StefanForm () {
         <SheetFooter className="flex justify-end gap-4 px-2">
   <SheetClose asChild>
     <Button variant="outline" onClick={handleCancel}>
-      Ain't It
+      not hapenning 
     </Button>
   </SheetClose>
   <SheetClose asChild>
@@ -148,7 +148,7 @@ export function StefanForm () {
       onClick={handleSubmit}
       disabled={!isFormValid()}
     >
-      Ya Sure?
+      u want fr?
     </Button>
   </SheetClose>
 </SheetFooter>
