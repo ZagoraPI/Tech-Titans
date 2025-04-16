@@ -13,76 +13,146 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 
-export function StefanForm() {
+export function StefanForm () {
   const initialFormState = {
     name: "",
-    username: "",
     email: "",
-    password: "",
-  }
+    dateOfBirth: "",
+    city: "",
+  };
 
-  const [formData, setFormData] = useState(initialFormState)
-  const [open, setOpen] = useState(false)
+  const [formData, setFormData] = useState(initialFormState);
+  const [open, setOpen] = useState(false);
+  const [emailError, setEmailError] = useState("");
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+  const isFormValid = () => {
+    const { name, email, dateOfBirth, city } = formData;
+    return (
+      name.trim() !== "" &&
+      email.trim() !== "" &&
+      dateOfBirth.trim() !== "" &&
+      city.trim() !== "" &&
+      emailRegex.test(email)
+    );
+  };
+  
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.id]: e.target.value })
-  }
+    const { id, value } = e.target;
+    setFormData({ ...formData, [id]: value });
 
+    if (id === "email") {
+      if (value && !emailRegex.test(value)) {
+        setEmailError("Email must be @gmail.com, @yahoo.com, @email.com, @abv.bg or anything else");
+      } else {
+        setEmailError("");
+      }
+    }
+  };
+  
   const handleSubmit = () => {
-    console.log("Form Data:", formData)
-    setFormData(initialFormState)
-    setOpen(false)
-  }
+    if (!isFormValid()) {
+      if (!emailRegex.test(formData.email)) {
+        setEmailError("Please use a valid email ending in @gmail.com, @yahoo.com, @email.com, @abv.bg or anything else");
+      }
+      return;
+    }
+  
+    console.log("Form Data:", formData);
+    setFormData(initialFormState);
+    setOpen(false);
+  };
 
   const handleCancel = () => {
-    setFormData(initialFormState)
-    setOpen(false)
-  }
+    setFormData(initialFormState);
+    setEmailError("");
+    setOpen(false);
+  };
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Button variant="outline">Stefan</Button>
+        <Button variant="outline">Presly</Button>
       </SheetTrigger>
       <SheetContent className="flex flex-col justify-center">
         <SheetHeader>
           <SheetTitle>Sign up</SheetTitle>
-          <SheetDescription>Fill out the form.</SheetDescription>
+          <SheetDescription>Fill out the form to create an account Pwease :3</SheetDescription>
         </SheetHeader>
 
         <div className="grid gap-6 py-6 px-2 w-full max-w-md mx-auto">
-          {[
-            { id: "name", label: "Name", type: "text", placeholder: "Your full name" },
-            { id: "username", label: "Username", type: "text", placeholder: "@username" },
-            { id: "email", label: "Email", type: "email", placeholder: "you@example.com" },
-            { id: "password", label: "Password", type: "password", placeholder: "••••••••" },
-          ].map(({ id, label, type, placeholder }) => (
-            <div key={id} className="grid gap-2">
-              <Label htmlFor={id}>{label}</Label>
-              <Input
-                id={id}
-                type={type}
-                value={(formData as any)[id]}
-                onChange={handleChange}
-                placeholder={placeholder}
-              />
-            </div>
-          ))}
+          
+          <div>
+            <Label htmlFor="name">Name</Label>
+            <Input
+              id="name"
+              type="text"
+              placeholder="What's Your Name?"
+              value={formData.name}
+              onChange={handleChange}
+            />
+          </div>
+
+          
+          <div>
+            <Label htmlFor="email">Email</Label>
+            <Input
+              id="email"
+              type="email"
+              placeholder="your@email.com"
+              value={formData.email}
+              onChange={handleChange}
+              className={emailError ? "border-red-500" : ""}
+            />
+            {emailError && (
+              <p className="text-sm text-red-500 mt-1">{emailError}</p>
+            )}
+          </div>
+
+          
+          <div>
+            <Label htmlFor="dateOfBirth">Date of Birth</Label>
+            <Input
+              id="dateOfBirth"
+              type="date"
+              placeholder="09/09/2008"
+              value={formData.dateOfBirth}
+              onChange={handleChange}
+            />
+          </div>
+
+          
+          <div>
+            <Label htmlFor="city">City</Label>
+            <Input
+              id="city"
+              type="text"
+              placeholder="Your City"
+              value={formData.city}
+              onChange={handleChange}
+            />
+          </div>
         </div>
 
         <SheetFooter className="flex justify-end gap-4 px-2">
-          <SheetClose asChild>
-            <Button variant="outline" onClick={handleCancel}>
-              Cancel
-            </Button>
-          </SheetClose>
-          <SheetClose asChild>
-            <Button type="submit" onClick={handleSubmit}>
-              Confirm
-            </Button>
-          </SheetClose>
-        </SheetFooter>
+  <SheetClose asChild>
+    <Button variant="outline" onClick={handleCancel}>
+      Ain't It
+    </Button>
+  </SheetClose>
+  <SheetClose asChild>
+    <Button
+      type="submit"
+      onClick={handleSubmit}
+      disabled={!isFormValid()}
+    >
+      Ya Sure?
+    </Button>
+  </SheetClose>
+</SheetFooter>
       </SheetContent>
     </Sheet>
-  )
-}
+  );
+ }

@@ -27,6 +27,7 @@ import { HrisaForm } from "./components/HrisaForm/Hrisa-form.tsx";
 import { SaturnForm } from "@/components/SaturnForm/SaturnForm.tsx";
 import FormSelectionPage from './components/Niki_Components/Pages/FormSelectPage.tsx';
 import NikiFormPage from './components/Niki_Components/Form/FormPage/FormPage.tsx';
+import {StefanForm} from "@/components/stefanform/STEFANFORM.tsx"
 
 
 function App() {
