@@ -44,9 +44,9 @@ export function EgorkaForm() {
       const newErrors = { ...prevErrors }
 
       if (value.trim() === "") {
-        newErrors[id as keyof typeof newErrors] = "Обязательное поле."
+        newErrors[id as keyof typeof newErrors] = "Required field"
       } else if (id === "email" && !emailRegex.test(value)) {
-        newErrors.email = "Невалидный адрес электронной почты."
+        newErrors.email = "Invalid email address"
       } else {
         newErrors[id as keyof typeof newErrors] = ""
       }
@@ -65,13 +65,13 @@ export function EgorkaForm() {
 
     for (const key in formData) {
       if (formData[key as keyof typeof formData].trim() === "") {
-        newErrors[key as keyof typeof newErrors] = "Обязательное поле."
+        newErrors[key as keyof typeof newErrors] = "Required field"
         hasError = true
       }
     }
 
     if (!emailRegex.test(formData.email)) {
-      newErrors.email = "Невалидный адрес электронной почты."
+      newErrors.email = "Invalid email address"
       hasError = true
     }
 
@@ -98,19 +98,19 @@ export function EgorkaForm() {
       </SheetTrigger>
       <SheetContent className="flex flex-col justify-center">
         <SheetHeader>
-          <SheetTitle>Авторизация</SheetTitle>
-          <SheetDescription>Заполните форму для создания учетной записи.</SheetDescription>
+          <SheetTitle>Sign up</SheetTitle>
+          <SheetDescription>Fill out the form to create an account.</SheetDescription>
         </SheetHeader>
 
         <div className="grid gap-6 py-6 px-2 w-full max-w-md mx-auto">
 
           {/* Name */}
           <div className="grid gap-2">
-            <Label htmlFor="name">Имя</Label>
+            <Label htmlFor="name">Name</Label>
             <Input
               id="name"
               type="text"
-              placeholder="Ваше полное имя"
+              placeholder="Your full name"
               value={formData.name}
               onChange={handleChange}
             />
@@ -119,7 +119,7 @@ export function EgorkaForm() {
 
           {/* Username */}
           <div className="grid gap-2">
-            <Label htmlFor="username">Юзернейм</Label>
+            <Label htmlFor="username">Username</Label>
             <Input
               id="username"
               type="text"
@@ -132,7 +132,7 @@ export function EgorkaForm() {
 
           {/* Email */}
           <div className="grid gap-2">
-            <Label htmlFor="email">Адрес электронной почты</Label>
+            <Label htmlFor="email">Email</Label>
             <Input
               id="email"
               type="email"
@@ -145,7 +145,7 @@ export function EgorkaForm() {
 
           {/* Password */}
           <div className="grid gap-2">
-            <Label htmlFor="password">Пароль</Label>
+            <Label htmlFor="password">Password</Label>
             <Input
               id="password"
               type="password"
@@ -158,9 +158,7 @@ export function EgorkaForm() {
 
           {/* Date of Birth */}
           <div className="grid gap-2">
-            <Label htmlFor="dob">
-              Date of Birth <span className="text-muted-foreground text-sm">(день/месяц/год)</span>
-            </Label>
+            <Label htmlFor="dob">Date of Birth</Label>
             <Input
               id="dob"
               type="date"
@@ -172,11 +170,11 @@ export function EgorkaForm() {
 
           {/* City */}
           <div className="grid gap-2">
-            <Label htmlFor="city">Город</Label>
+            <Label htmlFor="city">City</Label>
             <Input
               id="city"
               type="text"
-              placeholder="Ваше место жительства"
+              placeholder="Your city"
               value={formData.city}
               onChange={handleChange}
             />
@@ -188,12 +186,12 @@ export function EgorkaForm() {
         <SheetFooter className="flex justify-end gap-4 px-2">
           <SheetClose asChild>
             <Button variant="outline" onClick={handleCancel}>
-              Отменить
+              Cancel
             </Button>
           </SheetClose>
           <SheetClose asChild>
             <Button type="submit" onClick={handleSubmit} disabled={!isFormValid}>
-              Подтвердить
+              Confirm
             </Button>
           </SheetClose>
         </SheetFooter>
