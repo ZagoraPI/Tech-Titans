@@ -42,6 +42,8 @@ function App() {
           <PetarForm></PetarForm>
         </div>
 
+        <div style={{position: 'fixed', top: '200px', right: '350px',}}><StefanForm></StefanForm></div>
+
       <div style={{ position: 'fixed', bottom: '80px', right: '20px' }}>
         <PetarForm />
       </div>
