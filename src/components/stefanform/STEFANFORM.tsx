@@ -117,7 +117,7 @@ export function StefanForm () {
             <Input
               id="dateOfBirth"
               type="date"
-              placeholder="09/09/2008"
+              placeholder="31/03/2009"
               value={formData.dateOfBirth}
               onChange={handleChange}
             />
