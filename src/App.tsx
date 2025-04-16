@@ -25,6 +25,7 @@ import { AlexForm } from './components/Alex_Components/AlexForm.tsx';
 import  NikiForm  from './components/Niki_Components/Form/NikiForm.tsx';
 import { HrisaForm } from "./components/HrisaForm/Hrisa-form.tsx";
 import { SaturnForm } from "@/components/SaturnForm/SaturnForm.tsx";
+import { EgorkaForm } from "@/components/Egorka-Form/EgorkaForm.tsx";
 import FormSelectionPage from './components/Niki_Components/Pages/FormSelectPage.tsx';
 import NikiFormPage from './components/Niki_Components/Form/FormPage/FormPage.tsx';
 
@@ -54,6 +55,9 @@ function App() {
       </div>
         <div style={{ position: 'fixed', bottom: '160px', right: '40px' }}>
             <SaturnForm />
+        </div>
+        <div style={{ position: 'fixed', bottom: '200px', right: '40px' }}>
+            <EgorkaForm />
         </div>
        {
     <div className="p-4">
