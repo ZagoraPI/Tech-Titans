@@ -14,79 +14,72 @@ import {
 } from "@/components/ui/sheet"
 import { motion } from "framer-motion"
 import { Mail, Lock, User, AtSign } from "lucide-react"
+import React from "react"
 
-export function VladilenaForm() {
-  const [formData, setFormData] = useState({
+export function TheJjForm() {
+  const initialFormState = {
     name: "",
     username: "",
     email: "",
     password: "",
-  })
-
-  const [isOpen, setIsOpen] = useState(false)
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { id, value } = e.target
-    setFormData(prev => ({ ...prev, [id]: value }))
   }
 
-  const resetForm = () => setFormData({
-    name: "",
-    username: "",
-    email: "",
-    password: "",
-  })
+  const [formData, setFormData] = useState(initialFormState)
+  const [open, setOpen] = useState(false)
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value })
+  }
 
   const handleSubmit = () => {
-    console.log("Submitted:", formData)
-    resetForm()
-    setIsOpen(false)
+    console.log("Form Data:", formData)
+    setFormData(initialFormState)
+    setOpen(false)
   }
 
   const handleCancel = () => {
-    resetForm()
-    setIsOpen(false)
+    setFormData(initialFormState)
+    setOpen(false)
   }
 
   const fields = [
-    { id: "name", label: "Full Name", type: "text", placeholder: "Your full name", icon: <User size={16} /> },
+    { id: "name", label: "Name", type: "text", placeholder: "Your full name", icon: <User size={16} /> },
     { id: "username", label: "Username", type: "text", placeholder: "@username", icon: <AtSign size={16} /> },
     { id: "email", label: "Email", type: "email", placeholder: "you@example.com", icon: <Mail size={16} /> },
     { id: "password", label: "Password", type: "password", placeholder: "••••••••", icon: <Lock size={16} /> },
   ]
 
   return (
-    <Sheet open={isOpen} onOpenChange={setIsOpen}>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Button variant="outline">Sign Up</Button>
+        <Button variant="outline">The Jj</Button>
       </SheetTrigger>
 
-      <SheetContent className="flex flex-col justify-center items-center">
+      <SheetContent className="flex flex-col justify-center">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.35 }}
-          className="w-full max-w-md rounded-xl shadow-md p-6 bg-black"
+          transition={{ duration: 0.3 }}
+          className="w-full max-w-md mx-auto rounded-xl shadow-md p-4 bg-Black"
         >
           <SheetHeader className="text-center mb-4">
-            <SheetTitle className="text-2xl font-bold text-white">Create Account</SheetTitle>
-            <SheetDescription className="text-gray-300">Join and explore more features</SheetDescription>
+          <SheetTitle className="text-2xl font-bold text-white">Create your account</SheetTitle>
+          <SheetDescription>Sign up to explore more!</SheetDescription>
           </SheetHeader>
 
           <div className="grid gap-5">
             {fields.map(({ id, label, type, placeholder, icon }) => (
               <div key={id} className="grid gap-2">
                 <Label htmlFor={id}>{label}</Label>
-                <div className="flex items-center gap-2 rounded-lg border px-3 py-2 transition-all focus-within:ring-2 focus-within:ring-blue-500 hover:border-blue-400">
+                <div className="flex items-center gap-2 rounded-lg border px-3 py-2 focus-within:ring-2 focus-within:ring-blue-500">
                   {icon}
                   <Input
                     id={id}
                     type={type}
                     value={(formData as any)[id]}
-                    onChange={handleInputChange}
+                    onChange={handleChange}
                     placeholder={placeholder}
-                    className="flex-1 border-none outline-none bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
-                    aria-label={label}
+                    className="border-none outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
                   />
                 </div>
               </div>
@@ -95,10 +88,14 @@ export function VladilenaForm() {
 
           <SheetFooter className="flex justify-end gap-4 mt-6">
             <SheetClose asChild>
-              <Button variant="outline" onClick={handleCancel}>Cancel</Button>
+              <Button variant="outline" onClick={handleCancel}>
+                Cancel
+              </Button>
             </SheetClose>
             <SheetClose asChild>
-              <Button onClick={handleSubmit}>Confirm</Button>
+              <Button onClick={handleSubmit}>
+                Confirm
+              </Button>
             </SheetClose>
           </SheetFooter>
         </motion.div>
