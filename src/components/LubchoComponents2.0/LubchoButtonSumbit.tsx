@@ -1,17 +1,16 @@
 import { useState } from "react"
-import { Button } from "../../components/ui/button"
+import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet"
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from "@/components/ui/dialog"
 import { motion } from "framer-motion"
 import { Mail, Lock, User, AtSign } from "lucide-react"
 
@@ -40,7 +39,6 @@ export function LubchoForm() {
   }
 
   const handleSubmit = async () => {
-    // Basic form validation
     if (!formData.name || !formData.username || !formData.email || !formData.password) {
       setFormError("All fields are required!")
       return
@@ -49,9 +47,8 @@ export function LubchoForm() {
     setLoading(true)
     setFormError("")
 
-    // Simulate an API call to submit form data
     setTimeout(() => {
-      console.log("Form Data:", formData)
+      console.log("Form Submitted:", formData)
       setFormData(initialFormState)
       setOpen(false)
       setLoading(false)
@@ -72,62 +69,59 @@ export function LubchoForm() {
   ]
 
   return (
-    <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger asChild>
-        <Button variant="outline">Lubcho</Button>
-      </SheetTrigger>
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger asChild>
+        <Button variant="default">Lubcho</Button>
+      </DialogTrigger>
 
-      <SheetContent className="flex flex-col justify-center">
+      <DialogContent className="max-w-lg p-6 rounded-xl shadow-xl bg-zinc-900 text-white border border-zinc-700">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-          className="w-full max-w-md mx-auto rounded-xl shadow-md p-4 bg-Black"
+          transition={{ duration: 0.4 }}
         >
-          <SheetHeader className="text-center mb-4">
-            <SheetTitle className="text-2xl font-bold text-white">Create your account</SheetTitle>
-            <SheetDescription>Sign up to explore more!</SheetDescription>
-          </SheetHeader>
+          <DialogHeader>
+            <DialogTitle className="text-2xl">Create your account</DialogTitle>
+            <DialogDescription className="text-zinc-400">
+              Sign up to explore more!
+            </DialogDescription>
+          </DialogHeader>
 
-          {/* Display form error */}
-          {formError && <div className="text-red-500 text-center mb-4">{formError}</div>}
+          {formError && (
+            <div className="text-red-500 text-center text-sm mt-2">{formError}</div>
+          )}
 
-          <div className="grid gap-5">
+          <div className="grid gap-5 mt-4">
             {fields.map(({ id, label, type, placeholder, icon }) => (
               <div key={id} className="grid gap-2">
-                <Label htmlFor={id}>{label}</Label>
-                <div className="flex items-center gap-2 rounded-lg border px-3 py-2 focus-within:ring-2 focus-within:ring-blue-500">
+                <Label htmlFor={id} className="text-sm text-white">
+                  {label}
+                </Label>
+                <div className="flex items-center gap-2 rounded-lg border border-zinc-700 px-3 py-2 bg-zinc-800">
                   {icon}
                   <Input
                     id={id}
                     type={type}
-                    value={formData[id as keyof FormData]} 
+                    value={formData[id as keyof FormData]}
                     onChange={handleChange}
                     placeholder={placeholder}
-                    className="border-none outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                    className="bg-transparent border-none text-white focus-visible:ring-0 focus-visible:ring-offset-0"
                   />
                 </div>
               </div>
             ))}
           </div>
 
-          <SheetFooter className="flex justify-end gap-4 mt-6">
-            <SheetClose asChild>
-              <Button variant="outline" onClick={handleCancel}>
-                Cancel
-              </Button>
-            </SheetClose>
-            <SheetClose asChild>
-              <Button
-                onClick={handleSubmit}
-                disabled={loading} // Disable the button while loading
-              >
-                {loading ? "Submitting..." : "Confirm"}
-              </Button>
-            </SheetClose>
-          </SheetFooter>
+          <DialogFooter className="mt-6 flex justify-end gap-3">
+            <Button variant="ghost" onClick={handleCancel}>
+              Cancel
+            </Button>
+            <Button onClick={handleSubmit} disabled={loading}>
+              {loading ? "Submitting..." : "Confirm"}
+            </Button>
+          </DialogFooter>
         </motion.div>
-      </SheetContent>
-    </Sheet>
+      </DialogContent>
+    </Dialog>
   )
 }
