@@ -8,10 +8,10 @@ const ContactFormPage: React.FC = () => {
 
   const validate = () => {
     const newErrors: typeof errors = {};
-    if (name.trim().length < 2) newErrors.name = 'Името трябва да е поне 2 символа.';
+    if (name.trim().length < 2) newErrors.name = 'The name must be at least 2 characters..';
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) newErrors.email = 'Моля въведи валиден имейл.';
-    if (message.trim().length < 10) newErrors.message = 'Съобщението трябва да е поне 10 символа.';
+    if (!emailRegex.test(email)) newErrors.email = 'Please enter a valid email..';
+    if (message.trim().length < 10) newErrors.message = 'Message must be at least 10 characters long.';
     return newErrors;
   };
 
@@ -24,8 +24,8 @@ const ContactFormPage: React.FC = () => {
       return; 
     }
     
-    console.log('Форма изпратена:', { name, email, message });
-    alert('Формата е изпратена успешно!');
+    console.log('Form sent:', { name, email, message });
+    alert('Form submitted successfully.!');
     setName('');
     setEmail('');
     setMessage('');
@@ -33,12 +33,12 @@ const ContactFormPage: React.FC = () => {
 
   return (
     <div className="min-h-screen w-full bg-animated-gradient flex items-center justify-center px-4">
-      <div className="w-full max-w-2xl p-8 backdrop-blur-md rounded-3xl shadow-2xl border border-white/30">
-        <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Свържи се с нас</h1>
+      <div className="w-full max-w-2xl p-8 backdrop-blur-md rounded-3xl shadow-2x1 border border-white/30">
+        <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Contact us need </h1>
         
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-6 space-x-6">
           <div>
-            <label className="block text-sm font-medium mb-1">Име</label>
+            <label className="block text-sm font-medium mb-1">Name</label>
             <input
               type="text"
               value={name}
@@ -51,7 +51,7 @@ const ContactFormPage: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-1">Имейл</label>
+            <label className="block text-sm font-medium mb-1">Email</label>
             <input
               type="email"
               value={email}
@@ -64,7 +64,7 @@ const ContactFormPage: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-1">Съобщение</label>
+            <label className="block text-sm font-medium mb-1">Message</label>
             <textarea
               value={message}
               onChange={(e) => setMessage(e.target.value)}
