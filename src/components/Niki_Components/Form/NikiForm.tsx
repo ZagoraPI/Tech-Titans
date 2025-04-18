@@ -51,9 +51,13 @@ function ContactForm() {
 
   return (
     <div className="form-container">
-      <Button onClick={() => setIsOpen(true)}>
-        Niki Form
+      <Button
+        className="w-full py-6 text-lg bg-white/20 backdrop-blur-sm border border-white/20 hover:bg-white/30 text-white"
+        onClick={() => setIsOpen(true)}
+      >
+        Niki Form 
       </Button>
+
 
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent className="sm:max-w-md">

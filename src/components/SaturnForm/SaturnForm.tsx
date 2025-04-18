@@ -4,85 +4,108 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import {
   Sheet,
-  SheetClose,
+  SheetTrigger,
   SheetContent,
-  SheetDescription,
-  SheetFooter,
   SheetHeader,
   SheetTitle,
-  SheetTrigger,
+  SheetDescription,
+  SheetFooter,
+  SheetClose,
 } from "@/components/ui/sheet"
 
 export function SaturnForm() {
-  const initialFormState = {
+  const [formFields, setFormFields] = useState({
     name: "",
-    username: "",
-    email: "",
-    password: "",
+    user: "",
+    emailAddress: "",
+    passcode: "",
+  })
+
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({})
+  const [drawerOpen, setDrawerOpen] = useState(false)
+
+  const updateField = (field: string, value: string) => {
+    setFormFields((prev) => ({ ...prev, [field]: value }))
+    setFormErrors((prev) => ({ ...prev, [field]: "" }))
   }
 
-  const [formData, setFormData] = useState(initialFormState)
-  const [open, setOpen] = useState(false)
+  const validateAndSubmit = () => {
+    const errors: Record<string, string> = {}
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.id]: e.target.value })
+    if (!formFields.name.trim()) errors.name = "Please provide your full name."
+    if (!formFields.user.trim()) errors.user = "Username cannot be empty."
+    if (!formFields.emailAddress.trim()) {
+      errors.emailAddress = "Email is required."
+    } else if (!formFields.emailAddress.endsWith("@gmail.com")) {
+      errors.emailAddress = "Only @gmail.com emails are accepted."
+    }
+    if (!formFields.passcode.trim()) errors.passcode = "Password is required."
+
+    setFormErrors(errors)
+
+    if (Object.keys(errors).length === 0) {
+      console.log("Submitted:", formFields)
+      closeForm()
+    }
   }
 
-  const handleSubmit = () => {
-    console.log("Form Data:", formData)
-    setFormData(initialFormState)
-    setOpen(false)
+  const closeForm = () => {
+    setFormFields({ name: "", user: "", emailAddress: "", passcode: "" })
+    setFormErrors({})
+    setDrawerOpen(false)
   }
 
-  const handleCancel = () => {
-    setFormData(initialFormState)
-    setOpen(false)
-  }
+  const renderField = (
+      id: keyof typeof formFields,
+      label: string,
+      type: "text" | "email" | "password",
+      placeholder: string
+  ) => (
+      <div className="grid gap-2">
+        <Label htmlFor={id}>{label}</Label>
+        <Input
+            id={id}
+            type={type}
+            placeholder={placeholder}
+            value={formFields[id]}
+            onChange={(e) => updateField(id, e.target.value)}
+        />
+        {formErrors[id] && <p className="text-sm text-red-500">{formErrors[id]}</p>}
+      </div>
+  )
 
   return (
-    <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger asChild>
-        <Button variant="outline">Saturn</Button>
-      </SheetTrigger>
-      <SheetContent className="flex flex-col justify-center">
-        <SheetHeader>
-          <SheetTitle>Sign up</SheetTitle>
-          <SheetDescription>Fill out the form to create an account.</SheetDescription>
-        </SheetHeader>
+      <Sheet open={drawerOpen} onOpenChange={setDrawerOpen}>
+        <SheetTrigger asChild>
+          <Button variant="outline">Saturn</Button>
+        </SheetTrigger>
 
-        <div className="grid gap-6 py-6 px-2 w-full max-w-md mx-auto">
-          {[
-            { id: "name", label: "Name", type: "text", placeholder: "Your full name" },
-            { id: "username", label: "Username", type: "text", placeholder: "@username" },
-            { id: "email", label: "Email", type: "email", placeholder: "you@example.com" },
-            { id: "password", label: "Password", type: "password", placeholder: "••••••••" },
-          ].map(({ id, label, type, placeholder }) => (
-            <div key={id} className="grid gap-2">
-              <Label htmlFor={id}>{label}</Label>
-              <Input
-                id={id}
-                type={type}
-                value={(formData as any)[id]}
-                onChange={handleChange}
-                placeholder={placeholder}
-              />
-            </div>
-          ))}
-        </div>
+        <SheetContent className="flex flex-col items-center">
+          <SheetHeader>
+            <SheetTitle>New Account</SheetTitle>
+            <SheetDescription>Start by entering your details below.</SheetDescription>
+          </SheetHeader>
 
-        <SheetFooter className="flex justify-end gap-4 px-2">
-          <SheetClose asChild>
-            <Button variant="outline" onClick={handleCancel}>
-              Cancel
-            </Button>
-          </SheetClose>
-          <SheetClose asChild>
-            <Button type="submit" onClick={handleSubmit}>
-              Confirm
-            </Button>
-          </SheetClose>
-        </SheetFooter>
-      </SheetContent>
-    </Sheet>
+          <div className="w-full max-w-md grid gap-5 py-6">
+            {renderField("name", "Full Name", "text", "John Smith")}
+            {renderField("user", "Username", "text", "e.g. johnny123")}
+            {renderField("emailAddress", "Email", "email", "yourname@gmail.com")}
+            {renderField("passcode", "Password", "password", "Choose a secure password")}
+          </div>
+
+          <SheetFooter className="flex justify-end gap-4 w-full">
+            <SheetClose asChild>
+              <Button variant="ghost" onClick={closeForm}>
+                Dismiss
+              </Button>
+            </SheetClose>
+            <SheetClose asChild>
+              <Button onClick={validateAndSubmit} disabled={!Object.values(formFields).every(Boolean)}>
+                Register
+              </Button>
+            </SheetClose>
+          </SheetFooter>
+        </SheetContent>
+      </Sheet>
   )
 }
