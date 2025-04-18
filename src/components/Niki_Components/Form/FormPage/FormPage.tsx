@@ -9,15 +9,18 @@ import './FormPage.css';
 const NikiFormPage: React.FC = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [kg, setKG] = useState('');
+
   const [submitted, setSubmitted] = useState(false);
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({ email, message });
+    console.log({ email, message, kg });
     setSubmitted(true);
     
     setEmail('');
     setMessage('');
+    setKG('');
     
     setTimeout(() => {
         setSubmitted(false);
@@ -68,6 +71,24 @@ const NikiFormPage: React.FC = () => {
                   className="glass-input"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
+                  required
+                />
+              </div>
+            </div>
+
+
+            <div className="glass-form-field">
+              <Label htmlFor="KG" className="glass-label">KG</Label>
+              <div className="glass-input-wrapper">
+                <Input
+                  type="number"
+                  min={5}
+                  max={500}
+                  id="KG"
+                  placeholder="Enter your KG"
+                  className="glass-input"
+                  value={kg}
+                  onChange={(e) => setKG(e.target.value)}
                   required
                 />
               </div>
