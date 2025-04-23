@@ -139,8 +139,10 @@ export function StefanForm () {
             <Label htmlFor="kg">kg</Label>
             <Input
               id="kg"
-              type="numbers"
-              placeholder="kolko kila e ilko debeliq?"
+              type="number"
+              min={10}
+              max={180}
+              placeholder="kolko kila si?"
               value={formData.kg}
               onChange={handleChange}
             />
