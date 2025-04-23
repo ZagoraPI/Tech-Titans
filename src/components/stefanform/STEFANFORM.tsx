@@ -141,7 +141,7 @@ export function StefanForm () {
               id="kg"
               type="numbers"
               placeholder="kolko kila e ilko debeliq?"
-              value={formData.name}
+              value={formData.kg}
               onChange={handleChange}
             />
           </div>
