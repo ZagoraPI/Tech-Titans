@@ -6,6 +6,32 @@ import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuIte
 import { Alert, AlertTitle, AlertDescription } from "./components/ui/alert";
 import TextBox from "./components/TextBox";
 
+<<<<<<< Updated upstream
+=======
+import { ThemeSwitch } from "./components/Niki_Components/ThemeSwitch.tsx";
+import TextBox from "./components/TextBox.tsx";
+import TheJj from "./components/TheJj.tsx";
+import AlexGifShower from "./components/Alex_Components/AlexGifShower.tsx";
+import AlexPfpIcon from "./components/Alex_Components/AlexPfpIcon.tsx";
+import { Bozhilkata } from "./components/BozhilkataComp.tsx";
+import Martin from './components/MartinComp.tsx';
+import { MartinForm } from './components/Martin-Form/MartinForm.tsx';
+import { PetarForm } from './components/Petar(Bozhilkata)-Form/PetarForm.tsx';
+import {PreslyForm} from "@/components/Presly_Components/Presly-Form.tsx"
+import { TheJjForm } from './components/The_Jj-Form/TheJjForm.tsx';
+import { AlexForm } from './components/Alex_Components/AlexForm.tsx';
+import  NikiForm  from './components/Niki_Components/Form/NikiForm.tsx';
+import { Vladilena_Form } from './components/Vladilena_Form/Vladilena_Form.tsx'
+import { HrisaForm } from "./components/HrisaForm/Hrisa-form.tsx";
+import { SaturnForm } from "@/components/SaturnForm/SaturnForm.tsx";
+import { EgorkaForm } from "@/components/Egorka-Form/EgorkaForm.tsx";
+import FormSelectionPage from './components/Niki_Components/Pages/FormSelectPage.tsx';
+import NikiFormPage from './components/Niki_Components/Form/FormPage/FormPage.tsx';
+import ContactFormPage from "./components/The_Jj-Form/ContactFormPage";
+import { MailIcon } from "lucide-react";
+
+<Route path="/contact" element={<ContactFormPage />} />
+>>>>>>> Stashed changes
 function App() {
   const [count, setCount] = useState(0);
 
@@ -49,6 +75,7 @@ function App() {
         <TextBox count1={count} style={{ color: 'white', backgroundColor: 'blue' }} />
 
       </div>
+<<<<<<< Updated upstream
 
       <div className="card">
         <p>
@@ -58,6 +85,23 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+=======
+      
+      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <Vladilena_Form />
+    </div>
+  
+      <div className="bottom-left-container">
+      
+      <Link to="/forms">
+                <Button style={{ position: 'fixed', bottom: '80px', left: '32px' }} variant="outline" className="bg-blue-600 text-white hover:bg-blue-700">
+                  Go to Niki Forms
+                </Button>
+              </Link>
+
+        <AlexForm />
+    </div>
+>>>>>>> Stashed changes
     </>
   );
 }

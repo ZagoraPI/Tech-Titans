@@ -13,7 +13,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import { motion } from "framer-motion"
-import { Mail, Lock, User, AtSign } from "lucide-react"
+import { Mail, Lock, User, AtSign, Weight } from "lucide-react"
 
 export function VladilenaForm() {
   const [formData, setFormData] = useState({
@@ -21,6 +21,7 @@ export function VladilenaForm() {
     username: "",
     email: "",
     password: "",
+<<<<<<< Updated upstream
   })
 
   const [isOpen, setIsOpen] = useState(false)
@@ -28,6 +29,9 @@ export function VladilenaForm() {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target
     setFormData(prev => ({ ...prev, [id]: value }))
+=======
+    weight: "",
+>>>>>>> Stashed changes
   }
 
   const resetForm = () => setFormData({
@@ -53,12 +57,17 @@ export function VladilenaForm() {
     { id: "username", label: "Username", type: "text", placeholder: "@username", icon: <AtSign size={16} /> },
     { id: "email", label: "Email", type: "email", placeholder: "you@example.com", icon: <Mail size={16} /> },
     { id: "password", label: "Password", type: "password", placeholder: "••••••••", icon: <Lock size={16} /> },
+    { id: "weight", label: "Weight (kg)", type: "number", placeholder: "Enter weight in kg", icon: <Weight size={16} />, min: 30, max: 500 },
   ]
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
+<<<<<<< Updated upstream
         <Button variant="outline">Sign Up</Button>
+=======
+        <Button variant="outline">Vladilena</Button>
+>>>>>>> Stashed changes
       </SheetTrigger>
 
       <SheetContent className="flex flex-col justify-center items-center">
@@ -74,7 +83,7 @@ export function VladilenaForm() {
           </SheetHeader>
 
           <div className="grid gap-5">
-            {fields.map(({ id, label, type, placeholder, icon }) => (
+            {fields.map(({ id, label, type, placeholder, icon, min, max }) => (
               <div key={id} className="grid gap-2">
                 <Label htmlFor={id}>{label}</Label>
                 <div className="flex items-center gap-2 rounded-lg border px-3 py-2 transition-all focus-within:ring-2 focus-within:ring-blue-500 hover:border-blue-400">
@@ -85,13 +94,21 @@ export function VladilenaForm() {
                     value={(formData as any)[id]}
                     onChange={handleInputChange}
                     placeholder={placeholder}
+<<<<<<< Updated upstream
                     className="flex-1 border-none outline-none bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
                     aria-label={label}
+=======
+                    className="border-none outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                    min={min}
+                    max={max}
+>>>>>>> Stashed changes
                   />
                 </div>
               </div>
             ))}
           </div>
+
+
 
           <SheetFooter className="flex justify-end gap-4 mt-6">
             <SheetClose asChild>
