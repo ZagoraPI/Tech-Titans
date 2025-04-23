@@ -157,7 +157,36 @@ export function MartinForm() {
             />
             {errors.password && <p className="text-sm text-red-500">{errors.password}</p>}
           </div>
+              
+           {/* Weight */}
+        <div className="grid gap-2">
+            <Label htmlFor="weight">Weight (kg)</Label>
+            <Input
+              id="weight"
+              type="number"
+              placeholder="e.g. 70"
+              min={1}
+              max={650}
+              value={weight}
+              onChange={(e) => {
+                const val = e.target.value.trim()
+                setWeight(val)
+                const num = Number(val)
+
+                if (val === "") {
+                  setErrors((prev) => ({ ...prev, weight: "Required field" }))
+                } else if (isNaN(num)) {
+                  setErrors((prev) => ({ ...prev, weight: "Must be a number" }))
+                } else if (num < 1 || num > 650) {
+                  setErrors((prev) => ({ ...prev, weight: "Must be between 1 and 650 kg" }))
+                } else {
+                  setErrors((prev) => ({ ...prev, weight: undefined }))
+                }
+              }}
+            />
+            {errors.weight && <p className="text-sm text-red-500">{errors.weight}</p>}
         </div>
+      </div>   
 
         <SheetFooter className="flex justify-end gap-4 px-2">
           <SheetClose asChild>
