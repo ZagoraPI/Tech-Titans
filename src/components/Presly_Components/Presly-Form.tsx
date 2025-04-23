@@ -27,7 +27,7 @@ export function PreslyForm() {
   const [emailError, setEmailError] = useState("");
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const [kilogramError, setKilogramError] = useState("");
-  const kilogramRegex = /^[20-420]+$/;
+  const kilogramRegex = /^[1-9]+$/;
 
 
   const isFormValid = () => {
