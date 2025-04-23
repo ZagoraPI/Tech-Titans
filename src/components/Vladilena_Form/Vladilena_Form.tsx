@@ -13,7 +13,8 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import { motion } from "framer-motion"
-import { Mail, Lock, User, AtSign } from "lucide-react"
+import { Mail, Lock, User, AtSign, Weight } from "lucide-react"
+
 
 export function Vladilena_Form() {
   const initialFormState = {
@@ -21,6 +22,7 @@ export function Vladilena_Form() {
     username: "",
     email: "",
     password: "",
+    weight: "",
   }
 
   const [formData, setFormData] = useState(initialFormState)
@@ -46,12 +48,13 @@ export function Vladilena_Form() {
     { id: "username", label: "Username", type: "text", placeholder: "@username", icon: <AtSign size={16} /> },
     { id: "email", label: "Email", type: "email", placeholder: "you@example.com", icon: <Mail size={16} /> },
     { id: "password", label: "Password", type: "password", placeholder: "••••••••", icon: <Lock size={16} /> },
+    { id: "weight", label: "Weight", type: "number", placeholder: "Your weight in kg", icon: <Weight size={16} /> ,min: 30, max: 400 },
   ]
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Button variant="outline">The Jj</Button>
+        <Button variant="outline">Definetly_Vladilena</Button>
       </SheetTrigger>
 
       <SheetContent className="flex flex-col justify-center">
@@ -67,7 +70,7 @@ export function Vladilena_Form() {
           </SheetHeader>
 
           <div className="grid gap-5">
-            {fields.map(({ id, label, type, placeholder, icon }) => (
+            {fields.map(({ id, label, type, placeholder, icon, min, max }) => (
               <div key={id} className="grid gap-2">
                 <Label htmlFor={id}>{label}</Label>
                 <div className="flex items-center gap-2 rounded-lg border px-3 py-2 focus-within:ring-2 focus-within:ring-blue-500">
@@ -79,6 +82,9 @@ export function Vladilena_Form() {
                     onChange={handleChange}
                     placeholder={placeholder}
                     className="border-none outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                    min={min}
+                    max={max}
+                   
                   />
                 </div>
               </div>
