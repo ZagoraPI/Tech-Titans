@@ -156,7 +156,7 @@ export function PreslyForm() {
             <Label htmlFor="kilograms">How much do you Weight?</Label>
             <Input
               id="kilograms"
-              type="text"
+              type="number"
               placeholder="83kg"
               value={formData.kilograms}
               onChange={handleChange}
