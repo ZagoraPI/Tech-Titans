@@ -27,7 +27,7 @@ export function PreslyForm() {
   const [emailError, setEmailError] = useState("");
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const [kilogramError, setKilogramError] = useState("");
-  const kilogramRegex = /^  [5-9]-[4(0-20)]   +$/;
+  const kilogramRegex = /^  min={5} max={420}   +$/;
 
 
   const isFormValid = () => {
@@ -158,6 +158,8 @@ export function PreslyForm() {
               id="kilograms"
               type="number"
               placeholder="83kg"
+              min = {5}
+              max = {420}
               value={formData.kilograms}
               onChange={handleChange}
               className={kilogramError ? "border-red-500" : ""}
