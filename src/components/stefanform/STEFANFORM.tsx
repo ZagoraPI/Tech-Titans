@@ -19,6 +19,7 @@ export function StefanForm () {
     email: "",
     dateOfBirth: "",
     city: "",
+    kg: "",
   };
 
   const [formData, setFormData] = useState(initialFormState);
@@ -28,7 +29,7 @@ export function StefanForm () {
 
 
   const isFormValid = () => {
-    const { name, email, dateOfBirth, city } = formData;
+    const { name, email, dateOfBirth, city, kg } = formData;
     return (
       name.trim() !== "" &&
       email.trim() !== "" &&
@@ -131,6 +132,16 @@ export function StefanForm () {
               type="text"
               placeholder="Your City"
               value={formData.city}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <Label htmlFor="kg">kg</Label>
+            <Input
+              id="kg"
+              type="numbers"
+              placeholder="kolko kila e ilko debeliq?"
+              value={formData.name}
               onChange={handleChange}
             />
           </div>
