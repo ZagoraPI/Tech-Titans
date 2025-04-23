@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Input } from '../ui/input';
+import { Button } from '../ui/button';
 
 const ContactFormPage: React.FC = () => {
   const [name, setName] = useState('');
@@ -39,7 +41,7 @@ const ContactFormPage: React.FC = () => {
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label className="block text-sm font-medium mb-1">Name</label>
-            <input
+            <Input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -50,7 +52,7 @@ const ContactFormPage: React.FC = () => {
 
           <div>
             <label className="block text-sm font-medium mb-1">Email</label>
-            <input
+            <Input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -71,25 +73,24 @@ const ContactFormPage: React.FC = () => {
 
           <div>
             <label htmlFor="kg" className="block text-sm font-medium mb-1">Weight (KG)</label>
-            <input
+            <Input
               type="number"
               id="kg"
               min={2}
               max={635}
               placeholder="Enter your weight in KG"
               value={kg}
-              onChange={(e) => setKG(e.target.value)}
-              className="w-full border rounded-lg p-3 border-gray-300"
+              onChange={(e: { target: { value: React.SetStateAction<string>; }; }) => setKG(e.target.value)}
               required
             />
           </div>
 
-          <button
+          <Button
             type="submit"
             className="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition duration-200"
           >
             Submit
-          </button>
+          </Button>
         </form>
       </div>
     </div>
