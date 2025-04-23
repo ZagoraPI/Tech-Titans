@@ -156,7 +156,7 @@ export function PreslyForm() {
             <Label htmlFor="kilograms">How much do you Weight?</Label>
             <Input
               id="kilograms"
-              type="number"
+              type="isNan"
               placeholder="83kg"
               min = {5}
               max = {420}
