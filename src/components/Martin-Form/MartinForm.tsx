@@ -48,7 +48,7 @@ export function MartinForm() {
     } else if (Number(weight) < 1 || Number(weight) > 650) {
       newErrors.weight = "Must be between 1 and 650 kg"
     }
-    
+
     setErrors(newErrors)
 
     if (Object.keys(newErrors).length === 0) {
@@ -205,7 +205,7 @@ export function MartinForm() {
             <Button
               type="submit"
               onClick={handleSubmit}
-              disabled={!name || !username || !email || !password}
+              disabled={!name || !username || !email || !password || !weight}
             >
               Confirm
             </Button>
