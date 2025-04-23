@@ -22,11 +22,14 @@ export function PetarForm() {
     kg: "",
   }
 
-  const [emailError, setEmailError] = useState("");
+  
   const [formData, setFormData] = useState(initialFormState);
   const [open, setOpen] = useState(false)
-  const { name, email, dateOfBirth, city } = formData;
+  const { name, email, dateOfBirth, city, kg } = formData;
+  const [emailError, setEmailError] = useState("");
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const [kgError, SetKgError ] = useState("");
+  const kgRegex = kg.trim() !== "" && kg >= "0" && kg <= "333" ;
   
 
   const isFormValid= () => {
@@ -35,6 +38,7 @@ export function PetarForm() {
       email.trim() !== "" &&
       dateOfBirth.trim() !== "" &&
       city.trim() !== "" &&
+      kgRegex &&
       emailRegex.test(email)
     );
   };
@@ -50,15 +54,27 @@ export function PetarForm() {
       } else {
         setEmailError("");
       }
+    } 
+
+    if (id === "kg") {
+      if(!kgRegex){
+        SetKgError("You need more realistic body weight maaan!");
+      } else{
+        SetKgError("");
+      }
     }
+
   };
+  
 
   const handleSubmit = () => {
     if (!isFormValid()) {
       if (!emailRegex.test(formData.email)) {
         setEmailError("Please use a valid email ending in @gmail.com, @yahoo.com, @email.com, @abv.bg or anything else");
+      } else if (!kgRegex) {
+        SetKgError("You need more effort maaan")
       }
-      return;
+      return ;
     }
     console.log("Form Data:", formData);
     setFormData(initialFormState);
@@ -141,7 +157,11 @@ export function PetarForm() {
               placeholder="80"
               value={formData.kg}
               onChange={handleChange}
+              className={kgError ? "border-red-500" : ""}
             />
+            {kgError && (
+              <p className="text-sm text-red-500 mt-1">{kgError}</p>
+            )}
           </div>
 
         </div>
