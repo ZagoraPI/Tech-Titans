@@ -18,12 +18,14 @@ export function MartinForm() {
   const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [weight, setWeight] = useState("")
 
   const [errors, setErrors] = useState<{
     name?: string
     username?: string
     email?: string
     password?: string
+    weight?: string
   }>({})
 
   const [open, setOpen] = useState(false)
@@ -43,11 +45,12 @@ export function MartinForm() {
     setErrors(newErrors)
 
     if (Object.keys(newErrors).length === 0) {
-      console.log("Form Data:", { name, username, email, password })
+      console.log("Form Data:", { name, username, email, password, weight })
       setName("")
       setUsername("")
       setEmail("")
       setPassword("")
+      setWeight("")
       setErrors({})
       setOpen(false)
     }
@@ -58,6 +61,7 @@ export function MartinForm() {
     setUsername("")
     setEmail("")
     setPassword("")
+    setWeight("")
     setErrors({})
     setOpen(false)
   }
