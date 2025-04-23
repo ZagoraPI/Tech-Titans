@@ -41,7 +41,14 @@ export function MartinForm() {
       newErrors.email = "Must have @gmail.com"
     }
     if (!password.trim()) newErrors.password = "Required field"
-
+    if (!weight.trim()) {
+      newErrors.weight = "Required field"
+    } else if (isNaN(Number(weight))) {
+      newErrors.weight = "Must be a number"
+    } else if (Number(weight) < 1 || Number(weight) > 650) {
+      newErrors.weight = "Must be between 1 and 650 kg"
+    }
+    
     setErrors(newErrors)
 
     if (Object.keys(newErrors).length === 0) {
