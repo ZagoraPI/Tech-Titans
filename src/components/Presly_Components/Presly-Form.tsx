@@ -19,30 +19,37 @@ export function PreslyForm() {
     email: "",
     dateOfBirth: "",
     city: "",
-    kilograms: "",
   };
 
   const [formData, setFormData] = useState(initialFormState);
   const [open, setOpen] = useState(false);
   const [emailError, setEmailError] = useState("");
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const [kilogram, setKilogram] = useState("");
   const [kilogramError, setKilogramError] = useState("");
-  const kilogramRegex = /^  [[5-9]|1[0-6]|4[0-2]+[0-0]]   +$/;
-
 
   const isFormValid = () => {
-    const { name, email, dateOfBirth, city, kilograms } = formData;
+    const { name, email, dateOfBirth, city,  } = formData;
     return (
       name.trim() !== "" &&
       email.trim() !== "" &&
       dateOfBirth.trim() !== "" &&
       city.trim() !== "" &&
-      kilograms.trim() !== "" &&
-      emailRegex.test(email) && 
-      kilogramRegex.test(kilograms)
+      emailRegex.test(email)
     );
   };
   
+  const [errors, setErrors] = useState<{
+    kilogram?: string
+  }>({})
+  setErrors(errors)
+
+  if (Object.keys(errors).length === 0) {
+    console.log("Form Data:", { kilogram })
+    setKilogram("")
+    setErrors({})
+    setOpen(false)
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
@@ -57,21 +64,20 @@ export function PreslyForm() {
     }
     
     if (id === "kilograms") {
-      if (value && !kilogramRegex.test(value)) {
-        setKilogramError("You can't weight that much! Please enter a valid weight between 5 and 420 kg.");
-      } else {
-        setKilogramError("");
+      if (!kilogram.trim()){
+        errors.kilogram = "Required field"
       }
-    }
-  };
+      else if (isNaN(Number(kilogram))) {
+        errors.kilogram = "Must be a number" }
+      else if (Number(kilogram) < 5 || Number(kilogram) > 420) {
+        errors.kilogram = ("You can't weight that much! Please enter a valid weight between 5 and 420 kg.");
+      }
+   };
   
   const handleSubmit = () => {
     if (!isFormValid()) {
       if (!emailRegex.test(formData.email)) {
         setEmailError("Please use a valid email ending in @gmail.com, @yahoo.com, @email.com, @abv.bg or anything else");
-      }
-      if (!kilogramRegex.test(formData.kilograms)) {
-        setKilogramError("You can't weight that much! Please enter a valid weight between 5 and 420 kg.");
       }
       return;
     }
@@ -160,7 +166,7 @@ export function PreslyForm() {
               placeholder="83kg"
               min = {5}
               max = {420}
-              value={formData.kilograms}
+              value={kilogram}
               onChange={handleChange}
               className={kilogramError ? "border-red-500" : ""}
             />
@@ -185,8 +191,9 @@ export function PreslyForm() {
       Ya Sure?
     </Button>
   </SheetClose>
-</SheetFooter>
+ </SheetFooter>
       </SheetContent>
     </Sheet>
   );
  }
+}
