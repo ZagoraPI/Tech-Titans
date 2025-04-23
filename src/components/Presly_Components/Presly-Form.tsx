@@ -139,7 +139,7 @@ export function PreslyForm() {
         
 
           <div>
-            <Label htmlFor="Kilograms">How much do you Weight?</Label>
+            <Label htmlFor="kilograms">How much do you Weight?</Label>
             <Input
               id="kilograms"
               type="text"
