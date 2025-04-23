@@ -136,9 +136,9 @@ export function PreslyForm() {
               onChange={handleChange}
             />
           </div>
-        </div>
+        
 
-        <div>
+          <div>
             <Label htmlFor="Kilograms">How much do you Weight?</Label>
             <Input
               id="kilograms"
@@ -148,7 +148,7 @@ export function PreslyForm() {
               onChange={handleChange}
             />
           </div>
-
+        </div>
 
         <SheetFooter className="flex justify-end gap-4 px-2">
   <SheetClose asChild>
