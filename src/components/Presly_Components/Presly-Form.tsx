@@ -19,6 +19,7 @@ export function PreslyForm() {
     email: "",
     dateOfBirth: "",
     city: "",
+    kilograms: "",
   };
 
   const [formData, setFormData] = useState(initialFormState);
@@ -28,12 +29,13 @@ export function PreslyForm() {
 
 
   const isFormValid = () => {
-    const { name, email, dateOfBirth, city } = formData;
+    const { name, email, dateOfBirth, city, kilograms } = formData;
     return (
       name.trim() !== "" &&
       email.trim() !== "" &&
       dateOfBirth.trim() !== "" &&
       city.trim() !== "" &&
+      kilograms.trim() !== "" &&
       emailRegex.test(email)
     );
   };
@@ -135,6 +137,18 @@ export function PreslyForm() {
             />
           </div>
         </div>
+
+        <div>
+            <Label htmlFor="Kilograms">How much do you Weight?</Label>
+            <Input
+              id="kilograms"
+              type="text"
+              placeholder="83kg"
+              value={formData.kilograms}
+              onChange={handleChange}
+            />
+          </div>
+
 
         <SheetFooter className="flex justify-end gap-4 px-2">
   <SheetClose asChild>
