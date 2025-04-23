@@ -19,6 +19,7 @@ export function PetarForm() {
     email: "",
     dateOfBirth: "",
     city: "",
+    kg: "",
   }
 
   const [emailError, setEmailError] = useState("");
@@ -76,7 +77,7 @@ export function PetarForm() {
         <Button variant="outline">Petar</Button>
       </SheetTrigger>
       <SheetContent className="flex flex-col justify-center">
-        <SheetHeader className="pt-4  mt-[-230px] "> 
+        <SheetHeader className="pt-4  mt-[-160px] "> 
           <SheetTitle>Sign up</SheetTitle>
           <SheetDescription>Fill out the form !!!</SheetDescription>
         </SheetHeader>
@@ -127,6 +128,18 @@ export function PetarForm() {
               type="text"
               placeholder="Your City"
               value={formData.city}
+              onChange={handleChange}
+            />
+          </div>
+
+
+          <div className="flex flex-col space-y-2 pl-1">
+            <Label htmlFor="kg">Kg</Label>
+            <Input
+              id="kg"
+              type="number"
+              placeholder="80"
+              value={formData.kg}
               onChange={handleChange}
             />
           </div>
