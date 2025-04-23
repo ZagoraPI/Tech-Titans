@@ -35,6 +35,7 @@ export function StefanForm () {
       email.trim() !== "" &&
       dateOfBirth.trim() !== "" &&
       city.trim() !== "" &&
+      kg.trim() !== "" &&
       emailRegex.test(email)
     );
   };
