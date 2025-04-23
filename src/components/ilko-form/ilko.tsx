@@ -1,8 +1,7 @@
-
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Sheet,
   SheetContent,
@@ -10,7 +9,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet"
+} from "@/components/ui/sheet";
 
 export function IlkoForm() {
   const [formData, setFormData] = useState({
@@ -18,48 +17,69 @@ export function IlkoForm() {
     email: "",
     yearOfBirth: "",
     city: "",
-  })
+    weight: "",
+  });
 
-  const [isFormOpen, setIsFormOpen] = useState(false)
-  const [emailError, setEmailError] = useState("")
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [emailError, setEmailError] = useState("");
+  const [weightError, setWeightError] = useState("");
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { id, value } = event.target
+    const { id, value } = event.target;
     setFormData((prevData) => ({
       ...prevData,
       [id]: value,
-    }))
+    }));
 
     if (id === "email") {
-      validateEmail(value)
+      validateEmail(value);
     }
-  }
+    if (id === "weight") {
+      validateWeight(value);
+    }
+  };
 
   const validateEmail = (email: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      setEmailError("Please enter a valid email address")
+      setEmailError("Please enter a valid email address");
     } else {
-      setEmailError("")
+      setEmailError("");
     }
-  }
+  };
+
+  const validateWeight = (weight: string) => {
+    const weightValue = parseFloat(weight);
+    if (isNaN(weightValue)) {
+      setWeightError("Please enter a valid number");
+    } else if (weightValue < 30) {
+      setWeightError("Weight must be at least 30 kg");
+    } else if (weightValue > 300) {
+      setWeightError("Weight cannot exceed 300 kg");
+    } else {
+      setWeightError("");
+    }
+  };
 
   const handleFormSubmit = () => {
-    if (emailError || !formData.email) {
-      validateEmail(formData.email)
-      return
+    validateEmail(formData.email);
+    validateWeight(formData.weight);
+    
+    if (emailError || weightError || !formData.email || !formData.weight) {
+      return;
     }
 
-    console.log("Submitted Data:", formData)
+    console.log("Submitted Data:", formData);
 
     setFormData({
       name: "",
       email: "",
       yearOfBirth: "",
       city: "",
-    })
-    setIsFormOpen(false)
-  }
+      weight: "",
+    });
+    setIsFormOpen(false);
+  };
 
   const handleFormCancel = () => {
     setFormData({
@@ -67,19 +87,18 @@ export function IlkoForm() {
       email: "",
       yearOfBirth: "",
       city: "",
-    })
-    setEmailError("")
-    setIsFormOpen(false)
-  }
+      weight: "",
+    });
+    setEmailError("");
+    setWeightError("");
+    setIsFormOpen(false);
+  };
 
   return (
     <div className="relative">
       <Sheet open={isFormOpen} onOpenChange={setIsFormOpen}>
         <SheetTrigger asChild>
-          <Button
-            variant="outline"
-            className="absolute top-0 right-4 text-sm px-2 py-1"
-          >
+          <Button variant="outline" className="absolute top-0 right-4 text-sm px-2 py-1">
             Ilko
           </Button>
         </SheetTrigger>
@@ -111,9 +130,7 @@ export function IlkoForm() {
                 value={formData.email}
                 onChange={handleInputChange}
               />
-              {emailError && (
-                <p className="text-red-500 text-sm mt-1">{emailError}</p>
-              )}
+              {emailError && <p className="text-red-500 text-sm mt-1">{emailError}</p>}
             </div>
 
             <div className="grid gap-2">
@@ -121,10 +138,24 @@ export function IlkoForm() {
               <Input
                 id="yearOfBirth"
                 type="text"
-                placeholder="1990"
+                placeholder="2000"
                 value={formData.yearOfBirth}
                 onChange={handleInputChange}
               />
+            </div>
+
+            <div className="grid gap-2">
+              <Label htmlFor="weight">Weight (kg)</Label>
+              <Input
+                id="weight"
+                type="number"
+                placeholder="Your weight in kg"
+                min="30"
+                max="300"
+                value={formData.weight}
+                onChange={handleInputChange}
+              />
+              {weightError && <p className="text-red-500 text-sm mt-1">{weightError}</p>}
             </div>
 
             <div className="grid gap-2">
@@ -148,5 +179,5 @@ export function IlkoForm() {
         </SheetContent>
       </Sheet>
     </div>
-  )
+  );
 }
