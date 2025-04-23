@@ -26,6 +26,8 @@ export function PreslyForm() {
   const [open, setOpen] = useState(false);
   const [emailError, setEmailError] = useState("");
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const [kilogramError, setKilogramError] = useState("");
+  const kilogramRegex = /^[[1-9]|1[0-6]]+$/;
 
 
   const isFormValid = () => {
@@ -36,7 +38,8 @@ export function PreslyForm() {
       dateOfBirth.trim() !== "" &&
       city.trim() !== "" &&
       kilograms.trim() !== "" &&
-      emailRegex.test(email)
+      emailRegex.test(email) && 
+      kilogramRegex.test(kilograms)
     );
   };
   
@@ -52,12 +55,23 @@ export function PreslyForm() {
         setEmailError("");
       }
     }
+    
+    if (id === "kilograms") {
+      if (value && !kilogramRegex.test(value)) {
+        setKilogramError("You can't weight that much! Please enter a valid weight between 5 and 420 kg.");
+      } else {
+        setKilogramError("");
+      }
+    }
   };
   
   const handleSubmit = () => {
     if (!isFormValid()) {
       if (!emailRegex.test(formData.email)) {
         setEmailError("Please use a valid email ending in @gmail.com, @yahoo.com, @email.com, @abv.bg or anything else");
+      }
+      if (!kilogramRegex.test(formData.kilograms)) {
+        setKilogramError("You can't weight that much! Please enter a valid weight between 5 and 420 kg.");
       }
       return;
     }
@@ -146,7 +160,11 @@ export function PreslyForm() {
               placeholder="83kg"
               value={formData.kilograms}
               onChange={handleChange}
+              className={kilogramError ? "border-red-500" : ""}
             />
+            {kilogramError && (
+              <p className="text-sm text-red-500 mt-1">{kilogramError}</p>
+            )}
           </div>
         </div>
 
