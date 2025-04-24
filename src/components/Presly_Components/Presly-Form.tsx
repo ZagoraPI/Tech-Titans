@@ -19,16 +19,16 @@ export function PreslyForm() {
     email: "",
     dateOfBirth: "",
     city: "",
-    kilograms: "",
+    weight: "",
   };
 
   const [formData, setFormData] = useState(initialFormState);
   const [open, setOpen] = useState(false);
   const [emailError, setEmailError] = useState("");
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const [kilogram, setKilogram] = useState("");
+  const [weight, setWeight] = useState("");
   const [errors, setErrors] = useState<{
-    kilogram?: string
+    weight?: string
   }>({})
 
   const isFormValid = () => {
@@ -38,8 +38,8 @@ export function PreslyForm() {
       email.trim() !== "" &&
       dateOfBirth.trim() !== "" &&
       city.trim() !== "" &&
-      kilogram.trim() !== "" &&
-      !isNaN(Number(kilogram)) &&
+      weight.trim() !== "" &&
+      !isNaN(Number(weight)) &&
       emailRegex.test(email)
     );
   };
@@ -56,14 +56,14 @@ export function PreslyForm() {
       }
     }
     
-    if (id === "kilograms") {
-      if (!kilogram.trim()){
-        errors.kilogram = "Required field"
+    if (id === "weight") {
+      if (!weight.trim()){
+        errors.weight = "Required field"
       }
-      else if (isNaN(Number(kilogram))) {
-        errors.kilogram = "Must be a number" }
-      else if (Number(kilogram) < 1 || Number(kilogram) > 420) {
-        errors.kilogram = ("You can't weight that much! Please enter a valid weight between 1 and 420 kg.");
+      else if (isNaN(Number(weight))) {
+        errors.weight = "Must be a number" }
+      else if (Number(weight) < 1 || Number(weight) > 420) {
+        errors.weight = ("You can't weight that much! Please enter a valid weight between 1 and 420 kg.");
       }
    }
   }
@@ -77,18 +77,18 @@ export function PreslyForm() {
     }
   
     if (Object.keys(errors).length === 0) {
-      console.log("Form Data:", { ...formData, kilogram })
+      console.log("Form Data:", { ...formData, weight })
       setFormData(initialFormState)
-      setKilogram("")
+      setWeight("")
       setErrors({})
       setEmailError("")
       setOpen(false)
     }
   
   
-    console.log("Form Data:", { ...formData, kilograms: kilogram });
+    console.log("Form Data:", { ...formData, kilograms: weight });
   setFormData(initialFormState);
-  setKilogram("");
+  setWeight("");
   setErrors({});
   setEmailError("");
   setOpen(false);
@@ -174,10 +174,10 @@ export function PreslyForm() {
               placeholder="83kg"
               min = {1}
               max = {420}
-              value={kilogram}
+              value={weight}
               onChange={(e) => {
                 const val = e.target.value.trim()
-                setKilogram(val)
+                setWeight(val)
                 const num = Number(val)
 
                 if (val === "") {
@@ -191,7 +191,7 @@ export function PreslyForm() {
                 }
               }}
             />
-            {errors.kilogram && <p className="text-sm text-red-500">{errors.kilogram}</p>}
+            {errors.weight && <p className="text-sm text-red-500">{errors.weight}</p>}
           </div>
         </div>
 
