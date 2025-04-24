@@ -28,11 +28,10 @@ import { SaturnForm } from "@/components/SaturnForm/SaturnForm.tsx";
 import { EgorkaForm } from "@/components/Egorka-Form/EgorkaForm.tsx";
 import FormSelectionPage from './components/Niki_Components/Pages/FormSelectPage.tsx';
 import NikiFormPage from './components/Niki_Components/Form/FormPage/FormPage.tsx';
-
-
-
+import ContactFormPage from "./components/The_Jj-Form/ContactFormPage";
+import { MailIcon } from "lucide-react";
 import { IlkoForm } from "./components/ilko-form/ilko.tsx";
-
+<Route path="/contact" element={<ContactFormPage />} />
 function App() {
   const [count, setCount] = useState(0);
   const [activated, setActivated] = useState(false);
@@ -70,6 +69,13 @@ function App() {
        {
     <div className="p-4">
       <TheJjForm />
+      <Link
+  to="contact-form-page"
+  className="inline-flex items-center gap-2 px-4 py-2 border border-blue-600 text-blue-600 font-medium rounded-xl hover:bg-blue-100 transition-all duration-200"
+>
+  <MailIcon className="w-5 h-5" />
+    The Jj Contact Form
+  </Link>
     </div>
 }
 
@@ -158,8 +164,8 @@ function App() {
     <Route path="/forms" element={<FormSelectionPage />} />
     <Route path="/niki-form-page" element={<NikiFormPage />} />
     <Route path="/niki-form" element={<NikiForm />} />
-    
-  </Routes>
+    <Route path="contact-form-page" element={<ContactFormPage />} />
+     </Routes>
   );
 }
 
