@@ -81,14 +81,14 @@ export function PetarForm() {
         <Button variant="outline">Petar</Button>
       </SheetTrigger>
       <SheetContent className="flex flex-col justify-center">
-        <SheetHeader className="pt-4  mt-[-160px] "> 
+        <SheetHeader className="pt-4 mt-[-160px]"> 
           <SheetTitle>Sign up</SheetTitle>
           <SheetDescription>Fill out the form !!!</SheetDescription>
         </SheetHeader>
 
-        <div className="grid gap-6 px-2 w-full max-w-md mx-auto py-6">
+        <div className="grid gap-6 px-2 w-full max-w-md mx-auto py-6 ">
 
-        <div className="flex flex-col space-y-2 pl-1">
+        <div className="flex flex-col space-y-2 pl-1 ">
             <Label htmlFor="name">Name</Label>
             <Input
               id="name"
@@ -110,7 +110,7 @@ export function PetarForm() {
               className={emailError ? "border-red-500" : ""}
             />
             {emailError && (
-              <p className="text-sm text-red-500 mt-1">{emailError}</p>
+              <p className="text-sm text-red-500 mb-1">{emailError}</p>
             )}
           </div>
 
@@ -145,6 +145,8 @@ export function PetarForm() {
               placeholder="80"
               value={formData.weight}
               onChange={handleChange}
+              min = "3"
+              max = "333"
               className={weightError ? "border-red-500" : ""}
             />
             {weightError && (
@@ -161,7 +163,9 @@ export function PetarForm() {
             </Button>
           </SheetClose>
           <SheetClose asChild>
-            <Button className="w-full" onClick={handleSubmit}>
+            <Button className="w-full" onClick={handleSubmit}
+            disabled={!name || !email || !dateOfBirth || !city || !weight}
+            >
               Confirm
             </Button>
           </SheetClose>
