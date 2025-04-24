@@ -89,44 +89,44 @@ export function PetarForm() {
         <SheetContent>
           <SheetHeader className="pt-4"> 
             <SheetTitle>Sign up</SheetTitle>
-            <SheetDescription>Pls fill outthe form below !!!</SheetDescription>
+            <SheetDescription>Pls fill out the form below !!!</SheetDescription>
           </SheetHeader>
 
           <div className="grid gap-6 px-2 w-full max-w-md mx-auto py-6 ">
 
-          <div className="flex flex-col space-y-2 pl-1 ">
-              <Label htmlFor="name">Name</Label>
-              <Input
-                id="name"
-                type="text"
-                placeholder="Your Name"
-                value={formData.name}
-                onChange={handleChange}
-              />
-            </div>
+            <div className="flex flex-col space-y-2 pl-1 ">
+                <Label htmlFor="name">Name</Label>
+                <Input
+                  id="name"
+                  type="text"
+                  placeholder="Your Name"
+                  value={formData.name}
+                  onChange={handleChange}
+                />
+              </div>
 
-            <div className="flex flex-col space-y-2 pl-1">
-              <Label  htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="your@email.com"
-                value={formData.email}
-                onChange={handleChange}
-                className={emailError ? "border-red-500" : ""}
-              />
-              {emailError && <p className="text-red-500 text-sm mt-1">{emailError}</p>}
-            </div>
+              <div className="flex flex-col space-y-2 pl-1">
+                <Label  htmlFor="email">Email</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="your@email.com"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className={emailError ? "border-red-500" : ""}
+                />
+                {emailError && <p className="text-red-500 text-sm mt-1">{emailError}</p>}
+              </div>
 
-            <div className="flex flex-col space-y-2 pl-1">
-              <Label htmlFor="dateOfBirth">Date of Birth</Label>
-              <Input
-                id="dateOfBirth"
-                type="date"
-                placeholder="01/01/2008"
-                value={formData.dateOfBirth}
-                onChange={handleChange}
-              />
+              <div className="flex flex-col space-y-2 pl-1">
+                <Label htmlFor="dateOfBirth">Date of Birth</Label>
+                <Input
+                  id="dateOfBirth"
+                  type="date"
+                  placeholder="01/01/2008"
+                  value={formData.dateOfBirth}
+                  onChange={handleChange}
+                />
             </div>
 
             <div className="flex flex-col space-y-2 pl-1">
@@ -139,7 +139,6 @@ export function PetarForm() {
                 onChange={handleChange}
               />
             </div>
-
 
             <div className="flex flex-col space-y-2 pl-1">
               <Label htmlFor="weight">BodyWeight (kg)</Label>
@@ -155,7 +154,6 @@ export function PetarForm() {
               />
               {weightError && <p className="text-red-500 text-sm mt-1">{weightError}</p>}
             </div>
-
           </div>
 
           <div className="grid grid-cols-2 gap-4 px-2 pb-4 w-full max-w-md mx-auto ">
