@@ -86,10 +86,10 @@ export function PetarForm() {
         <SheetTrigger asChild>
           <Button variant="outline">Petar</Button>
         </SheetTrigger>
-        <SheetContent className="flex flex-col justify-center">
+        <SheetContent>
           <SheetHeader className="pt-4"> 
             <SheetTitle>Sign up</SheetTitle>
-            <SheetDescription>Fill out the form !!!</SheetDescription>
+            <SheetDescription>Pls fill out the form below !!!</SheetDescription>
           </SheetHeader>
 
           <div className="grid gap-6 px-2 w-full max-w-md mx-auto py-6 ">
