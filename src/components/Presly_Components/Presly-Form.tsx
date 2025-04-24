@@ -181,13 +181,13 @@ export function PreslyForm() {
                 const num = Number(val)
 
                 if (val === "") {
-                  setErrors((prev) => ({ ...prev, kilogram: "Required field" }))
+                  setErrors((prev) => ({ ...prev, weight: "Required field" }))
                 } else if (isNaN(num)) {
-                  setErrors((prev) => ({ ...prev, kilogram: "Must be a number!!" }))
+                  setErrors((prev) => ({ ...prev, weight: "Must be a number!!" }))
                 } else if (num < 1 || num > 420) {
-                  setErrors((prev) => ({ ...prev, kilogram: "Must be between 1 and 420 kg" }))
+                  setErrors((prev) => ({ ...prev, weight: "Must be between 1 and 420 kg" }))
                 } else {
-                  setErrors((prev) => ({ ...prev, kilogram: undefined }))
+                  setErrors((prev) => ({ ...prev, weight: undefined }))
                 }
               }}
             />
