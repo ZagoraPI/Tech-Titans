@@ -89,7 +89,7 @@ export function PetarForm() {
         <SheetContent>
           <SheetHeader className="pt-4"> 
             <SheetTitle>Sign up</SheetTitle>
-            <SheetDescription>Pls fill out the form below !!!</SheetDescription>
+            <SheetDescription>Pls fill outthe form below !!!</SheetDescription>
           </SheetHeader>
 
           <div className="grid gap-6 px-2 w-full max-w-md mx-auto py-6 ">
@@ -115,9 +115,7 @@ export function PetarForm() {
                 onChange={handleChange}
                 className={emailError ? "border-red-500" : ""}
               />
-              {emailError && (
-                <p className="text-sm text-red-500 mb-1">{emailError}</p>
-              )}
+              {emailError && <p className="text-red-500 text-sm mt-1">{emailError}</p>}
             </div>
 
             <div className="flex flex-col space-y-2 pl-1">
@@ -155,9 +153,7 @@ export function PetarForm() {
                 max = "333"
                 className={weightError ? "border-red-500" : ""}
               />
-              {weightError && (
-                <p className="text-sm text-red-500 mt-1">{weightError}</p>
-              )}
+              {weightError && <p className="text-red-500 text-sm mt-1">{weightError}</p>}
             </div>
 
           </div>
