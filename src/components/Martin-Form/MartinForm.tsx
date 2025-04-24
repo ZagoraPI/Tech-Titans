@@ -18,12 +18,14 @@ export function MartinForm() {
   const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [weight, setWeight] = useState("")
 
   const [errors, setErrors] = useState<{
     name?: string
     username?: string
     email?: string
     password?: string
+    weight?: string
   }>({})
 
   const [open, setOpen] = useState(false)
@@ -39,15 +41,23 @@ export function MartinForm() {
       newErrors.email = "Must have @gmail.com"
     }
     if (!password.trim()) newErrors.password = "Required field"
+    if (!weight.trim()) {
+      newErrors.weight = "Required field"
+    } else if (isNaN(Number(weight))) {
+      newErrors.weight = "Must be a number"
+    } else if (Number(weight) < 1 || Number(weight) > 650) {
+      newErrors.weight = "Must be between 1 and 650 kg"
+    }
 
     setErrors(newErrors)
 
     if (Object.keys(newErrors).length === 0) {
-      console.log("Form Data:", { name, username, email, password })
+      console.log("Form Data:", { name, username, email, password, weight })
       setName("")
       setUsername("")
       setEmail("")
       setPassword("")
+      setWeight("")
       setErrors({})
       setOpen(false)
     }
@@ -58,6 +68,7 @@ export function MartinForm() {
     setUsername("")
     setEmail("")
     setPassword("")
+    setWeight("")
     setErrors({})
     setOpen(false)
   }
@@ -153,7 +164,36 @@ export function MartinForm() {
             />
             {errors.password && <p className="text-sm text-red-500">{errors.password}</p>}
           </div>
+              
+           {/* Weight */}
+        <div className="grid gap-2">
+            <Label htmlFor="weight">Weight (kg)</Label>
+            <Input
+              id="weight"
+              type="number"
+              placeholder="e.g. 70"
+              min={1}
+              max={650}
+              value={weight}
+              onChange={(e) => {
+                const val = e.target.value.trim()
+                setWeight(val)
+                const num = Number(val)
+
+                if (val === "") {
+                  setErrors((prev) => ({ ...prev, weight: "Required field" }))
+                } else if (isNaN(num)) {
+                  setErrors((prev) => ({ ...prev, weight: "Must be a number" }))
+                } else if (num < 1 || num > 650) {
+                  setErrors((prev) => ({ ...prev, weight: "Must be between 1 and 650 kg" }))
+                } else {
+                  setErrors((prev) => ({ ...prev, weight: undefined }))
+                }
+              }}
+            />
+            {errors.weight && <p className="text-sm text-red-500">{errors.weight}</p>}
         </div>
+      </div>   
 
         <SheetFooter className="flex justify-end gap-4 px-2">
           <SheetClose asChild>
@@ -165,7 +205,7 @@ export function MartinForm() {
             <Button
               type="submit"
               onClick={handleSubmit}
-              disabled={!name || !username || !email || !password}
+              disabled={!name || !username || !email || !password || !weight}
             >
               Confirm
             </Button>

@@ -70,8 +70,8 @@ function App() {
   className="inline-flex items-center gap-2 px-4 py-2 border border-blue-600 text-blue-600 font-medium rounded-xl hover:bg-blue-100 transition-all duration-200"
 >
   <MailIcon className="w-5 h-5" />
-  Контактна форма
-</Link>
+    The Jj Contact Form
+  </Link>
     </div>
 }
 
