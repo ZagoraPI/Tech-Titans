@@ -19,17 +19,16 @@ export function PetarForm() {
     email: "",
     dateOfBirth: "",
     city: "",
-    kg: "",
+    weight: "",
   }
 
   
   const [formData, setFormData] = useState(initialFormState);
   const [open, setOpen] = useState(false)
-  const { name, email, dateOfBirth, city, kg } = formData;
+  const { name, email, dateOfBirth, city, weight } = formData;
   const [emailError, setEmailError] = useState("");
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const [kgError, SetKgError ] = useState("");
-  const kgRegex = kg.trim() !== "" && kg >= "0" && kg <= "333" ;
+  const [weightError, SetWeightError ] = useState("");
   
 
   const isFormValid= () => {
@@ -38,7 +37,6 @@ export function PetarForm() {
       email.trim() !== "" &&
       dateOfBirth.trim() !== "" &&
       city.trim() !== "" &&
-      kgRegex &&
       emailRegex.test(email)
     );
   };
@@ -54,14 +52,6 @@ export function PetarForm() {
       } else {
         setEmailError("");
       }
-    } 
-
-    if (id === "kg") {
-      if(!kgRegex){
-        SetKgError("You need more realistic body weight maaan!");
-      } else{
-        SetKgError("");
-      }
     }
 
   };
@@ -71,8 +61,6 @@ export function PetarForm() {
     if (!isFormValid()) {
       if (!emailRegex.test(formData.email)) {
         setEmailError("Please use a valid email ending in @gmail.com, @yahoo.com, @email.com, @abv.bg or anything else");
-      } else if (!kgRegex) {
-        SetKgError("You need more effort maaan")
       }
       return ;
     }
@@ -101,7 +89,7 @@ export function PetarForm() {
         <div className="grid gap-6 px-2 w-full max-w-md mx-auto py-6">
 
         <div className="flex flex-col space-y-2 pl-1">
-            <Label htmlFor="name" >Name</Label>
+            <Label htmlFor="name">Name</Label>
             <Input
               id="name"
               type="text"
@@ -150,17 +138,17 @@ export function PetarForm() {
 
 
           <div className="flex flex-col space-y-2 pl-1">
-            <Label htmlFor="kg">Kg</Label>
+            <Label htmlFor="weight">BodyWeight (kg)</Label>
             <Input
-              id="kg"
+              id="weight"
               type="number"
               placeholder="80"
-              value={formData.kg}
+              value={formData.weight}
               onChange={handleChange}
-              className={kgError ? "border-red-500" : ""}
+              className={weightError ? "border-red-500" : ""}
             />
-            {kgError && (
-              <p className="text-sm text-red-500 mt-1">{kgError}</p>
+            {weightError && (
+              <p className="text-sm text-red-500 mt-1">{weightError}</p>
             )}
           </div>
 
