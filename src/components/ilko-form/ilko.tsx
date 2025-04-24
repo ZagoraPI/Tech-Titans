@@ -15,7 +15,7 @@ export function IlkoForm() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    yearOfBirth: "",
+    dateOfBirth: "",
     city: "",
     weight: "",
   });
@@ -43,6 +43,7 @@ export function IlkoForm() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       setEmailError("Please enter a valid email address");
+      emailError;
     } else {
       setEmailError("");
     }
@@ -54,7 +55,7 @@ export function IlkoForm() {
       setWeightError("Please enter a valid number");
     } else if (weightValue < 30) {
       setWeightError("Weight must be at least 30 kg");
-    } else if (weightValue > 300) {
+    } else if (weightValue > 330) {
       setWeightError("Weight cannot exceed 300 kg");
     } else {
       setWeightError("");
@@ -74,7 +75,7 @@ export function IlkoForm() {
     setFormData({
       name: "",
       email: "",
-      yearOfBirth: "",
+      dateOfBirth: "",
       city: "",
       weight: "",
     });
@@ -85,7 +86,7 @@ export function IlkoForm() {
     setFormData({
       name: "",
       email: "",
-      yearOfBirth: "",
+      dateOfBirth: "",
       city: "",
       weight: "",
     });
@@ -134,12 +135,12 @@ export function IlkoForm() {
             </div>
 
             <div className="grid gap-2">
-              <Label htmlFor="yearOfBirth">Year of Birth</Label>
+              <Label htmlFor="dateOfBirth">Date of Birth</Label>
               <Input
-                id="yearOfBirth"
-                type="text"
-                placeholder="2000"
-                value={formData.yearOfBirth}
+                id="dateOfBirth"
+                type="date"
+                placeholder="dd/mm/gggg"
+                value={formData.dateOfBirth}
                 onChange={handleInputChange}
               />
             </div>
@@ -151,7 +152,7 @@ export function IlkoForm() {
                 type="number"
                 placeholder="Your weight in kg"
                 min="30"
-                max="300"
+                max="330"
                 value={formData.weight}
                 onChange={handleInputChange}
               />
