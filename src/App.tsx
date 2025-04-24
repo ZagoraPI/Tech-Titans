@@ -30,7 +30,7 @@ import FormSelectionPage from './components/Niki_Components/Pages/FormSelectPage
 import NikiFormPage from './components/Niki_Components/Form/FormPage/FormPage.tsx';
 import ContactFormPage from "./components/The_Jj-Form/ContactFormPage";
 import { MailIcon } from "lucide-react";
-
+import { IlkoForm } from "./components/ilko-form/ilko.tsx";
 <Route path="/contact" element={<ContactFormPage />} />
 function App() {
   const [count, setCount] = useState(0);
@@ -40,6 +40,10 @@ function App() {
     <Routes>
         <Route path="/" element={
     <>
+    <div style={{ position: 'fixed', bottom: '300px', right: '20px' }}>
+    <IlkoForm />
+  </div>
+  
       <div className="fixed top-16 left-16">
       <AlexPfpIcon />
         <Avatar>
