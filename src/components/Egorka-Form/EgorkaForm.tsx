@@ -194,6 +194,7 @@ export function EgorkaForm() {
               onChange={handleChange}
               min = "2.1"
               max = "635"
+              step="0.1"
             />
             {errors.kg && <p className="text-red-500 text-sm">{errors.kg}</p>}
 
