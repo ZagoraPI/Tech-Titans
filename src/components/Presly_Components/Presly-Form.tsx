@@ -86,7 +86,7 @@ export function PreslyForm() {
     }
   
   
-    console.log("Form Data:", { ...formData, kilograms: weight });
+    console.log("Form Data:", { ...formData, weight: weight });
   setFormData(initialFormState);
   setWeight("");
   setErrors({});
@@ -167,9 +167,9 @@ export function PreslyForm() {
         
 
           <div>
-            <Label htmlFor="kilograms">How much do you Weight?</Label>
+            <Label htmlFor="weight">How much do you Weight?</Label>
             <Input
-              id="kilograms"
+              id="weight"
               type="number"
               placeholder="83kg"
               min = {1}
