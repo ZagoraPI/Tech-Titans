@@ -62,7 +62,7 @@ export function PreslyForm() {
       }
       else if (isNaN(Number(kilogram))) {
         errors.kilogram = "Must be a number" }
-      else if (Number(kilogram) < 1 || Number(kilogram) >= 420) {
+      else if (Number(kilogram) < 1 || Number(kilogram) > 420) {
         errors.kilogram = ("You can't weight that much! Please enter a valid weight between 1 and 420 kg.");
       }
    }
@@ -184,7 +184,7 @@ export function PreslyForm() {
                   setErrors((prev) => ({ ...prev, kilogram: "Required field" }))
                 } else if (isNaN(num)) {
                   setErrors((prev) => ({ ...prev, kilogram: "Must be a number!!" }))
-                } else if (num < 1 || num > 650) {
+                } else if (num < 1 || num > 420) {
                   setErrors((prev) => ({ ...prev, kilogram: "Must be between 1 and 420 kg" }))
                 } else {
                   setErrors((prev) => ({ ...prev, kilogram: undefined }))
