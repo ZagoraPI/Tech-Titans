@@ -195,6 +195,8 @@ export function EgorkaForm() {
               min = "2.1"
               max = "635"
             />
+            {errors.kg && <p className="text-red-500 text-sm">{errors.kg}</p>}
+
           </div>
         </div>
 
