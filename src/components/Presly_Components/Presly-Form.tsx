@@ -26,7 +26,6 @@ export function PreslyForm() {
   const [emailError, setEmailError] = useState("");
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const [kilogram, setKilogram] = useState("");
-  const [kilogramError, setKilogramError] = useState("");
 
   const isFormValid = () => {
     const { name, email, dateOfBirth, city,  } = formData;
@@ -69,8 +68,8 @@ export function PreslyForm() {
       }
       else if (isNaN(Number(kilogram))) {
         errors.kilogram = "Must be a number" }
-      else if (Number(kilogram) < 5 || Number(kilogram) > 420) {
-        errors.kilogram = ("You can't weight that much! Please enter a valid weight between 5 and 420 kg.");
+      else if (Number(kilogram) < 1 || Number(kilogram) > 420) {
+        errors.kilogram = ("You can't weight that much! Please enter a valid weight between 1 and 420 kg.");
       }
    };
   
@@ -167,12 +166,23 @@ export function PreslyForm() {
               min = {5}
               max = {420}
               value={kilogram}
-              onChange={handleChange}
-              className={kilogramError ? "border-red-500" : ""}
+              onChange={(e) => {
+                const val = e.target.value.trim()
+                setKilogram(val)
+                const num = Number(val)
+
+                if (val === "") {
+                  setErrors((prev) => ({ ...prev, weight: "Required field" }))
+                } else if (isNaN(num)) {
+                  setErrors((prev) => ({ ...prev, weight: "Must be a number" }))
+                } else if (num < 1 || num > 650) {
+                  setErrors((prev) => ({ ...prev, weight: "Must be between 1 and 650 kg" }))
+                } else {
+                  setErrors((prev) => ({ ...prev, weight: undefined }))
+                }
+              }}
             />
-            {kilogramError && (
-              <p className="text-sm text-red-500 mt-1">{kilogramError}</p>
-            )}
+            {errors.kilogram && <p className="text-sm text-red-500">{errors.kilogram}</p>}
           </div>
         </div>
 
