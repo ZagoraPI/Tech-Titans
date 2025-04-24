@@ -21,6 +21,7 @@ export function EgorkaForm() {
     password: "",
     dob: "",
     city: "",
+    kg: "",
   }
 
   const [formData, setFormData] = useState(initialFormState)
@@ -32,6 +33,7 @@ export function EgorkaForm() {
     password: "",
     dob: "",
     city: "",
+    kg: "",
   })
 
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
@@ -181,6 +183,19 @@ export function EgorkaForm() {
             {errors.city && <p className="text-red-500 text-sm">{errors.city}</p>}
           </div>
 
+            {/* Kilograms */}
+            <div className="grid gap-2">
+            <Label htmlFor="kg">Your kilograms</Label>
+            <Input
+              id="kg"
+              type="number"
+              placeholder="70"
+              value={formData.kg}
+              onChange={handleChange}
+              min = "2.1"
+              max = "635"
+            />
+          </div>
         </div>
 
         <SheetFooter className="flex justify-end gap-4 px-2">
