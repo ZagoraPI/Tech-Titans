@@ -49,6 +49,8 @@ export function EgorkaForm() {
         newErrors[id as keyof typeof newErrors] = "Required field"
       } else if (id === "email" && !emailRegex.test(value)) {
         newErrors.email = "Invalid email address"
+      } else if (id === "kg" && (parseFloat(value) < 2.1 || parseFloat(value) > 635)) {
+        newErrors.kg = "Kilograms must be between 2.1 and 635"
       } else {
         newErrors[id as keyof typeof newErrors] = ""
       }
@@ -59,7 +61,9 @@ export function EgorkaForm() {
 
   const isFormValid =
     Object.values(formData).every(val => val.trim() !== "") &&
-    emailRegex.test(formData.email)
+    emailRegex.test(formData.email) &&
+    parseFloat(formData.kg) >= 2.1 &&
+    parseFloat(formData.kg) <= 635
 
   const handleSubmit = () => {
     const newErrors = { ...errors }
@@ -194,7 +198,7 @@ export function EgorkaForm() {
               onChange={handleChange}
               min = "2.1"
               max = "635"
-              step="0.1"
+              step = "0.1"
             />
             {errors.kg && <p className="text-red-500 text-sm">{errors.kg}</p>}
 
