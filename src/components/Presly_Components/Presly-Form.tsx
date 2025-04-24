@@ -19,6 +19,7 @@ export function PreslyForm() {
     email: "",
     dateOfBirth: "",
     city: "",
+    kilograms: "",
   };
 
   const [formData, setFormData] = useState(initialFormState);
@@ -26,6 +27,9 @@ export function PreslyForm() {
   const [emailError, setEmailError] = useState("");
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const [kilogram, setKilogram] = useState("");
+  const [errors, setErrors] = useState<{
+    kilogram?: string
+  }>({})
 
   const isFormValid = () => {
     const { name, email, dateOfBirth, city,  } = formData;
@@ -34,25 +38,15 @@ export function PreslyForm() {
       email.trim() !== "" &&
       dateOfBirth.trim() !== "" &&
       city.trim() !== "" &&
+      kilogram.trim() !== "" &&
+      !isNaN(Number(kilogram)) &&
       emailRegex.test(email)
     );
   };
-  
-  const [errors, setErrors] = useState<{
-    kilogram?: string
-  }>({})
-  setErrors(errors)
-
-  if (Object.keys(errors).length === 0) {
-    console.log("Form Data:", { kilogram })
-    setKilogram("")
-    setErrors({})
-    setOpen(false)
-  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
-    setFormData({ ...formData, [id]: value });
+    setFormData({ ...formData, [id]: value })
 
     if (id === "email") {
       if (value && !emailRegex.test(value)) {
@@ -71,27 +65,42 @@ export function PreslyForm() {
       else if (Number(kilogram) < 1 || Number(kilogram) > 420) {
         errors.kilogram = ("You can't weight that much! Please enter a valid weight between 1 and 420 kg.");
       }
-   };
+   }
+  }
   
-  const handleSubmit = () => {
+   const handleSubmit = () => {
     if (!isFormValid()) {
       if (!emailRegex.test(formData.email)) {
         setEmailError("Please use a valid email ending in @gmail.com, @yahoo.com, @email.com, @abv.bg or anything else");
       }
-      return;
+      return
     }
   
-    console.log("Form Data:", formData);
-    setFormData(initialFormState);
-    setOpen(false);
-  };
+    if (Object.keys(errors).length === 0) {
+      console.log("Form Data:", { ...formData, kilogram })
+      setFormData(initialFormState)
+      setKilogram("")
+      setErrors({})
+      setEmailError("")
+      setOpen(false)
+    }
+  
+  
+    console.log("Form Data:", { ...formData, kilograms: kilogram });
+  setFormData(initialFormState);
+  setKilogram("");
+  setErrors({});
+  setEmailError("");
+  setOpen(false);
+    }
+   
 
   const handleCancel = () => {
     setFormData(initialFormState);
     setEmailError("");
     setOpen(false);
-  };
-
+  }
+  
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
@@ -161,9 +170,9 @@ export function PreslyForm() {
             <Label htmlFor="kilograms">How much do you Weight?</Label>
             <Input
               id="kilograms"
-              type="isNan"
+              type="number"
               placeholder="83kg"
-              min = {5}
+              min = {1}
               max = {420}
               value={kilogram}
               onChange={(e) => {
@@ -172,13 +181,13 @@ export function PreslyForm() {
                 const num = Number(val)
 
                 if (val === "") {
-                  setErrors((prev) => ({ ...prev, weight: "Required field" }))
+                  setErrors((prev) => ({ ...prev, kilogram: "Required field" }))
                 } else if (isNaN(num)) {
-                  setErrors((prev) => ({ ...prev, weight: "Must be a number" }))
+                  setErrors((prev) => ({ ...prev, kilogram: "Must be a number!!" }))
                 } else if (num < 1 || num > 650) {
-                  setErrors((prev) => ({ ...prev, weight: "Must be between 1 and 650 kg" }))
+                  setErrors((prev) => ({ ...prev, kilogram: "Must be between 1 and 450 kg" }))
                 } else {
-                  setErrors((prev) => ({ ...prev, weight: undefined }))
+                  setErrors((prev) => ({ ...prev, kilogram: undefined }))
                 }
               }}
             />
@@ -206,4 +215,3 @@ export function PreslyForm() {
     </Sheet>
   );
  }
-}
