@@ -11,7 +11,13 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 
 export function HrisaForm() {
   interface FormData {
@@ -33,7 +39,6 @@ export function HrisaForm() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target
-
     setFormData({
       ...formData,
       [id]: id === "yearOfBirth" ? Number(value) : value,
@@ -55,7 +60,10 @@ export function HrisaForm() {
       return
     }
 
-    if (formData.yearOfBirth < 1900 || formData.yearOfBirth > new Date().getFullYear()) {
+    if (
+      formData.yearOfBirth < 1900 ||
+      formData.yearOfBirth > new Date().getFullYear()
+    ) {
       alert("Please enter a valid year of birth.")
       return
     }
@@ -74,6 +82,55 @@ export function HrisaForm() {
     setFormData(initialFormState)
     setOpen(false)
   }
+
+  const cities = [
+    "Sofia",
+    "Plovdiv",
+    "Varna",
+    "Burgas",
+    "Ruse",
+    "Stara Zagora",
+    "Pleven",
+    "Sliven",
+    "Dobrich",
+    "Shumen",
+    "Pernik",
+    "Haskovo",
+    "Yambol",
+    "Blagoevgrad",
+    "Veliko Tarnovo",
+    "Vratsa",
+    "Kardzhali",
+    "Kyustendil",
+    "Montana",
+    "Gabrovo",
+    "Asenovgrad",
+    "Vidin",
+    "Kazanlak",
+    "Targovishte",
+    "Pazardzhik",
+    "Svishtov",
+    "Smolyan",
+    "Sandanski",
+    "Lovech",
+    "Silistra",
+    "Dupnitsa",
+    "Razgrad",
+    "Gorna Oryahovitsa",
+    "Dimitrovgrad",
+    "Karlovo",
+    "Velingrad",
+    "Nova Zagora",
+    "Gotse Delchev",
+    "Botevgrad",
+    "Aytos",
+    "Pomorie",
+    "Nessebar",
+    "Balchik",
+    "Kavarna",
+    "Troyan",
+    "Lom",
+  ]
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -117,7 +174,7 @@ export function HrisaForm() {
             <Input
               id="yearOfBirth"
               type="number"
-              min={1000}
+              min={1900}
               max={new Date().getFullYear()}
               value={formData.yearOfBirth || ""}
               onChange={handleChange}
@@ -132,11 +189,12 @@ export function HrisaForm() {
               <SelectTrigger>
                 <SelectValue placeholder="Select a city" />
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="Sofia">Sofia</SelectItem>
-                <SelectItem value="Plovdiv">Plovdiv</SelectItem>
-                <SelectItem value="Varna">Varna</SelectItem>
-                <SelectItem value="Burgas">Burgas</SelectItem>
+              <SelectContent className="max-h-64 overflow-y-auto">
+                {cities.map((city) => (
+                  <SelectItem key={city} value={city}>
+                    {city}
+                  </SelectItem>
+                ))}
               </SelectContent>
             </Select>
           </div>
