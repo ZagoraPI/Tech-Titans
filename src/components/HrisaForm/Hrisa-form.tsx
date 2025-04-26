@@ -45,9 +45,10 @@ export function HrisaForm() {
     const { id, value } = e.target
     setFormData({
       ...formData,
-      [id]: id === "yearOfBirth" ? Number(value) : value,
+      [id]: ["yearOfBirth", "weight", "height"].includes(id) ? Number(value) : value,
     })
   }
+  
 
   const handleSelectCity = (value: string) => {
     setFormData({ ...formData, city: value })
@@ -203,6 +204,33 @@ export function HrisaForm() {
             </Select>
           </div>
         </div>
+
+                {/* Weight */}
+<div className="grid gap-2">
+  <Label htmlFor="weight">Weight (kg)</Label>
+  <Input
+    id="weight"
+    type="number"
+    min={0}
+    value={formData.weight || ""}
+    onChange={handleChange}
+    placeholder="e.g. 70"
+  />
+</div>
+
+{/* Height */}
+<div className="grid gap-2">
+  <Label htmlFor="height">Height (cm)</Label>
+  <Input
+    id="height"
+    type="number"
+    min={0}
+    value={formData.height || ""}
+    onChange={handleChange}
+    placeholder="e.g. 170"
+  />
+</div>
+
 
         <div className="grid grid-cols-2 gap-4 px-2 pb-4 w-full max-w-md mx-auto">
           <SheetClose asChild>
