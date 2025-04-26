@@ -63,6 +63,7 @@ export function HrisaForm() {
     if (!isValidEmail(formData.email)) {
       alert("Please enter a valid email.")
       return
+      
     }
 
     if (
@@ -75,6 +76,16 @@ export function HrisaForm() {
 
     if (!formData.city) {
       alert("Please select a city.")
+      return
+    }
+
+    if (formData.weight <= 0) {
+      alert("Please enter a valid weight.")
+      return
+    }
+
+    if (formData.height <= 0) {
+      alert("Please enter a valid height.")
       return
     }
 
