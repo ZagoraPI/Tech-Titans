@@ -55,15 +55,14 @@ export function HrisaForm() {
   }
 
   const isValidEmail = (email: string): boolean => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    return emailRegex.test(email)
+    return email.includes("@") && email.includes(".") && email.length > 5
   }
+  
 
   const handleSubmit = () => {
     if (!isValidEmail(formData.email)) {
       alert("Please enter a valid email.")
       return
-      
     }
 
     if (
