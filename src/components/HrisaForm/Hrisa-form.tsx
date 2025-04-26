@@ -25,6 +25,8 @@ export function HrisaForm() {
     email: string
     yearOfBirth: number
     city: string
+    weight: number
+    height: number
   }
 
   const initialFormState: FormData = {
@@ -32,6 +34,8 @@ export function HrisaForm() {
     email: "",
     yearOfBirth: 0,
     city: "",
+    weight: 0,
+    height: 0,
   }
 
   const [formData, setFormData] = useState(initialFormState)
