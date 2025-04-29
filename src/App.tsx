@@ -19,13 +19,6 @@ import { Bozhilkata } from "./components/BozhilkataComp.tsx";
 import Martin from './components/MartinComp.tsx';
 import { MartinForm } from './components/Martin-Form/MartinForm.tsx';
 import { PetarForm } from './components/Petar(Bozhilkata)-Form/PetarForm.tsx';
-
-
-
-
-
-
-
 import {PreslyForm} from "@/components/Presly_Components/Presly-Form.tsx"
 import { TheJjForm } from './components/The_Jj-Form/TheJjForm.tsx';
 import { AlexForm } from './components/Alex_Components/AlexForm.tsx';
@@ -39,6 +32,13 @@ import ContactFormPage from "./components/The_Jj-Form/ContactFormPage";
 import { MailIcon } from "lucide-react";
 import { Naskocomp } from "./components/Nasko_Comps/Nasko-badge.tsx";
 import { NaskoForm } from "./components/Nasko_Comps/Nasko-form.tsx";
+import { IlkoForm } from "./components/ilko-form/ilko.tsx";
+
+
+
+
+
+
 
 
 <Route path="/contact" element={<ContactFormPage />} />
@@ -50,6 +50,10 @@ function App() {
     <Routes>
         <Route path="/" element={
     <>
+    <div style={{ position: 'fixed', bottom: '300px', right: '20px' }}></div>
+    <IlkoForm />
+  
+          
       <div className="fixed top-16 left-16">
       <AlexPfpIcon />
         <Avatar>
@@ -72,25 +76,20 @@ function App() {
         <div style={{ position: 'fixed', bottom: '200px', right: '40px' }}>
             <EgorkaForm />
         </div>
-       {
-    <div>
-      <div className="p-4">
-        <TheJjForm />
-        <Link
-          to="contact-form-page"
-          className="inline-flex items-center gap-2 px-4 py-2 border border-blue-600 text-blue-600 font-medium rounded-xl hover:bg-blue-100 transition-all duration-200"
-        >
-          <MailIcon className="w-5 h-5" />
-          Контактна форма
-        </Link>
-      </div>
+<div className="p-4">
+  <TheJjForm />
+  <Link
+    to="contact-form-page"
+    className="inline-flex items-center gap-2 px-4 py-2 border border-blue-600 text-blue-600 font-medium rounded-xl hover:bg-blue-100 transition-all duration-200"
+  >
+    <MailIcon className="w-5 h-5" />
+  </Link>
+</div>
 
-      <div style={{ position: 'fixed', bottom: '260px', right: '20px' }}>
-        <NaskoForm></NaskoForm>
-      </div>
-      <Naskocomp></Naskocomp>
-    </div>
-}
+<div style={{ position: 'fixed', bottom: '260px', right: '20px' }}>
+  <NaskoForm />
+</div>
+<Naskocomp />
 
       <Martin />
       <AlexGifShower />
