@@ -3,7 +3,9 @@ import { PetarForm } from "../components/Petar(Bozhilkata) Components/PetarForm"
    
 
 describe ("PetarForm", () => {
-    
+ 
+        it.todo("renders the weight validation error")
+      
       it("shows error for invalid email", () => {
         render(<PetarForm />);
         fireEvent.click(screen.getByText(/Petar/i));
