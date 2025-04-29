@@ -30,7 +30,11 @@ describe("PreslyForm", () => {
     const submit = screen.getByRole("button", { name: /Ya Sure/i })
     await userEvent.click(submit)
 
-    expect(screen.getByText(/Please use a valid email/i)).toBeInTheDocument()
+    expect(
+      screen.getByText(/Email must be .*@gmail\.com.*@yahoo\.com.*@email\.com.*@abv\.bg.*/i)
+    ).toBeInTheDocument();
+    
+    expect(await screen.findByText(/Email must be .*@gmail\.com.*@yahoo\.com.*@email\.com.*@abv\.bg.*/i)).toBeInTheDocument();
   })
 
   test("shows weight validation error if invalid", async () => {
@@ -48,26 +52,27 @@ describe("PreslyForm", () => {
   test("form submits correctly when all fields are valid", async () => {
     openForm()
 
-    await userEvent.type(screen.getByLabelText(/Name/i), "Preslav Ivanov")
-    await userEvent.type(screen.getByLabelText(/Email/i), "you@gmail.com")
-    await userEvent.type(screen.getByLabelText(/Date of Birth/i), "2000-09-09")
-    await userEvent.type(screen.getByLabelText(/City/i), "Galabovo")
-    await userEvent.type(screen.getByLabelText(/How much do you Weight/i), "83")
+    await userEvent.type(screen.getByLabelText(/Name/i), "What's Your Name?")
+    await userEvent.type(screen.getByLabelText(/Email/i), "your@email.com")
+    await userEvent.type(screen.getByLabelText(/Date of Birth/i), "09/09/2008")
+    await userEvent.type(screen.getByLabelText(/City/i), "Your City")
+    await userEvent.type(screen.getByLabelText(/How much do you Weight/i), "83kg")
 
     const submit = screen.getByRole("button", { name: /Ya Sure/i })
     await userEvent.click(submit)
 
     
-    const logSpy = jest.spyOn(console, "log")
-    expect(logSpy).toHaveBeenCalledWith(
-      expect.stringContaining("Form Data:"),
-      expect.objectContaining({
-        name: "Preslav",
-        email: "you@gmail.com",
-        city: "Galabovo",
-        weight: "83",
-      })
-    )
-    logSpy.mockRestore()
+    const logSpy = jest.spyOn(console, "log");
+   expect(logSpy).toHaveBeenCalledWith(
+    "Form Data:",
+    expect.objectContaining({
+      name: "What's Your Name?",
+      email: "your@email.com",
+      dateOfBirth: "09/09/2008",
+      city: "Your City",
+      weight: "83kg",
+    })
+  );
+  logSpy.mockRestore();
   })
 })
