@@ -1,4 +1,3 @@
-// HrisaForm.test.tsx
 import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { HrisaForm } from '../components/HrisaForm/Hrisa-form'
@@ -15,6 +14,7 @@ describe('HrisaForm', () => {
     render(<HrisaForm />)
     fireEvent.click(screen.getByRole('button', { name: /hrisa/i }))
     fireEvent.click(screen.getByRole('button', { name: /confirm/i }))
+
     // Validation alerts are shown as window.alert — mock it
     window.alert = jest.fn()
 
@@ -52,7 +52,7 @@ describe('HrisaForm', () => {
     fireEvent.change(screen.getByLabelText(/weight/i), { target: { value: '80' } })
     fireEvent.change(screen.getByLabelText(/height/i), { target: { value: '180' } })
 
-    // Градовете са в Select компонента, така че трябва да използваме fireEvent или userEvent за Select
+    // Cities are in the Select component, so we use fireEvent or userEvent for Select
     const cityTrigger = screen.getByText(/select a city/i)
     fireEvent.mouseDown(cityTrigger)
     fireEvent.click(screen.getByText(/sofia/i))
