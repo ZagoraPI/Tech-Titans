@@ -21,6 +21,7 @@ export function EgorkaForm() {
     password: "",
     dob: "",
     city: "",
+    weight: "",
   }
 
   const [formData, setFormData] = useState(initialFormState)
@@ -32,6 +33,7 @@ export function EgorkaForm() {
     password: "",
     dob: "",
     city: "",
+    weight: "",
   })
 
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
@@ -47,6 +49,8 @@ export function EgorkaForm() {
         newErrors[id as keyof typeof newErrors] = "Required field"
       } else if (id === "email" && !emailRegex.test(value)) {
         newErrors.email = "Invalid email address"
+      } else if (id === "weight" && (parseFloat(value) < 2.1 || parseFloat(value) > 635)) {
+        newErrors.weight = "Kilograms must be between 2.1 and 635"
       } else {
         newErrors[id as keyof typeof newErrors] = ""
       }
@@ -57,7 +61,9 @@ export function EgorkaForm() {
 
   const isFormValid =
     Object.values(formData).every(val => val.trim() !== "") &&
-    emailRegex.test(formData.email)
+    emailRegex.test(formData.email) &&
+    parseFloat(formData.weight) >= 2.1 &&
+    parseFloat(formData.weight) <= 635
 
   const handleSubmit = () => {
     const newErrors = { ...errors }
@@ -181,6 +187,22 @@ export function EgorkaForm() {
             {errors.city && <p className="text-red-500 text-sm">{errors.city}</p>}
           </div>
 
+            {/* Kilograms */}
+            <div className="grid gap-2">
+            <Label htmlFor="weight">Your kilograms</Label>
+            <Input
+              id="weight"
+              type="number"
+              placeholder="70"
+              value={formData.weight}
+              onChange={handleChange}
+              min = "2.1"
+              max = "635"
+              step = "0.1"
+            />
+            {errors.weight && <p className="text-red-500 text-sm">{errors.weight}</p>}
+
+          </div>
         </div>
 
         <SheetFooter className="flex justify-end gap-4 px-2">

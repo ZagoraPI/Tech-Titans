@@ -100,7 +100,7 @@ export function IlkoForm() {
       <Sheet open={isFormOpen} onOpenChange={setIsFormOpen}>
         <SheetTrigger asChild>
           <Button variant="outline" className="absolute top-0 right-4 text-sm px-2 py-1">
-            Ilko
+      
           </Button>
         </SheetTrigger>
 

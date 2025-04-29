@@ -4,10 +4,20 @@
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
   ],
- "compilerOptions": {
-  "baseUrl": "./",
-  "paths": {
-    "@/*": ["src/*"]
+  "compilerOptions": {
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "strict": true,
+    "baseUrl": "./",
+    "jsx": "react-jsx",
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "types": ["jest", "@testing-library/jest-dom"]
   }
-}
 }
