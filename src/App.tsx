@@ -35,7 +35,8 @@ import { MailIcon } from "lucide-react";
 import { IlkoForm } from "./components/ilko-form/ilko.tsx";
 import { VladoForm } from "./components/Vlado_Form/vlado_form.tsx";
 
-<Route path="/contact" element={<ContactFormPage />} />import {
+<Route path="/contact" element={<ContactFormPage />} />;
+import {
   Select,
   SelectContent,
   SelectItem,
