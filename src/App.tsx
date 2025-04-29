@@ -16,10 +16,10 @@ import TextBox from "./components/TextBox.tsx";
 import TheJj from "./components/TheJj.tsx";
 import AlexGifShower from "./components/Alex_Components/AlexGifShower.tsx";
 import AlexPfpIcon from "./components/Alex_Components/AlexPfpIcon.tsx";
-import { Bozhilkata } from "./components/BozhilkataComp.tsx";
+import { Bozhilkata } from "./components/Petar(Bozhilkata) Components/BozhilkataComp.tsx";
 import Martin from './components/MartinComp.tsx';
 import { MartinForm } from './components/Martin-Form/MartinForm.tsx';
-import { PetarForm } from './components/Petar(Bozhilkata)-Form/PetarForm.tsx';
+import { PetarForm } from './components/Petar(Bozhilkata) Components/PetarForm.tsx';
 import {PreslyForm} from "@/components/Presly_Components/Presly-Form.tsx"
 import { TheJjForm } from './components/The_Jj-Form/TheJjForm.tsx';
 import { AlexForm } from './components/Alex_Components/AlexForm.tsx';
