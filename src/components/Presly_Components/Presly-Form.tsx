@@ -34,10 +34,10 @@ export function PreslyForm() {
   const isFormValid = () => {
     const { name, email, dateOfBirth, city,  } = formData;
     return (
-      name.trim() === "string" &&
-      email.trim() === "string" &&
+      name.trim() === "text" &&
+      email.trim() === "text" &&
       dateOfBirth.trim() === "date" &&
-      city.trim() === "string" &&
+      city.trim() === "text" &&
       weight.trim() === "number" &&
       !isNaN(Number(weight)) &&
       emailRegex.test(email)
@@ -130,7 +130,7 @@ export function PreslyForm() {
             <Label htmlFor="email">Email</Label>
             <Input
               id="email"
-              type="email"
+              type="text"
               placeholder="your@email.com"
               value={formData.email}
               onChange={handleChange}
