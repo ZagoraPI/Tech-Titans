@@ -31,6 +31,8 @@ import NikiFormPage from './components/Niki_Components/Form/FormPage/FormPage.ts
 import ContactFormPage from "./components/The_Jj-Form/ContactFormPage";
 import { MailIcon } from "lucide-react";
 import { IlkoForm } from "./components/ilko-form/ilko.tsx";
+import { VladoForm } from "./components/Vlado_Form/vlado_form.tsx";
+
 <Route path="/contact" element={<ContactFormPage />} />
 function App() {
   const [count, setCount] = useState(0);
@@ -54,6 +56,11 @@ function App() {
       <div style={{ position: 'fixed', bottom: '80px', right: '20px' }}>
         <PetarForm />
       </div>
+
+      <div style={{ position: 'fixed', bottom: '360px', right: '20px' }}>
+        <VladoForm />
+      </div>   
+
       <div style={{ position: 'fixed', bottom: '20px', right: '20px' }}>
         <MartinForm />
       </div>
