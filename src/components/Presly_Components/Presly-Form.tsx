@@ -83,15 +83,7 @@ export function PreslyForm() {
       setErrors({})
       setEmailError("")
       setOpen(false)
-    }
-  
-  
-    console.log("Form Data:", { ...formData, weight: weight });
-  setFormData(initialFormState);
-  setWeight("");
-  setErrors({});
-  setEmailError("");
-  setOpen(false);
+     }
     }
    
 
