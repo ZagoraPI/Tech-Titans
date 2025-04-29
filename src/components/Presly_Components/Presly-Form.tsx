@@ -34,11 +34,11 @@ export function PreslyForm() {
   const isFormValid = () => {
     const { name, email, dateOfBirth, city,  } = formData;
     return (
-      name.trim() === "text" &&
-      email.trim() === "text" &&
-      dateOfBirth.trim() === "date" &&
-      city.trim() === "text" &&
-      weight.trim() === "number" &&
+      name.trim() !== "" &&
+      email.trim() !== "" &&
+      dateOfBirth.trim() !== "" &&
+      city.trim() !== "" &&
+      weight.trim() !== "" &&
       !isNaN(Number(weight)) &&
       emailRegex.test(email)
     );
