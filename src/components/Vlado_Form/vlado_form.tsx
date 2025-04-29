@@ -12,7 +12,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 
-export function PetarForm() {
+export function VladoForm() {
 
   const initialFormState = {
     name: "",
@@ -84,7 +84,7 @@ export function PetarForm() {
     <div className="relative">
       <Sheet open={isFormOpen} onOpenChange={setIsFormOpen}>
         <SheetTrigger asChild>
-          <Button variant="outline">Petar</Button>
+          <Button variant="outline">Vlado</Button>
         </SheetTrigger>
         <SheetContent>
           <SheetHeader className="pt-4"> 

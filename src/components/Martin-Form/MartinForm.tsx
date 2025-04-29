@@ -14,28 +14,62 @@ import {
 } from "@/components/ui/sheet"
 
 export function MartinForm() {
-  const initialFormState = {
-    name: "",
-    username: "",
-    email: "",
-    password: "",
-  }
+  const [name, setName] = useState("")
+  const [username, setUsername] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [weight, setWeight] = useState("")
 
-  const [formData, setFormData] = useState(initialFormState)
+  const [errors, setErrors] = useState<{
+    name?: string
+    username?: string
+    email?: string
+    password?: string
+    weight?: string
+  }>({})
+
   const [open, setOpen] = useState(false)
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.id]: e.target.value })
-  }
-
   const handleSubmit = () => {
-    console.log("Form Data:", formData)
-    setFormData(initialFormState)
-    setOpen(false)
+    const newErrors: typeof errors = {}
+
+    if (!name.trim()) newErrors.name = "Required field"
+    if (!username.trim()) newErrors.username = "Required field"
+    if (!email.trim()) {
+      newErrors.email = "Required field"
+    } else if (!email.endsWith("@gmail.com")) {
+      newErrors.email = "Must have @gmail.com"
+    }
+    if (!password.trim()) newErrors.password = "Required field"
+    if (!weight.trim()) {
+      newErrors.weight = "Required field"
+    } else if (isNaN(Number(weight))) {
+      newErrors.weight = "Must be a number"
+    } else if (Number(weight) < 1 || Number(weight) > 650) {
+      newErrors.weight = "Must be between 1 and 650 kg"
+    }
+
+    setErrors(newErrors)
+
+    if (Object.keys(newErrors).length === 0) {
+      console.log("Form Data:", { name, username, email, password, weight })
+      setName("")
+      setUsername("")
+      setEmail("")
+      setPassword("")
+      setWeight("")
+      setErrors({})
+      setOpen(false)
+    }
   }
 
   const handleCancel = () => {
-    setFormData(initialFormState)
+    setName("")
+    setUsername("")
+    setEmail("")
+    setPassword("")
+    setWeight("")
+    setErrors({})
     setOpen(false)
   }
 
@@ -51,24 +85,115 @@ export function MartinForm() {
         </SheetHeader>
 
         <div className="grid gap-6 py-6 px-2 w-full max-w-md mx-auto">
-          {[
-            { id: "name", label: "Name", type: "text", placeholder: "Your full name" },
-            { id: "username", label: "Username", type: "text", placeholder: "@username" },
-            { id: "email", label: "Email", type: "email", placeholder: "you@example.com" },
-            { id: "password", label: "Password", type: "password", placeholder: "••••••••" },
-          ].map(({ id, label, type, placeholder }) => (
-            <div key={id} className="grid gap-2">
-              <Label htmlFor={id}>{label}</Label>
-              <Input
-                id={id}
-                type={type}
-                value={(formData as any)[id]}
-                onChange={handleChange}
-                placeholder={placeholder}
-              />
-            </div>
-          ))}
+          {/* Name */}
+          <div className="grid gap-2">
+            <Label htmlFor="name">Name</Label>
+            <Input
+              id="name"
+              type="text"
+              placeholder="Your full name"
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value)
+                if (!e.target.value.trim()) {
+                  setErrors((prev) => ({ ...prev, name: "Required field" }))
+                } else {
+                  setErrors((prev) => ({ ...prev, name: undefined }))
+                }
+              }}
+            />
+            {errors.name && <p className="text-sm text-red-500">{errors.name}</p>}
+          </div>
+
+          {/* Username */}
+          <div className="grid gap-2">
+            <Label htmlFor="username">Username</Label>
+            <Input
+              id="username"
+              type="text"
+              placeholder="@username"
+              value={username}
+              onChange={(e) => {
+                setUsername(e.target.value)
+                if (!e.target.value.trim()) {
+                  setErrors((prev) => ({ ...prev, username: "Required field" }))
+                } else {
+                  setErrors((prev) => ({ ...prev, username: undefined }))
+                }
+              }}
+            />
+            {errors.username && <p className="text-sm text-red-500">{errors.username}</p>}
+          </div>
+
+          {/* Email */}
+          <div className="grid gap-2">
+            <Label htmlFor="email">Email</Label>
+            <Input
+              id="email"
+              type="email"
+              placeholder="you@gmail.com"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value)
+                if (!e.target.value.trim()) {
+                  setErrors((prev) => ({ ...prev, email: "Required field" }))
+                } else if (errors.email === "Required field") {
+                  setErrors((prev) => ({ ...prev, email: undefined }))
+                }
+              }}
+            />
+            {errors.email && <p className="text-sm text-red-500">{errors.email}</p>}
+          </div>
+
+          {/* Password */}
+          <div className="grid gap-2">
+            <Label htmlFor="password">Password</Label>
+            <Input
+              id="password"
+              type="password"
+              placeholder="••••••••"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value)
+                if (!e.target.value.trim()) {
+                  setErrors((prev) => ({ ...prev, password: "Required field" }))
+                } else {
+                  setErrors((prev) => ({ ...prev, password: undefined }))
+                }
+              }}
+            />
+            {errors.password && <p className="text-sm text-red-500">{errors.password}</p>}
+          </div>
+              
+           {/* Weight */}
+        <div className="grid gap-2">
+            <Label htmlFor="weight">Weight (kg)</Label>
+            <Input
+              id="weight"
+              type="number"
+              placeholder="e.g. 70"
+              min={1}
+              max={650}
+              value={weight}
+              onChange={(e) => {
+                const val = e.target.value.trim()
+                setWeight(val)
+                const num = Number(val)
+
+                if (val === "") {
+                  setErrors((prev) => ({ ...prev, weight: "Required field" }))
+                } else if (isNaN(num)) {
+                  setErrors((prev) => ({ ...prev, weight: "Must be a number" }))
+                } else if (num < 1 || num > 650) {
+                  setErrors((prev) => ({ ...prev, weight: "Must be between 1 and 650 kg" }))
+                } else {
+                  setErrors((prev) => ({ ...prev, weight: undefined }))
+                }
+              }}
+            />
+            {errors.weight && <p className="text-sm text-red-500">{errors.weight}</p>}
         </div>
+      </div>   
 
         <SheetFooter className="flex justify-end gap-4 px-2">
           <SheetClose asChild>
@@ -77,7 +202,11 @@ export function MartinForm() {
             </Button>
           </SheetClose>
           <SheetClose asChild>
-            <Button type="submit" onClick={handleSubmit}>
+            <Button
+              type="submit"
+              onClick={handleSubmit}
+              disabled={!name || !username || !email || !password || !weight}
+            >
               Confirm
             </Button>
           </SheetClose>
