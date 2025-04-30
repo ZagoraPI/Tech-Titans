@@ -92,6 +92,36 @@ test("email validation fails without @gmail.com", async () => {
     });
   });
 
+test("form submission logs correct data", async () => {
+    render(<MartinForm />);
+    fireEvent.click(screen.getByText("Martin"));
+
+    fireEvent.change(screen.getByTestId("name-input"), { target: { value: "John Doe" } });
+    fireEvent.change(screen.getByTestId("username-input"), { target: { value: "johndoe" } });
+    fireEvent.change(screen.getByTestId("email-input"), { target: { value: "john@gmail.com" } });
+    fireEvent.change(screen.getByTestId("password-input"), { target: { value: "password123" } });
+    fireEvent.change(screen.getByTestId("weight-input"), { target: { value: "75" } });
+
+    fireEvent.click(screen.getByTestId("confirm-button"));
+
+    await waitFor(() => {
+      expect(consoleOutput).toEqual(
+        expect.arrayContaining([
+          expect.arrayContaining([
+            "Form Data:",
+            {
+              name: "John Doe",
+              username: "johndoe",
+              email: "john@gmail.com",
+              password: "password123",
+              weight: "75"
+            }
+          ])
+        ])
+      );
+    });
+  });
+
   test("cancel button resets all fields", async () => {
     render(<MartinForm />);
     fireEvent.click(screen.getByText("Martin"));
@@ -103,6 +133,28 @@ test("email validation fails without @gmail.com", async () => {
     fireEvent.change(screen.getByTestId("weight-input"), { target: { value: "60" } });
 
     fireEvent.click(screen.getByTestId("cancel-button"));
+    fireEvent.click(screen.getByText("Martin"));
+
+    await waitFor(() => {
+      expect(screen.getByTestId("name-input")).toHaveValue("");
+      expect(screen.getByTestId("username-input")).toHaveValue("");
+      expect(screen.getByTestId("email-input")).toHaveValue("");
+      expect(screen.getByTestId("password-input")).toHaveValue("");
+      expect(screen.getByTestId("weight-input")).toHaveValue("");
+    });
+  });
+
+  test("submit resets all fields", async () => {
+    render(<MartinForm />);
+    fireEvent.click(screen.getByText("Martin"));
+
+    fireEvent.change(screen.getByTestId("name-input"), { target: { value: "Submit" } });
+    fireEvent.change(screen.getByTestId("username-input"), { target: { value: "submituser" } });
+    fireEvent.change(screen.getByTestId("email-input"), { target: { value: "submit@gmail.com" } });
+    fireEvent.change(screen.getByTestId("password-input"), { target: { value: "submit1234" } });
+    fireEvent.change(screen.getByTestId("weight-input"), { target: { value: "80" } });
+
+    fireEvent.click(screen.getByTestId("confirm-button"));
     fireEvent.click(screen.getByText("Martin"));
 
     await waitFor(() => {
