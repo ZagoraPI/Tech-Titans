@@ -58,3 +58,16 @@ describe("MartinForm Component", () => {
     expect(screen.getByTestId("confirm-button")).toBeInTheDocument();
   });
 });
+
+test("email validation fails without @gmail.com", async () => {
+    render(<MartinForm />);
+    fireEvent.click(screen.getByText("Martin"));
+
+    fireEvent.change(screen.getByTestId("email-input"), { target: { value: "wrong@outlook.com" } });
+    fireEvent.blur(screen.getByTestId("email-input"));
+    fireEvent.click(screen.getByTestId("confirm-button"));
+
+    await waitFor(() => {
+      expect(screen.getByTestId("email-error")).toHaveTextContent("Must have @gmail.com");
+    });
+  });
