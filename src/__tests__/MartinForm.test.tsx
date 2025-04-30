@@ -59,6 +59,27 @@ describe("MartinForm Component", () => {
   });
 });
 
+test("confirm button is initially disabled", () => {
+    render(<MartinForm />);
+    fireEvent.click(screen.getByText("Martin"));
+    expect(screen.getByTestId("confirm-button")).toBeDisabled();
+  });
+
+  test("confirm button enabled when form is valid", async () => {
+    render(<MartinForm />);
+    fireEvent.click(screen.getByText("Martin"));
+
+    fireEvent.change(screen.getByTestId("name-input"), { target: { value: "John Doe" } });
+    fireEvent.change(screen.getByTestId("username-input"), { target: { value: "johndoe" } });
+    fireEvent.change(screen.getByTestId("email-input"), { target: { value: "john@gmail.com" } });
+    fireEvent.change(screen.getByTestId("password-input"), { target: { value: "password123" } });
+    fireEvent.change(screen.getByTestId("weight-input"), { target: { value: "75" } });
+
+    await waitFor(() => {
+      expect(screen.getByTestId("confirm-button")).not.toBeDisabled();
+    });
+  });
+
 test("email validation fails without @gmail.com", async () => {
     render(<MartinForm />);
     fireEvent.click(screen.getByText("Martin"));
