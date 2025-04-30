@@ -25,7 +25,6 @@ jest.mock("@/components/ui/sheet", () => {
   };
 });
 
-// Mock console.log
 const originalConsoleLog = console.log;
 let consoleOutput: any[] = [];
 beforeEach(() => {
@@ -90,5 +89,27 @@ test("email validation fails without @gmail.com", async () => {
 
     await waitFor(() => {
       expect(screen.getByTestId("email-error")).toHaveTextContent("Must have @gmail.com");
+    });
+  });
+
+  test("cancel button resets all fields", async () => {
+    render(<MartinForm />);
+    fireEvent.click(screen.getByText("Martin"));
+
+    fireEvent.change(screen.getByTestId("name-input"), { target: { value: "Test" } });
+    fireEvent.change(screen.getByTestId("username-input"), { target: { value: "testuser" } });
+    fireEvent.change(screen.getByTestId("email-input"), { target: { value: "test@gmail.com" } });
+    fireEvent.change(screen.getByTestId("password-input"), { target: { value: "pass1234" } });
+    fireEvent.change(screen.getByTestId("weight-input"), { target: { value: "60" } });
+
+    fireEvent.click(screen.getByTestId("cancel-button"));
+    fireEvent.click(screen.getByText("Martin"));
+
+    await waitFor(() => {
+      expect(screen.getByTestId("name-input")).toHaveValue("");
+      expect(screen.getByTestId("username-input")).toHaveValue("");
+      expect(screen.getByTestId("email-input")).toHaveValue("");
+      expect(screen.getByTestId("password-input")).toHaveValue("");
+      expect(screen.getByTestId("weight-input")).toHaveValue("");
     });
   });
