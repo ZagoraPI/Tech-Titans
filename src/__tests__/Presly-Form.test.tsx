@@ -11,6 +11,10 @@ const openForm = () => {
 }
 
 describe("PreslyForm", () => {
+  beforeEach(() => {
+    jest.clearAllMocks()
+  })
+
   test("renders all input fields", () => {
     openForm()
 
@@ -46,31 +50,31 @@ describe("PreslyForm", () => {
     const submit = screen.getByRole("button", { name: /Ya Sure/i })
     await userEvent.click(submit)
 
-    expect(screen.getByText(/Must be between 1 and 420 kg/i)).toBeInTheDocument()
+    expect(screen.getByText(/Must be between 1 and 420 /i)).toBeInTheDocument()
   })
 
   test("form submits correctly when all fields are valid", async () => {
+    const logSpy = jest.spyOn(console, "log").mockImplementation(() => {})
     openForm()
 
-    await userEvent.type(screen.getByLabelText(/Name/i), "What's Your Name?")
+    await userEvent.type(screen.getByLabelText(/Name/i), "Preslav")
     await userEvent.type(screen.getByLabelText(/Email/i), "your@email.com")
     await userEvent.type(screen.getByLabelText(/Date of Birth/i), "09/09/2008")
     await userEvent.type(screen.getByLabelText(/City/i), "Your City")
-    await userEvent.type(screen.getByLabelText(/How much do you Weight/i), "83kg")
+    await userEvent.type(screen.getByLabelText(/How much do you Weight/i), "83")
 
     const submit = screen.getByRole("button", { name: /Ya Sure/i })
     await userEvent.click(submit)
 
     
-    const logSpy = jest.spyOn(console, "log");
    expect(logSpy).toHaveBeenCalledWith(
     "Form Data:",
     expect.objectContaining({
-      name: "What's Your Name?",
+      name: "Preslav",
       email: "your@email.com",
       dateOfBirth: "09/09/2008",
       city: "Your City",
-      weight: "83kg",
+      weight: "83",
     })
   );
   logSpy.mockRestore();
