@@ -17,8 +17,8 @@ const renderWithRouter = () => {
 
 describe('NikiFormPage', () => {
     beforeEach(() => {
-        // Clear mocks before each test
         mockConsoleLog.mockClear();
+        jest.clearAllTimers();
       });
 
     describe('Rendering', () => {
@@ -70,14 +70,11 @@ describe('NikiFormPage', () => {
     it("shows validation errors for required fields", () => {
       renderWithRouter();
       
-      // Get the submit button and click it without filling the required fields
       const submitButton = screen.getByRole('button', { name: /Send/i });
       fireEvent.click(submitButton);
       
-      // Check that the form wasn't submitted
       expect(mockConsoleLog).not.toHaveBeenCalled();
       
-      // Check that required attribute is present on inputs
       expect(screen.getByLabelText(/Email address/i)).toHaveAttribute('required');
       expect(screen.getByLabelText(/Message/i)).toHaveAttribute('required');
       expect(screen.getByLabelText(/KG/i)).toHaveAttribute('required');
@@ -88,11 +85,44 @@ describe('NikiFormPage', () => {
       
       const kgInput = screen.getByLabelText(/KG/i);
       
-      // Check for min and max attributes
       expect(kgInput).toHaveAttribute('min', '5');
       expect(kgInput).toHaveAttribute('max', '500');
     });
     
     it.todo("renders the weight validation error");
+  });
+  describe("Stage 4: Form Submission", () => {
+    it("submits the form with valid data", () => {
+      renderWithRouter();
+      
+      fireEvent.change(screen.getByLabelText(/Email address/i), { target: { value: 'test@example.com' } });
+      fireEvent.change(screen.getByLabelText(/Message/i), { target: { value: 'Test message' } });
+      fireEvent.change(screen.getByLabelText(/KG/i), { target: { value: '75' } });
+      
+
+      const submitButton = screen.getByRole('button', { name: /Send/i });
+      fireEvent.click(submitButton);
+      
+      expect(mockConsoleLog).toHaveBeenCalledWith({
+        email: 'test@example.com',
+        message: 'Test message',
+        kg: '75'
+      });
+    });
+
+    it("clears form fields after submission", () => {
+      renderWithRouter();
+      
+      fireEvent.change(screen.getByLabelText(/Email address/i), { target: { value: 'test@example.com' } });
+      fireEvent.change(screen.getByLabelText(/Message/i), { target: { value: 'Test message' } });
+      fireEvent.change(screen.getByLabelText(/KG/i), { target: { value: '75' } });
+      
+      const submitButton = screen.getByRole('button', { name: /Send/i });
+      fireEvent.click(submitButton);
+      
+      expect(screen.getByLabelText(/Email address/i)).toHaveValue('');
+      expect(screen.getByLabelText(/Message/i)).toHaveValue('');
+      expect(screen.getByLabelText(/KG/i)).toHaveValue(null);
+    });
   });
 });
