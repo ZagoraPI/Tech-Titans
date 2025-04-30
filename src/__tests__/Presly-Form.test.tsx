@@ -15,7 +15,7 @@ describe("PreslyForm", () => {
     jest.clearAllMocks()
   })
 
-  test("renders all input fields", () => {
+  test("Renders all input fields", () => {
     openForm()
 
     expect(screen.getByLabelText(/Name/i)).toBeInTheDocument()
@@ -25,7 +25,7 @@ describe("PreslyForm", () => {
     expect(screen.getByLabelText(/How much do you Weight\?/i)).toBeInTheDocument()
   })
 
-  test("shows email validation error", async () => {
+  test("Shows email validation error", async () => {
     openForm()
 
     const emailInput = screen.getByLabelText(/Email/i)
@@ -41,7 +41,7 @@ describe("PreslyForm", () => {
     expect(await screen.findByText(/Email must be .*@gmail\.com.*@yahoo\.com.*@email\.com.*@abv\.bg.*/i)).toBeInTheDocument();
   })
 
-  test("shows weight validation error if invalid", async () => {
+  test("Shows weight validation error if invalid", async () => {
     openForm()
 
     const weightInput = screen.getByLabelText(/How much do you Weight/i)
@@ -53,13 +53,13 @@ describe("PreslyForm", () => {
     expect(screen.getByText(/Must be between 1 and 420 /i)).toBeInTheDocument()
   })
 
-  test("form submits correctly when all fields are valid", async () => {
+  test("Form submits correctly when all fields are valid", async () => {
     const logSpy = jest.spyOn(console, "log").mockImplementation(() => {})
     openForm()
 
     await userEvent.type(screen.getByLabelText(/Name/i), "Preslav")
     await userEvent.type(screen.getByLabelText(/Email/i), "your@email.com")
-    await userEvent.type(screen.getByLabelText(/Date of Birth/i), "09/09/2008")
+    await userEvent.type(screen.getByLabelText(/Date of Birth/i), "2008-09-09")
     await userEvent.type(screen.getByLabelText(/City/i), "Your City")
     await userEvent.type(screen.getByLabelText(/How much do you Weight/i), "83")
 
@@ -72,7 +72,7 @@ describe("PreslyForm", () => {
     expect.objectContaining({
       name: "Preslav",
       email: "your@email.com",
-      dateOfBirth: "09/09/2008",
+      dateOfBirth: "2008-09-09",
       city: "Your City",
       weight: "83",
     })

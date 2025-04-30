@@ -76,7 +76,8 @@ export function PreslyForm() {
       return
     }
   
-    if (Object.keys(errors).length === 0) {
+    const hasErrors = Object.values(errors).some(Boolean);
+if (!hasErrors) {
       console.log("Form Data:", { ...formData, weight })
       setFormData(initialFormState)
       setWeight("")
