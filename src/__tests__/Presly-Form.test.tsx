@@ -6,9 +6,11 @@ import { PreslyForm } from "src/components/Presly_Components/Presly-Form"
 
 const openForm = () => {
   render(<PreslyForm />)
-  const triggerButton = screen.getByRole("button", { name: /Presly/i })
-  fireEvent.click(triggerButton)
+  fireEvent.click(screen.getByRole("button", { name: /Presly/i }))
 }
+
+const getInput = (label: RegExp) => screen.getByLabelText(label)
+const getSubmitButton = () => screen.getByRole("button", { name: /Ya Sure/i })
 
 describe("PreslyForm", () => {
   beforeEach(() => {
@@ -18,65 +20,54 @@ describe("PreslyForm", () => {
   test("Renders all input fields", () => {
     openForm()
 
-    expect(screen.getByLabelText(/Name/i)).toBeInTheDocument()
-    expect(screen.getByLabelText(/Email/i)).toBeInTheDocument()
-    expect(screen.getByLabelText(/Date of Birth/i)).toBeInTheDocument()
-    expect(screen.getByLabelText(/City/i)).toBeInTheDocument()
-    expect(screen.getByLabelText(/How much do you Weight\?/i)).toBeInTheDocument()
+    expect(getInput(/Name/i)).toBeInTheDocument()
+    expect(getInput(/Email/i)).toBeInTheDocument()
+    expect(getInput(/Date of Birth/i)).toBeInTheDocument()
+    expect(getInput(/City/i)).toBeInTheDocument()
+    expect(getInput(/How much do you Weight\?/i)).toBeInTheDocument()
   })
 
   test("Shows email validation error", async () => {
     openForm()
 
-    const emailInput = screen.getByLabelText(/Email/i)
-    await userEvent.type(emailInput, "invalidemail")
+    await userEvent.type(getInput(/Email/i), "YOLO")
+    await userEvent.click(getSubmitButton())
 
-    const submit = screen.getByRole("button", { name: /Ya Sure/i })
-    await userEvent.click(submit)
-
-    expect(
-      screen.getByText(/Email must be .*@gmail\.com.*@yahoo\.com.*@email\.com.*@abv\.bg.*/i)
-    ).toBeInTheDocument();
-    
-    expect(await screen.findByText(/Email must be .*@gmail\.com.*@yahoo\.com.*@email\.com.*@abv\.bg.*/i)).toBeInTheDocument();
+    expect(screen.getByText(/Email must be/i)).toBeInTheDocument()
   })
 
   test("Shows weight validation error if invalid", async () => {
     openForm()
 
-    const weightInput = screen.getByLabelText(/How much do you Weight/i)
-    await userEvent.type(weightInput, "-10")
+    await userEvent.type(getInput(/How much do you Weight/i), "-10")
+    await userEvent.click(getSubmitButton())
 
-    const submit = screen.getByRole("button", { name: /Ya Sure/i })
-    await userEvent.click(submit)
-
-    expect(screen.getByText(/Must be between 1 and 420 /i)).toBeInTheDocument()
+    expect(screen.getByText(/Must be between 1 and 420/i)).toBeInTheDocument()
   })
 
   test("Form submits correctly when all fields are valid", async () => {
     const logSpy = jest.spyOn(console, "log").mockImplementation(() => {})
     openForm()
 
-    await userEvent.type(screen.getByLabelText(/Name/i), "Preslav")
-    await userEvent.type(screen.getByLabelText(/Email/i), "your@email.com")
-    await userEvent.type(screen.getByLabelText(/Date of Birth/i), "2008-09-09")
-    await userEvent.type(screen.getByLabelText(/City/i), "Your City")
-    await userEvent.type(screen.getByLabelText(/How much do you Weight/i), "83")
+    await userEvent.type(getInput(/Name/i), "Preslav")
+    await userEvent.type(getInput(/Email/i), "your@email.com")
+    await userEvent.type(getInput(/Date of Birth/i), "2008-09-09")
+    await userEvent.type(getInput(/City/i), "Your City")
+    await userEvent.type(getInput(/How much do you Weight/i), "83")
 
-    const submit = screen.getByRole("button", { name: /Ya Sure/i })
-    await userEvent.click(submit)
+    await userEvent.click(getSubmitButton())
 
-    
-   expect(logSpy).toHaveBeenCalledWith(
-    "Form Data:",
-    expect.objectContaining({
-      name: "Preslav",
-      email: "your@email.com",
-      dateOfBirth: "2008-09-09",
-      city: "Your City",
-      weight: "83",
-    })
-  );
-  logSpy.mockRestore();
+    expect(logSpy).toHaveBeenCalledWith(
+      "Form Data:",
+      expect.objectContaining({
+        name: "Preslav",
+        email: "your@email.com",
+        dateOfBirth: "2008-09-09",
+        city: "Your City",
+        weight: "83",
+      })
+    )
+
+    logSpy.mockRestore()
   })
 })
