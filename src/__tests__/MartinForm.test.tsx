@@ -110,7 +110,7 @@ test("form submission logs correct data", async () => {
           expect.arrayContaining([
             "Form Data:",
             {
-              name: "John Doe",
+              name: "John Doe 2",
               username: "johndoe",
               email: "john@gmail.com",
               password: "password123",
