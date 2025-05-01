@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "jest --clearCache && jest"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
@@ -18,6 +19,7 @@
     "@radix-ui/react-dropdown-menu": "^2.1.6",
     "@radix-ui/react-label": "^2.1.3",
     "@radix-ui/react-popover": "^1.1.6",
+    "@radix-ui/react-select": "^2.2.2",
     "@radix-ui/react-slider": "^1.2.3",
     "@radix-ui/react-slot": "^1.2.0",
     "@radix-ui/react-switch": "^1.1.3",
@@ -35,7 +37,7 @@
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.55.0",
     "react-hot-toast": "^2.5.2",
-    "react-router-dom": "^7.5.0",
+    "react-router-dom": "^7.5.3",
     "react-toastify": "^11.0.5",
     "sonner": "^2.0.3",
     "tailwind": "^2.3.1",
@@ -46,10 +48,16 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
+    "@jest/globals": "^29.7.0",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
     "@types/date-fns": "^2.5.3",
+    "@types/jest": "^29.5.14",
     "@types/node": "^22.13.13",
-    "@types/react": "^19.0.10",
-    "@types/react-dom": "^19.0.4",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
     "@types/react-router-dom": "^5.3.3",
     "@vitejs/plugin-react": "^4.3.4",
     "babel-plugin-module-resolver": "^5.0.2",
@@ -57,8 +65,15 @@
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^15.15.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "jest-transform-stub": "^2.0.0",
+    "ts-jest": "^29.3.2",
+    "ts-node": "^10.9.2",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1",
-    "vite": "^6.2.3"
+    "vite": "^6.2.3",
+    "vite-tsconfig-paths": "^5.1.4"
   }
 }

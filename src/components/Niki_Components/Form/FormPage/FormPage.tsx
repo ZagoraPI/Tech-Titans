@@ -66,7 +66,7 @@ const NikiFormPage: React.FC = () => {
               <div className="glass-input-wrapper">
                 <Input
                   type="message"
-                  id="mesage"
+                  id="message"
                   placeholder="Enter your message"
                   className="glass-input"
                   value={message}

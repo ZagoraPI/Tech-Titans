@@ -7,6 +7,7 @@ import { Alert, AlertTitle, AlertDescription } from "./components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage } from "./components/VladilenaTest";
 import {Accordion, AccordionContent, AccordionItem, AccordionTrigger, } from "@/components/ui/Accordion.tsx"
+
 import { Checkbox } from "./components/Checkbox.tsx";
 import { Popover, PopoverContent, PopoverTrigger } from "./components/Popover.tsx";
 import { Vladilena_Form } from "./components/Vladilena_Form/Vladilena_Form.tsx";
@@ -15,14 +16,15 @@ import TextBox from "./components/TextBox.tsx";
 import TheJj from "./components/TheJj.tsx";
 import AlexGifShower from "./components/Alex_Components/AlexGifShower.tsx";
 import AlexPfpIcon from "./components/Alex_Components/AlexPfpIcon.tsx";
-import { Bozhilkata } from "./components/BozhilkataComp.tsx";
+import { Bozhilkata } from "./components/Petar(Bozhilkata) Components/BozhilkataComp.tsx";
 import Martin from './components/MartinComp.tsx';
 import { MartinForm } from './components/Martin-Form/MartinForm.tsx';
-import { PetarForm } from './components/Petar(Bozhilkata)-Form/PetarForm.tsx';
+import { PetarForm } from './components/Petar(Bozhilkata) Components/PetarForm.tsx';
 import {PreslyForm} from "@/components/Presly_Components/Presly-Form.tsx"
 import { TheJjForm } from './components/The_Jj-Form/TheJjForm.tsx';
 import { AlexForm } from './components/Alex_Components/AlexForm.tsx';
 import  NikiForm  from './components/Niki_Components/Form/NikiForm.tsx';
+
 import { HrisaForm } from "./components/HrisaForm/Hrisa-form.tsx";
 import { SaturnForm } from "@/components/SaturnForm/SaturnForm.tsx";
 import { EgorkaForm } from "@/components/Egorka-Form/EgorkaForm.tsx";
@@ -30,8 +32,19 @@ import FormSelectionPage from './components/Niki_Components/Pages/FormSelectPage
 import NikiFormPage from './components/Niki_Components/Form/FormPage/FormPage.tsx';
 import ContactFormPage from "./components/The_Jj-Form/ContactFormPage";
 import { MailIcon } from "lucide-react";
+import { IlkoForm } from "./components/ilko-form/ilko.tsx";
+import { VladoForm } from "./components/Vlado_Form/vlado_form.tsx";
 
-<Route path="/contact" element={<ContactFormPage />} />
+<Route path="/contact" element={<ContactFormPage />} />;
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+
+
 function App() {
   const [count, setCount] = useState(0);
   const [activated, setActivated] = useState(false);
@@ -40,6 +53,10 @@ function App() {
     <Routes>
         <Route path="/" element={
     <>
+    <div style={{ position: 'fixed', bottom: '300px', right: '20px' }}>
+    <IlkoForm />
+  </div>
+  
       <div className="fixed top-16 left-16">
       <AlexPfpIcon />
         <Avatar>
@@ -50,9 +67,15 @@ function App() {
       <div style={{ position: 'fixed', bottom: '80px', right: '20px' }}>
         <PetarForm />
       </div>
+
+      <div style={{ position: 'fixed', bottom: '360px', right: '20px' }}>
+        <VladoForm />
+      </div>   
+
       <div style={{ position: 'fixed', bottom: '20px', right: '20px' }}>
         <MartinForm />
       </div>
+
       <div style={{ position: 'fixed', bottom: '120px', right: '40px' }}>
         <HrisaForm />
       </div>
@@ -73,20 +96,34 @@ function App() {
   className="inline-flex items-center gap-2 px-4 py-2 border border-blue-600 text-blue-600 font-medium rounded-xl hover:bg-blue-100 transition-all duration-200"
 >
   <MailIcon className="w-5 h-5" />
-  Контактна форма
-</Link>
+    The Jj Contact Form
+  </Link>
     </div>
 }
 
       <Martin />
       <AlexGifShower />
 
-     <Checkbox />
+      <Select>
+  <SelectTrigger className="w-[180px]">
+    <SelectValue placeholder="Theme" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="light">Light</SelectItem>
+    <SelectItem value="dark">Dark</SelectItem>
+    <SelectItem value="system">System</SelectItem>
+  </SelectContent>
+</Select>
+
       
-        <Popover>
+      <Checkbox />
+
+      
+      <Popover>
           <PopoverTrigger>Open</PopoverTrigger>
           <PopoverContent>Place content for the popover here.</PopoverContent>
-        </Popover>
+      </Popover>
+
 
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <Bozhilkata />
