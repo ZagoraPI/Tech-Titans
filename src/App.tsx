@@ -60,11 +60,11 @@ function App() {
             <SaturnForm />
         </div>
         <div style={{ position: 'fixed', bottom: '200px', right: '40px' }}>
-            <EgorkaForm />
-        </div>
-        <div style={{ position: 'fixed', bottom: '240px', right: '40px' }}>
-            <Vladilena_Form />
-        </div>
+              <EgorkaForm />
+          </div>
+          <div style={{ position: 'fixed', bottom: '240px', right: '40px' }}>
+              <Vladilena_Form />
+          </div>
        {
     <div className="p-4">
       <TheJjForm />
