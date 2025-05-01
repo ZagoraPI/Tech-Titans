@@ -51,62 +51,39 @@ import TextBox from "./components/TextBox.tsx";
 import TheJj from "./components/TheJj.tsx";
 
 
+
+
+
+
+
+
 function App() {
   const [count, setCount] = useState(0);
   const [activated, setActivated] = useState(false);
 
   return (
-    <Routes>
-        <Route path="/" element={
-    <>
-    <div style={{ position: 'fixed', bottom: '300px', right: '20px' }}>
-    <IlkoForm />
-  </div>
-  
-      <div className="fixed top-16 left-16">
+    <Routes><Route path="/" element={ <>
+
+    <div className="Alex PFP" style={{ position: 'fixed', padding: 64, top: "0px", left: "0px" }}>
       <AlexPfpIcon />
-        <Avatar>
-          <AvatarImage src="https://files.oaiusercontent.com/file-UisNwbknrK2KrChFkh4yeD?..." />
-        </Avatar>
-      </div>  
-
-      <div style={{ position: 'fixed', bottom: '80px', right: '20px' }}>
-        <PetarForm />
-      </div>
-
-      <div style={{ position: 'fixed', bottom: '360px', right: '20px' }}>
-        <VladoForm />
-      </div>   
-
-      <div style={{ position: 'fixed', bottom: '20px', right: '20px' }}>
-        <MartinForm />
-      </div>
-
-      <div style={{ position: 'fixed', bottom: '120px', right: '40px' }}>
-        <HrisaForm />
-      </div>
-        <div style={{ position: 'fixed', bottom: '160px', right: '40px' }}>
-            <SaturnForm />
-        </div>
-        <div style={{ position: 'fixed', bottom: '200px', right: '40px' }}>
-            <EgorkaForm />
-        </div>
-       {
-    <div className="p-4">
-      <TheJjForm />
+    </div>  
+    
+    <div className="JJ Contact Form">
       <Link
-  to="contact-form-page"
-  className="inline-flex items-center gap-2 px-4 py-2 border border-blue-600 text-blue-600 font-medium rounded-xl hover:bg-blue-100 transition-all duration-200"
->
-  <MailIcon className="w-5 h-5" />
-    The Jj Contact Form
-  </Link>
+          to="contact-form-page"
+          className="inline-flex items-center gap-2 px-4 py-2 border border-blue-600 text-blue-600 font-medium rounded-xl hover:bg-blue-100 transition-all duration-200">
+          <MailIcon className="w-5 h-5" />
+          The Jj Contact Form
+      </Link>
     </div>
-}
 
-      <Martin />
-      <AlexGifShower />
+    <div className="Martin Slider">
+    <Martin />
+    </div>
+      
+    <AlexGifShower />
 
+    
       <Select>
   <SelectTrigger className="w-[180px]">
     <SelectValue placeholder="Theme" />
@@ -138,9 +115,6 @@ function App() {
             {activated ? "Deactivate me!" : "Activate me!"}
           </Button>
         </div>
-
-        <div style={{position: 'fixed', top: '150px', right: '600px',}}><PreslyForm></PreslyForm></div>
-      
       </div>
 
       <div className="justify-center flex flex-row">
@@ -180,14 +154,7 @@ function App() {
     </AccordionContent>
   </AccordionItem>
 </Accordion>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <TextBox count1={count} style={{ color: 'white', backgroundColor: 'blue' }} />
-      </div>
 
-  
       <div className="bottom-left-container">
       
       <Link to="/forms">
@@ -195,9 +162,36 @@ function App() {
                   Go to Niki Forms
                 </Button>
               </Link>
-
-        <AlexForm />
     </div>
+  
+    <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <TextBox count1={count} style={{ color: 'white', backgroundColor: 'blue' }} />
+    </div>
+
+    <div style={{
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-end',
+    justifyContent: 'flex-end',
+    gap: '6px',
+
+  }} className="Forms On The Right">
+    <VladoForm />
+    <PetarForm />
+    <MartinForm />
+    <HrisaForm />
+    <SaturnForm />
+    <EgorkaForm />
+    <TheJjForm />
+    <PreslyForm />
+    <IlkoForm />
+    <AlexForm />
+
+  </div>
+
     </>
         } />
     <Route path="/forms" element={<FormSelectionPage />} />
