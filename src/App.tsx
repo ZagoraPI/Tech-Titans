@@ -50,13 +50,6 @@ import { ThemeSwitch } from "./components/Niki_Components/ThemeSwitch.tsx";
 import TextBox from "./components/TextBox.tsx";
 import TheJj from "./components/TheJj.tsx";
 
-
-
-
-
-
-
-
 function App() {
   const [count, setCount] = useState(0);
   const [activated, setActivated] = useState(false);
@@ -189,7 +182,6 @@ function App() {
     <PreslyForm />
     <IlkoForm />
     <AlexForm />
-
   </div>
 
     </>
@@ -198,7 +190,7 @@ function App() {
     <Route path="/niki-form-page" element={<NikiFormPage />} />
     <Route path="/niki-form" element={<NikiForm />} />
     <Route path="contact-form-page" element={<ContactFormPage />} />
-     </Routes>
+    </Routes>
   );
 }
 
