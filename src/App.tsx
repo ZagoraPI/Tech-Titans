@@ -1,48 +1,54 @@
 import "./App.css";
+
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Routes, Route } from 'react-router-dom';
+import { Link, Routes, Route } from 'react-router-dom';
 
-import { Alert, AlertTitle, AlertDescription } from "./components/ui/alert";
-import { Button } from "@/components/ui/button";
-import { Avatar, AvatarImage } from "./components/VladilenaTest";
-import {Accordion, AccordionContent, AccordionItem, AccordionTrigger, } from "@/components/ui/Accordion.tsx"
-
-import { Checkbox } from "./components/Checkbox.tsx";
-import { Popover, PopoverContent, PopoverTrigger } from "./components/Popover.tsx";
-
-import { ThemeSwitch } from "./components/Niki_Components/ThemeSwitch.tsx";
-import TextBox from "./components/TextBox.tsx";
-import TheJj from "./components/TheJj.tsx";
-import AlexGifShower from "./components/Alex_Components/AlexGifShower.tsx";
-import AlexPfpIcon from "./components/Alex_Components/AlexPfpIcon.tsx";
-import { Bozhilkata } from "./components/Petar(Bozhilkata) Components/BozhilkataComp.tsx";
-import Martin from './components/MartinComp.tsx';
-import { MartinForm } from './components/Martin-Form/MartinForm.tsx';
-import { PetarForm } from './components/Petar(Bozhilkata) Components/PetarForm.tsx';
-import {PreslyForm} from "@/components/Presly_Components/Presly-Form.tsx"
-import { TheJjForm } from './components/The_Jj-Form/TheJjForm.tsx';
-import { AlexForm } from './components/Alex_Components/AlexForm.tsx';
-import  NikiForm  from './components/Niki_Components/Form/NikiForm.tsx';
-
-import { HrisaForm } from "./components/HrisaForm/Hrisa-form.tsx";
-import { SaturnForm } from "@/components/SaturnForm/SaturnForm.tsx";
-import { EgorkaForm } from "@/components/Egorka-Form/EgorkaForm.tsx";
-import FormSelectionPage from './components/Niki_Components/Pages/FormSelectPage.tsx';
-import NikiFormPage from './components/Niki_Components/Form/FormPage/FormPage.tsx';
-import ContactFormPage from "./components/The_Jj-Form/ContactFormPage";
 import { MailIcon } from "lucide-react";
-import { IlkoForm } from "./components/ilko-form/ilko.tsx";
-import { VladoForm } from "./components/Vlado_Form/vlado_form.tsx";
 
-<Route path="/contact" element={<ContactFormPage />} />;
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/Accordion.tsx";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
+import { PreslyForm } from "@/components/Presly_Components/Presly-Form.tsx";
+import { EgorkaForm } from "@/components/Egorka-Form/EgorkaForm.tsx";
+import { SaturnForm } from "@/components/SaturnForm/SaturnForm.tsx";
+
+import { Alert, AlertTitle, AlertDescription } from "./components/ui/alert";
+import { Avatar, AvatarImage } from "./components/VladilenaTest";
+import { Bozhilkata } from "./components/Petar(Bozhilkata) Components/BozhilkataComp.tsx";
+import { Checkbox } from "./components/Checkbox.tsx";
+import ContactFormPage from "./components/The_Jj-Form/ContactFormPage";
+import { HrisaForm } from "./components/HrisaForm/Hrisa-form.tsx";
+import { IlkoForm } from "./components/ilko-form/ilko.tsx";
+import { PetarForm } from "./components/Petar(Bozhilkata) Components/PetarForm.tsx";
+import { Popover, PopoverContent, PopoverTrigger } from "./components/Popover.tsx";
+import { TheJjForm } from './components/The_Jj-Form/TheJjForm.tsx';
+import { VladoForm } from "./components/Vlado_Form/vlado_form.tsx";
+
+import AlexGifShower from "./components/Alex_Components/AlexGifShower.tsx";
+import AlexPfpIcon from "./components/Alex_Components/AlexPfpIcon.tsx";
+import { AlexForm } from './components/Alex_Components/AlexForm.tsx';
+
+import Martin from './components/MartinComp.tsx';
+import { MartinForm } from './components/Martin-Form/MartinForm.tsx';
+
+import NikiForm from './components/Niki_Components/Form/NikiForm.tsx';
+import NikiFormPage from './components/Niki_Components/Form/FormPage/FormPage.tsx';
+import FormSelectionPage from './components/Niki_Components/Pages/FormSelectPage.tsx';
+import { ThemeSwitch } from "./components/Niki_Components/ThemeSwitch.tsx";
+
+import TextBox from "./components/TextBox.tsx";
+import TheJj from "./components/TheJj.tsx";
 
 
 function App() {
@@ -62,7 +68,7 @@ function App() {
         <Avatar>
           <AvatarImage src="https://files.oaiusercontent.com/file-UisNwbknrK2KrChFkh4yeD?..." />
         </Avatar>
-      </div>
+      </div>  
 
       <div style={{ position: 'fixed', bottom: '80px', right: '20px' }}>
         <PetarForm />
