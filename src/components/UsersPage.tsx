@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-
+ 
 export default class UsersPage extends React.Component {
-  state: { users: { id: number; name: string }[] } = {
+  state: { users: { id: number; name: string; username: any; email: any; address: any; street: string; suite:any; city:string; zipcode: number; geo: number }[] } = {
     users: []
   }
 
@@ -20,7 +20,7 @@ export default class UsersPage extends React.Component {
         {
           this.state.users
             .map(user =>
-              <li key={user.id}>{user.name}</li>
+              <li key={user.id}>{user.name}{user.username}{user.email}</li>
             )
         }
       </ul>
