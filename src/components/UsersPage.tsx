@@ -32,7 +32,7 @@ const UsersPage: React.FC = () => {
         setError('Failed to fetch users');
         setLoading(false);
       });
-  }, []); // Empty dependency array = runs once on mount
+  }, []); 
 
   if (loading) {
     return <p>Loading users...</p>;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import axios from 'axios';
-import UsersPage from '@/components/UsersPage'; // update path as needed
+import UsersPage from '@/components/UsersPage'; 
 import '@testing-library/jest-dom';
 
 jest.mock('axios');
@@ -29,12 +29,12 @@ describe('UsersPage', () => {
   });
 
   test('displays users after successful fetch', async () => {
-    // 🟢 Mock BEFORE rendering
+    
     mockedAxios.get.mockResolvedValueOnce({ data: mockUsers });
 
     render(<UsersPage />);
 
-    // Await rendering of user data
+    
     await waitFor(() =>
       expect(screen.getByText('Leanne Graham')).toBeInTheDocument()
     );
@@ -46,7 +46,7 @@ describe('UsersPage', () => {
   });
 
   test('shows error message on fetch failure', async () => {
-    // 🟢 Mock rejection BEFORE rendering
+   
     mockedAxios.get.mockRejectedValueOnce(new Error('Network error'));
 
     render(<UsersPage />);
