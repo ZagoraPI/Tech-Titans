@@ -83,7 +83,7 @@ test("email validation fails without @gmail.com", async () => {
     render(<MartinForm />);
     fireEvent.click(screen.getByText("Martin"));
 
-    fireEvent.change(screen.getByTestId("email-input"), { target: { value: "wrong@outlook.com" } });
+    fireEvent.change(screen.getByTestId("email-input"), { target: { value: "wro1ng@outlook.com" } });
     fireEvent.blur(screen.getByTestId("email-input"));
     fireEvent.click(screen.getByTestId("confirm-button"));
 
