@@ -56,7 +56,7 @@ function App() {
         <PetarForm />
       </div>
 
-      <div style={{ position: 'fixed', bottom: '360px', right: '20px' }}>
+      <div style={{ position: 'fixed', bottom: '310px', right: '40px' }}>
         <VladoForm />
       </div>   
 
