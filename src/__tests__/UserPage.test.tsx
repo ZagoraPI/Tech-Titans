@@ -29,12 +29,10 @@ describe('UsersPage', () => {
   });
 
   test('displays users after successful fetch', async () => {
-    
     mockedAxios.get.mockResolvedValueOnce({ data: mockUsers });
 
     render(<UsersPage />);
 
-    
     await waitFor(() =>
       expect(screen.getByText('Leanne Graham')).toBeInTheDocument()
     );
@@ -46,7 +44,6 @@ describe('UsersPage', () => {
   });
 
   test('shows error message on fetch failure', async () => {
-   
     mockedAxios.get.mockRejectedValueOnce(new Error('Network error'));
 
     render(<UsersPage />);

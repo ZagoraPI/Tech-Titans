@@ -15,7 +15,6 @@ describe("IlkoForm field validations", () => {
         fireEvent.click(buttons[0]);
       }
     }
-
   });
 
   test("shows error for invalid email", async () => {

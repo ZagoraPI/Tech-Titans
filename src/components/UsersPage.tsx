@@ -1,25 +1,12 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
-interface User {
-  id: number;
-  name: string;
-  username: string;
-  email: string;
-  phone: string;
-  address: {
-    street: string;
-    suite: string;
-    city: string;
-    zipcode: string;
-  }
-}
+import { User } from '@/models/model'; 
 
 const UsersPage: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [filter, setFilter] = useState<string>('');
 
   useEffect(() => {
     axios
@@ -28,31 +15,40 @@ const UsersPage: React.FC = () => {
         setUsers(res.data);
         setLoading(false);
       })
-      .catch((err) => {
+      .catch(() => {
         setError('Failed to fetch users');
         setLoading(false);
       });
-  }, []); 
+  }, []);
 
-  if (loading) {
-    return <p>Loading users...</p>;
-  }
+  if (loading) return <p>Loading users...</p>;
+  if (error) return <p>{error}</p>;
 
-  if (error) {
-    return <p>{error}</p>;
-  }
+  const filteredUsers = users.filter(user =>
+    user.name.toLowerCase().includes(filter.toLowerCase())
+  );
 
   return (
-    <ul>
-      {users.map((user) => (
-        <li key={user.id} style={{ marginBottom: '1rem' }}>
-          <strong>{user.name}</strong> ({user.username})<br />
-          Email: {user.email}<br />
-          Phone: {user.phone}<br />
-          Address: {user.address.street}, {user.address.suite}, {user.address.city} - {user.address.zipcode}
-        </li>
-      ))}
-    </ul>
+    <div>
+      <input
+        type="text"
+        placeholder="Filter users by name"
+        value={filter}
+        onChange={(e) => setFilter(e.target.value)}
+        style={{ marginBottom: '1rem', padding: '0.5rem', width: '100%' }}
+      />
+
+      <ul>
+        {filteredUsers.map((user) => (
+          <li key={user.id} style={{ marginBottom: '1rem' }}>
+            <strong>{user.name}</strong> ({user.username})<br />
+            Email: {user.email}<br />
+            Phone: {user.phone}<br />
+            Address: {user.address.street}, {user.address.suite}, {user.address.city} - {user.address.zipcode}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 
