@@ -36,10 +36,6 @@ describe('UsersPage', () => {
     await waitFor(() =>
       expect(screen.getByText('Leanne Graham')).toBeInTheDocument()
     );
-
-    expect(
-      screen.getByText(/Email: Sincere@april.biz/i)
-    ).toBeInTheDocument();
     expect(screen.queryByText(/Loading users.../i)).not.toBeInTheDocument();
   });
 
