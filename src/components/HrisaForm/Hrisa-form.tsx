@@ -61,37 +61,32 @@ export function HrisaForm() {
 
   const handleSubmit = () => {
     if (!isValidEmail(formData.email)) {
-      alert("Please enter a valid email.")
-      return
+      alert("Please enter a valid email.");
+      return;
     }
-
+  
     if (
       formData.yearOfBirth < 1900 ||
       formData.yearOfBirth > new Date().getFullYear()
     ) {
-      alert("Please enter a valid year of birth.")
-      return
+      alert("Please enter a valid year of birth.");
+      return;
     }
-
-    if (!formData.city) {
-      alert("Please select a city.")
-      return
-    }
-
+  
     if (formData.weight <= 0) {
-      alert("Please enter a valid weight.")
-      return
+      alert("Please enter a valid weight.");
+      return;
     }
-
+  
     if (formData.height <= 0) {
-      alert("Please enter a valid height.")
-      return
+      alert("Please enter a valid height.");
+      return;
     }
-
-    console.log("Form Data:", formData)
-    setFormData(initialFormState)
-    setOpen(false)
-  }
+  
+    console.log(formData); // Log only the form data object
+    setFormData(initialFormState);
+    setOpen(false);
+  };
 
   const handleCancel = () => {
     setFormData(initialFormState)
@@ -249,7 +244,7 @@ export function HrisaForm() {
             </Button>
           </SheetClose>
           <SheetClose asChild>
-            <Button className="w-full" onClick={handleSubmit}>
+            <Button onClick={handleSubmit} data-testid="confirm-button">
               Confirm
             </Button>
           </SheetClose>
