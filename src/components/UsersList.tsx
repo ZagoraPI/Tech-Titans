@@ -1,5 +1,7 @@
 import React from 'react';
 import { User } from '@/models/model';
+import { Table } from './ui/table';
+import { Button } from './ui/button';
 
 interface UsersListProps {
   users: User[];
@@ -10,8 +12,7 @@ const UsersList: React.FC<UsersListProps> = ({ users, onRefresh}) => {
   return (
 
     <div>
-
-    <button
+    <Button
         onClick={onRefresh}
         style={{
           marginBottom: '1rem',
@@ -27,9 +28,9 @@ const UsersList: React.FC<UsersListProps> = ({ users, onRefresh}) => {
         }}
       >
         Refresh
-    </button>
+    </Button>
         
-      <table style={{ width: '90%', maxWidth: '1200px', margin: '0 auto', borderCollapse: 'collapse', marginTop: '1rem' }}>
+      <Table style={{ width: '90%', maxWidth: '1200px', margin: '0 auto', borderCollapse: 'collapse', marginTop: '1rem' }}>
         <thead>
           <tr>
             <th
@@ -85,7 +86,7 @@ const UsersList: React.FC<UsersListProps> = ({ users, onRefresh}) => {
             </tr>
           ))}
         </tbody>
-      </table>
+      </Table>
     </div>
   );
 };

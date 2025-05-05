@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { User } from '@/models/model'; 
 import UsersList from './UsersList';
+import { Input } from './ui/input';
 
 const UsersPage: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
@@ -40,9 +41,7 @@ const UsersPage: React.FC = () => {
   return (
     <div style={{ padding: '1rem' }}>
 
-      
-
-      <input
+      <Input
         type="text"
         placeholder="Filter users by name"
         value={filter}
