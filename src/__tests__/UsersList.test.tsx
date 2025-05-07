@@ -35,7 +35,13 @@ const mockUsers: User[] = [
 
 describe('UsersList', () => {
   test('renders user names and IDs', () => {
-    render(<UsersList users={mockUsers} onRefresh={jest.fn()} />);
+    render(
+      <UsersList
+        users={mockUsers}
+        onRefresh={jest.fn()}
+        onUserClick={jest.fn()}
+      />
+    );
 
     expect(screen.getByText('Leanne Graham')).toBeInTheDocument();
     expect(screen.getByText('Ervin Howell')).toBeInTheDocument();
@@ -45,11 +51,33 @@ describe('UsersList', () => {
 
   test('calls onRefresh when refresh button is clicked', () => {
     const mockRefresh = jest.fn();
-    render(<UsersList users={mockUsers} onRefresh={mockRefresh} />);
+    render(
+      <UsersList
+        users={mockUsers}
+        onRefresh={mockRefresh}
+        onUserClick={jest.fn()}
+      />
+    );
 
     const button = screen.getByRole('button', { name: /refresh/i });
     fireEvent.click(button);
 
     expect(mockRefresh).toHaveBeenCalledTimes(1);
+  });
+
+  test('calls onUserClick when a user row is clicked', () => {
+    const mockUserClick = jest.fn();
+    render(
+      <UsersList
+        users={mockUsers}
+        onRefresh={jest.fn()}
+        onUserClick={mockUserClick}
+      />
+    );
+
+    const userRow = screen.getByText('Leanne Graham');
+    fireEvent.click(userRow);
+
+    expect(mockUserClick).toHaveBeenCalledWith(mockUsers[0]);
   });
 });
