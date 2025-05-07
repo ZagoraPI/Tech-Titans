@@ -63,7 +63,7 @@ const UsersPage: React.FC = () => {
 
         {selectedUser && (
          <UserDetails
-          user={selectedUser} // Only pass selectedUser when it's not null
+          user={selectedUser}
            onClose={() => setSelectedUser(null)}
          />
         )}
