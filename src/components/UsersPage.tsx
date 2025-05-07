@@ -34,7 +34,7 @@ const UsersPage: React.FC = () => {
     user.name.toLowerCase().includes(filter.toLowerCase())
   );
 
-  if (loading) return <p>Loading users...</p>;
+  if (loading) return <p>Loading users....</p>;
   if (error) return <p>{error}</p>;
 
   return (
