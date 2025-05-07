@@ -6,13 +6,13 @@ import { Button } from './ui/button';
 interface UsersListProps {
   users: User[];
   onRefresh: () => void;
+  onUserClick: (user: User) => void;
 }
 
-const UsersList: React.FC<UsersListProps> = ({ users, onRefresh}) => {
+const UsersList: React.FC<UsersListProps> = ({ users, onRefresh, onUserClick }) => {
   return (
-
     <div>
-    <Button
+      <Button
         onClick={onRefresh}
         style={{
           marginBottom: '1rem',
@@ -28,18 +28,26 @@ const UsersList: React.FC<UsersListProps> = ({ users, onRefresh}) => {
         }}
       >
         Refresh
-    </Button>
-        
-      <Table style={{ width: '90%', maxWidth: '1200px', margin: '0 auto', borderCollapse: 'collapse', marginTop: '1rem' }}>
+      </Button>
+
+      <Table
+        style={{
+          width: '90%',
+          maxWidth: '1200px',
+          margin: '0 auto',
+          borderCollapse: 'collapse',
+          marginTop: '1rem',
+        }}
+      >
         <thead>
           <tr>
             <th
               style={{
-                border: '2px solid #ddd', 
-                padding: '25px', 
-                fontSize: '1.5rem', 
+                border: '2px solid #ddd',
+                padding: '25px',
+                fontSize: '1.5rem',
                 textAlign: 'left',
-                backgroundColor: '#f4f4f4', 
+                backgroundColor: '#f4f4f4',
                 color: 'black',
               }}
             >
@@ -48,11 +56,11 @@ const UsersList: React.FC<UsersListProps> = ({ users, onRefresh}) => {
             <th
               style={{
                 border: '2px solid #ddd',
-                padding: '25px', 
-                fontSize: '1.5rem', 
+                padding: '25px',
+                fontSize: '1.5rem',
                 textAlign: 'right',
-                backgroundColor: '#f4f4f4', 
-                width: '30%', 
+                backgroundColor: '#f4f4f4',
+                width: '30%',
                 color: 'black',
               }}
             >
@@ -62,13 +70,17 @@ const UsersList: React.FC<UsersListProps> = ({ users, onRefresh}) => {
         </thead>
         <tbody>
           {users.map((user) => (
-            <tr key={user.id}>
+            <tr
+              key={user.id}
+              onClick={() => onUserClick(user)}
+              style={{ cursor: 'pointer' }}
+            >
               <td
                 style={{
-                  border: '2px solid #ddd', 
-                  padding: '25px', 
+                  border: '2px solid #ddd',
+                  padding: '25px',
                   textAlign: 'left',
-                  fontSize: '1.2rem', 
+                  fontSize: '1.2rem',
                 }}
               >
                 {user.name}
@@ -76,9 +88,9 @@ const UsersList: React.FC<UsersListProps> = ({ users, onRefresh}) => {
               <td
                 style={{
                   border: '2px solid #ddd',
-                  padding: '25px', 
+                  padding: '25px',
                   textAlign: 'right',
-                  fontSize: '1.2rem', 
+                  fontSize: '1.2rem',
                 }}
               >
                 {user.id}
