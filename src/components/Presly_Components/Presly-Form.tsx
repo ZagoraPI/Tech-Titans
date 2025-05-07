@@ -19,34 +19,29 @@ export function PreslyForm() {
     email: "",
     dateOfBirth: "",
     city: "",
-    weight: "",
   };
 
   const [formData, setFormData] = useState(initialFormState);
   const [open, setOpen] = useState(false);
   const [emailError, setEmailError] = useState("");
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const [weight, setWeight] = useState("");
-  const [errors, setErrors] = useState<{
-    weight?: string
-  }>({})
+
 
   const isFormValid = () => {
-    const { name, email, dateOfBirth, city,  } = formData;
+    const { name, email, dateOfBirth, city } = formData;
     return (
       name.trim() !== "" &&
       email.trim() !== "" &&
       dateOfBirth.trim() !== "" &&
       city.trim() !== "" &&
-      weight.trim() !== "" &&
-      !isNaN(Number(weight)) &&
       emailRegex.test(email)
     );
   };
+  
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
-    setFormData({ ...formData, [id]: value })
+    setFormData({ ...formData, [id]: value });
 
     if (id === "email") {
       if (value && !emailRegex.test(value)) {
@@ -55,45 +50,27 @@ export function PreslyForm() {
         setEmailError("");
       }
     }
-    
-    if (id === "weight") {
-      if (!weight.trim()){
-        errors.weight = "Required field"
-      }
-      else if (isNaN(Number(weight))) {
-        errors.weight = "Must be a number" }
-      else if (Number(weight) < 1 || Number(weight) > 420) {
-        errors.weight = ("You can't weight that much! Please enter a valid weight between 1 and 420 kg.");
-      }
-   }
-  }
+  };
   
-   const handleSubmit = () => {
+  const handleSubmit = () => {
     if (!isFormValid()) {
       if (!emailRegex.test(formData.email)) {
         setEmailError("Please use a valid email ending in @gmail.com, @yahoo.com, @email.com, @abv.bg or anything else");
       }
-      return
+      return;
     }
   
-    const hasErrors = Object.values(errors).some(Boolean);
-if (!hasErrors) {
-      console.log("Form Data:", { ...formData, weight })
-      setFormData(initialFormState)
-      setWeight("")
-      setErrors({})
-      setEmailError("")
-      setOpen(false)
-     }
-    }
-   
+    console.log("Form Data:", formData);
+    setFormData(initialFormState);
+    setOpen(false);
+  };
 
   const handleCancel = () => {
     setFormData(initialFormState);
     setEmailError("");
     setOpen(false);
-  }
-  
+  };
+
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
@@ -123,7 +100,7 @@ if (!hasErrors) {
             <Label htmlFor="email">Email</Label>
             <Input
               id="email"
-              type="text"
+              type="email"
               placeholder="your@email.com"
               value={formData.email}
               onChange={handleChange}
@@ -157,35 +134,6 @@ if (!hasErrors) {
               onChange={handleChange}
             />
           </div>
-        
-
-          <div>
-            <Label htmlFor="weight">How much do you Weight?</Label>
-            <Input
-              id="weight"
-              type="number"
-              placeholder="83kg"
-              min = {1}
-              max = {420}
-              value={weight}
-              onChange={(e) => {
-                const val = e.target.value.trim()
-                setWeight(val)
-                const num = Number(val)
-
-                if (val === "") {
-                  setErrors((prev) => ({ ...prev, weight: "Required field" }))
-                } else if (isNaN(num)) {
-                  setErrors((prev) => ({ ...prev, weight: "Must be a number!!" }))
-                } else if (num < 1 || num > 420) {
-                  setErrors((prev) => ({ ...prev, weight: "Must be between 1 and 420 kg" }))
-                } else {
-                  setErrors((prev) => ({ ...prev, weight: undefined }))
-                }
-              }}
-            />
-            {errors.weight && <p className="text-sm text-red-500">{errors.weight}</p>}
-          </div>
         </div>
 
         <SheetFooter className="flex justify-end gap-4 px-2">
@@ -203,7 +151,7 @@ if (!hasErrors) {
       Ya Sure?
     </Button>
   </SheetClose>
- </SheetFooter>
+</SheetFooter>
       </SheetContent>
     </Sheet>
   );
