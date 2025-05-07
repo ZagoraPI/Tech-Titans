@@ -48,4 +48,4 @@ const UserDetails: React.FC<UserDetailsProps> = ({ user, onClose }) => {
   );
 };
 
-export default UserDetails;
+export default UserDetails
