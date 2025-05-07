@@ -15,6 +15,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({ user, onClose }) => {
         left: '50%',
         transform: 'translate(-50%, -50%)',
         backgroundColor: 'white',
+        color: 'black',
         padding: '2rem',
         borderRadius: '8px',
         boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
