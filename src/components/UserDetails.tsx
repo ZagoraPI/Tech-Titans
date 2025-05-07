@@ -22,12 +22,13 @@ const UserDetails: React.FC<UserDetailsProps> = ({ user, onClose }) => {
       }}
     >
       <h2>{user.name}</h2>
+      <p>Name: {user.name}</p>
+      <p>ID: {user.id}</p>
       <p>Email: {user.email}</p>
       <p>Phone: {user.phone}</p>
       <p>
         Address: {user.address?.street}, {user.address?.city}
       </p>
-      <p>Company: {user.company?.name}</p>
       <button
         onClick={onClose}
         style={{
