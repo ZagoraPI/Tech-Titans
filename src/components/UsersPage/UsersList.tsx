@@ -1,7 +1,7 @@
 import React from 'react';
 import { User } from '@/models/model';
-import { Table } from './ui/table';
-import { Button } from './ui/button';
+import { Table } from '../ui/table';
+import { Button } from '../ui/button';
 
 interface UsersListProps {
   users: User[];

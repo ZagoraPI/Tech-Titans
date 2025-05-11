@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import UserDetails from '../components/UserDetails'; 
+import UserDetails from '../components/UsersPage/UserDetails'; 
 import { User } from '@/models/model';
 
 describe('UserDetails', () => {

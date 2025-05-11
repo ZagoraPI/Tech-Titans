@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import UsersList from '@/components/UsersList';
+import UsersList from '@/components/UsersPage/UsersList';
 import { User } from '@/models/model';
 import '@testing-library/jest-dom';
 
