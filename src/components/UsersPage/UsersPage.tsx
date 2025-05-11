@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { User } from '@/models/model';
 import UsersList from './UsersList';
-import { Input } from './ui/input';
+import { Input } from '../ui/input';
 import UserDetails from './UserDetails';
 
 const UsersPage: React.FC = () => {
@@ -33,7 +33,7 @@ const UsersPage: React.FC = () => {
   const filteredUsers = users.filter(user =>
     user.name.toLowerCase().includes(filter.toLowerCase())
   );
-
+  console.log(filter)
   if (loading) return <p>Loading users...</p>;
   if (error) return <p>{error}</p>;
 
