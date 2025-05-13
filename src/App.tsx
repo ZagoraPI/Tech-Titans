@@ -14,8 +14,6 @@ import { Popover, PopoverContent, PopoverTrigger } from "./components/Popover.ts
 import { ThemeSwitch } from "./components/Niki_Components/ThemeSwitch.tsx";
 import TextBox from "./components/TextBox.tsx";
 import TheJj from "./components/TheJj.tsx";
-import AlexGifShower from "./components/Alex_Components/AlexGifShower.tsx";
-import AlexPfpIcon from "./components/Alex_Components/AlexPfpIcon.tsx";
 import { Bozhilkata } from "./components/Petar(Bozhilkata) Components/BozhilkataComp.tsx";
 import Martin from './components/MartinComp.tsx';
 import { MartinForm } from './components/Martin-Form/MartinForm.tsx';
@@ -36,7 +34,6 @@ import { IlkoForm } from "./components/ilko-form/ilko.tsx";
 import { VladoForm } from "./components/Vlado_Form/vlado_form.tsx";
 
 import UsersPage from "./components/UsersPage/UsersPage.tsx";
-
 
 import {
   Select,
@@ -60,7 +57,6 @@ function App() {
   </div>
   
       <div className="fixed top-16 left-16">
-      <AlexPfpIcon />
         <Avatar>
           <AvatarImage src="https://files.oaiusercontent.com/file-UisNwbknrK2KrChFkh4yeD?..." />
         </Avatar>
@@ -101,8 +97,6 @@ function App() {
 }
 
       <Martin />
-      <AlexGifShower />
-
       <Select>
   <SelectTrigger className="w-[180px]">
     <SelectValue placeholder="Theme" />
