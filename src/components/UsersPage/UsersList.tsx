@@ -18,17 +18,15 @@ const UsersList: React.FC<UsersListProps> = ({ users, onRefresh, onUserClick }) 
           marginBottom: '1rem',
           marginTop: '1rem',
           padding: '0.75rem 1.5rem',
-          backgroundColor: 'white',
-          color: '#000000',
+          backgroundColor: 'grey',
+          color: '#00000',
           border: '1px solid rgb(0, 0, 0)',
           cursor: 'pointer',
           fontSize: '1rem',
           borderRadius: '4px',
           marginLeft: '-101px',
         }}
-      >
-        Refresh
-      </Button>
+      >Refresh</Button>
 
       <Table
         style={{
