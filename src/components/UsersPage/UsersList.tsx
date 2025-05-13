@@ -28,7 +28,7 @@ const UsersList: React.FC<UsersListProps> = ({ users, onRefresh, onUserClick }) 
         Refresh
       </Button>
 
-      <Table style={{ maxWidth: '2000px', margin: '2rem auto' }}>
+      <Table style={{maxWidth: '2000px', margin: '2rem auto' }}>
         <thead>
           <tr>
             <th style={{ padding: '1rem', fontSize: '1.5rem', textAlign: 'left', backgroundColor: '#f4f4f4' }}>
@@ -41,7 +41,7 @@ const UsersList: React.FC<UsersListProps> = ({ users, onRefresh, onUserClick }) 
         </thead>
         <tbody>
           {users.map((user) => (
-            <tr key={user.id} onClick={() => onUserClick(user)} style={{ cursor: 'pointer' }}>
+            <tr key={user.id} onClick={() => onUserClick(user)} style={{ border: '2px solid #ddd',  cursor: 'pointer' }}>
               <td style={{ padding: '1.5rem', fontSize: '1.2rem', textAlign: 'left' }}>{user.name}</td>
               <td style={{ padding: '1.5rem', fontSize: '1.2rem', textAlign: 'right' }}>ID: {user.id}</td>
             </tr>
