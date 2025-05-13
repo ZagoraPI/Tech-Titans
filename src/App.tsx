@@ -10,7 +10,7 @@ import {Accordion, AccordionContent, AccordionItem, AccordionTrigger, } from "@/
 
 import { Checkbox } from "./components/Checkbox.tsx";
 import { Popover, PopoverContent, PopoverTrigger } from "./components/Popover.tsx";
-
+import { Vladilena_Form } from "./components/Vladilena_Form/Vladilena_Form.tsx";
 import { ThemeSwitch } from "./components/Niki_Components/ThemeSwitch.tsx";
 import TextBox from "./components/TextBox.tsx";
 import TheJj from "./components/TheJj.tsx";
@@ -85,8 +85,11 @@ function App() {
             <SaturnForm />
         </div>
         <div style={{ position: 'fixed', bottom: '200px', right: '40px' }}>
-            <EgorkaForm />
-        </div>
+              <EgorkaForm />
+          </div>
+          <div style={{ position: 'fixed', bottom: '240px', right: '40px' }}>
+              <Vladilena_Form />
+          </div>
        {
     <div className="p-4">
       <TheJjForm />
