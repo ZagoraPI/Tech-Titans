@@ -43,16 +43,7 @@ import NikiFormPage from './components/Niki_Components/Form/FormPage/FormPage.ts
 import ContactFormPage from "./components/The_Jj-Form/ContactFormPage";
 import UsersPage from "./components/UsersPage/UsersPage.tsx";
 
-import { IlkoForm } from "./components/ilko-form/ilko.tsx";
 import { VladoForm } from "./components/Vlado_Form/vlado_form.tsx";
-
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 
 import { MailIcon } from "lucide-react";
 
@@ -66,27 +57,9 @@ function App() {
         path="/"
         element={
           <>
-            <div style={{ position: 'fixed', bottom: '240px', right: '20px' }}>
-              <PetarForm />
-            </div>
-            <div style={{ position: 'fixed', bottom: '200px', right: '20px' }}>
-              <VladoForm />
-            </div>
-            <div style={{ position: 'fixed', bottom: '160px', right: '20px' }}>
-              <MartinForm />
-            </div>
-            <div style={{ position: 'fixed', bottom: '120px', right: '20px' }}>
-              <HrisaForm />
-            </div>
-            <div style={{ position: 'fixed', bottom: '80px', right: '20px' }}>
-              <SaturnForm />
-            </div>
-            <div style={{ position: 'fixed', bottom: '40px', right: '40px' }}>
-              <EgorkaForm />
-            </div>
-            <div style={{ position: 'fixed', bottom: '0px', right: '20px' }}>
-              <PreslyForm />
-            </div>
+            <h1> <b> Welcome to ZagoraPI </b> </h1>
+            <div className="WIP">WIP</div>
+ 
 
             <div className="p-4">
               <TheJjForm />
@@ -100,35 +73,10 @@ function App() {
             </div>
 
             <Martin />
-
-            <Select>
-              <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Theme" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="light">Light</SelectItem>
-                <SelectItem value="dark">Dark</SelectItem>
-                <SelectItem value="system">System</SelectItem>
-              </SelectContent>
-            </Select>
-
-            <Checkbox />
-
             <Popover>
               <PopoverTrigger>Open</PopoverTrigger>
               <PopoverContent>Place content for the popover here.</PopoverContent>
             </Popover>
-
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <Bozhilkata />
-              <div style={{ marginBottom: "50px", marginLeft: "40px" }}>
-                <h2>Bozhilkata React UseState HOOK :</h2>
-                <p>I am {activated ? "on" : "off"}.</p>
-                <Button onClick={() => setActivated(!activated)}>
-                  {activated ? "Deactivate me!" : "Activate me!"}
-                </Button>
-              </div>
-            </div>
 
             <div className="justify-center flex flex-row">
               <ThemeSwitch />
@@ -153,6 +101,7 @@ function App() {
                 {activated ? "Deactivate me!" : "Activate me!"}
               </Button>
             </div>
+            <Checkbox />
 
             <Accordion type="single" collapsible>
               <AccordionItem value="item-1">
@@ -184,6 +133,28 @@ function App() {
               <Link to="/users-page">
                 <Button>Users Page</Button>
               </Link>
+            </div>
+            
+            <div style={{ position: 'fixed', bottom: '240px', right: '20px' }}>
+              <PetarForm />
+            </div>
+            <div style={{ position: 'fixed', bottom: '200px', right: '20px' }}>
+              <VladoForm />
+            </div>
+            <div style={{ position: 'fixed', bottom: '160px', right: '20px' }}>
+              <MartinForm />
+            </div>
+            <div style={{ position: 'fixed', bottom: '120px', right: '20px' }}>
+              <HrisaForm />
+            </div>
+            <div style={{ position: 'fixed', bottom: '80px', right: '20px' }}>
+              <SaturnForm />
+            </div>
+            <div style={{ position: 'fixed', bottom: '40px', right: '20px' }}>
+              <EgorkaForm />
+            </div>
+            <div style={{ position: 'fixed', bottom: '0px', right: '20px' }}>
+              <PreslyForm />
             </div>
           </>
         }
