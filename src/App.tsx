@@ -7,25 +7,16 @@ import { Routes, Route } from 'react-router-dom';
 import { Alert, AlertTitle, AlertDescription } from "./components/ui/alert";
 import { Button } from "@/components/ui/button";
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger,
 } from "@/components/ui/Accordion.tsx";
 
 import { Checkbox } from "./components/Checkbox.tsx";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "./components/Popover.tsx";
+import { Popover, PopoverContent, PopoverTrigger } from "./components/Popover.tsx";
 
 import { ThemeSwitch } from "./components/Niki_Components/ThemeSwitch.tsx";
 import TextBox from "./components/TextBox.tsx";
 import TheJj from "./components/TheJj.tsx";
 
-import { Bozhilkata } from "./components/Petar(Bozhilkata) Components/BozhilkataComp.tsx";
 import Martin from './components/MartinComp.tsx';
 
 import { MartinForm } from './components/Martin-Form/MartinForm.tsx';
@@ -60,7 +51,6 @@ function App() {
             <h1> <b> Welcome to ZagoraPI </b> </h1>
             <div className="WIP">WIP</div>
  
-
             <div className="p-4">
               <TheJjForm />
               <Link
