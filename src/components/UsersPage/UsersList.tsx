@@ -15,86 +15,35 @@ const UsersList: React.FC<UsersListProps> = ({ users, onRefresh, onUserClick }) 
       <Button
         onClick={onRefresh}
         style={{
-          marginBottom: '1rem',
-          marginTop: '1rem',
+          margin: '1rem 0',
           padding: '0.75rem 1.5rem',
-          backgroundColor: 'white',
-          color: '#000000',
-          border: '1px solid rgb(0, 0, 0)',
+          backgroundColor: 'grey',
+          color: '#0000',
+          border: '2px solid black',
           cursor: 'pointer',
           fontSize: '1rem',
           borderRadius: '4px',
-          marginLeft: '-101px',
         }}
       >
         Refresh
       </Button>
 
-      <Table
-        style={{
-          width: '90%',
-          maxWidth: '1200px',
-          margin: '0 auto',
-          borderCollapse: 'collapse',
-          marginTop: '1rem',
-        }}
-      >
+      <Table style={{maxWidth: '2000px', margin: '2rem auto' }}>
         <thead>
           <tr>
-            <th
-              style={{
-                border: '2px solid #ddd',
-                padding: '25px',
-                fontSize: '1.5rem',
-                textAlign: 'left',
-                backgroundColor: '#f4f4f4',
-                color: 'black',
-              }}
-            >
+            <th style={{ padding: '1rem', fontSize: '1.5rem', textAlign: 'left', backgroundColor: '#f4f4f4' }}>
               Name
             </th>
-            <th
-              style={{
-                border: '2px solid #ddd',
-                padding: '25px',
-                fontSize: '1.5rem',
-                textAlign: 'right',
-                backgroundColor: '#f4f4f4',
-                width: '30%',
-                color: 'black',
-              }}
-            >
+            <th style={{ padding: '1rem', fontSize: '1.5rem', textAlign: 'right', backgroundColor: '#f4f4f4' }}>
               ID
             </th>
           </tr>
         </thead>
         <tbody>
           {users.map((user) => (
-            <tr
-              key={user.id}
-              onClick={() => onUserClick(user)}
-              style={{ cursor: 'pointer' }}
-            >
-              <td
-                style={{
-                  border: '2px solid #ddd',
-                  padding: '25px',
-                  textAlign: 'left',
-                  fontSize: '1.2rem',
-                }}
-              >
-                {user.name}
-              </td>
-              <td
-                style={{
-                  border: '2px solid #ddd',
-                  padding: '25px',
-                  textAlign: 'right',
-                  fontSize: '1.2rem',
-                }}
-              >
-                {user.id}
-              </td>
+            <tr key={user.id} onClick={() => onUserClick(user)} style={{ border: '2px solid #ddd',  cursor: 'pointer' }}>
+              <td style={{ padding: '1.5rem', fontSize: '1.2rem', textAlign: 'left' }}>{user.name}</td>
+              <td style={{ padding: '1.5rem', fontSize: '1.2rem', textAlign: 'right' }}>ID: {user.id}</td>
             </tr>
           ))}
         </tbody>

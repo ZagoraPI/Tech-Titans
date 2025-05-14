@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { User } from '@/models/model';
 import UsersList from './UsersList';
-import { Input } from '../ui/input';
-import UserDetails from './UserDetails';
+import UserDetails from './UserDetailsTable';
+import UserSearchBar from './UserSearchBar';
 
 const UsersPage: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [filter, setFilter] = useState<string>('');
+  const [filter, setFilter] = useState('');
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
 
   const fetchUsers = () => {
@@ -23,52 +23,33 @@ const UsersPage: React.FC = () => {
       .catch(() => {
         setError('Failed to fetch users');
         setLoading(false);
-      });
-  };
+      });};
 
   useEffect(() => {
     fetchUsers();
   }, []);
 
   const filteredUsers = users.filter(user =>
-    user.name.toLowerCase().includes(filter.toLowerCase())
-  );
-  console.log(filter)
+    user.name.toLowerCase().includes(filter.toLowerCase()));
+
   if (loading) return <p>Loading users...</p>;
   if (error) return <p>{error}</p>;
 
   return (
     <div style={{ padding: '1rem' }}>
-      <Input
-        type="text"
-        placeholder="Filter users by name"
-        value={filter}
-        onChange={(e) => setFilter(e.target.value)}
-        style={{
-          marginBottom: '1rem',
-          padding: '0.75rem',
-          fontSize: '1rem',
-          width: '100%',
-          maxWidth: '400px',
-          borderRadius: '4px',
-          border: '1px solid #ccc',
-        }}
-      />
+      <UserSearchBar value={filter} onChange={setFilter} />
 
       <UsersList
         users={filteredUsers}
-         onRefresh={fetchUsers}
-           onUserClick={(user: User) => setSelectedUser(user)}
+        onRefresh={fetchUsers}
+        onUserClick={setSelectedUser}
       />
 
-        {selectedUser && (
-         <UserDetails
+      {selectedUser && (
+        <UserDetails
           user={selectedUser}
-           onClose={() => setSelectedUser(null)}
-         />
-        )}
-    </div>
-  );
-};
+          onClose={() => setSelectedUser(null)}
+        />)}
+        </div>);};
 
 export default UsersPage;
