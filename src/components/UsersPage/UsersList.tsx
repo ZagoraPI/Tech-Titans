@@ -5,29 +5,12 @@ import { Button } from '../ui/button';
 
 interface UsersListProps {
   users: User[];
-  onRefresh: () => void;
   onUserClick: (user: User) => void;
 }
 
-const UsersList: React.FC<UsersListProps> = ({ users, onRefresh, onUserClick }) => {
+const UsersList: React.FC<UsersListProps> = ({ users, onUserClick }) => {
   return (
     <div>
-      <Button
-        onClick={onRefresh}
-        style={{
-          margin: '1rem 0',
-          padding: '0.75rem 1.5rem',
-          backgroundColor: 'grey',
-          color: '#0000',
-          border: '2px solid black',
-          cursor: 'pointer',
-          fontSize: '1rem',
-          borderRadius: '4px',
-        }}
-      >
-        Refresh
-      </Button>
-
       <Table style={{maxWidth: '2000px', margin: '2rem auto' }}>
         <thead>
           <tr>

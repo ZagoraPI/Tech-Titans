@@ -37,11 +37,10 @@ const UsersPage: React.FC = () => {
 
   return (
     <div style={{ padding: '1rem' }}>
-      <UserSearchBar value={filter} onChange={setFilter} />
+      <UserSearchBar value={filter} onChange={setFilter} onRefresh={fetchUsers}/>
 
       <UsersList
         users={filteredUsers}
-        onRefresh={fetchUsers}
         onUserClick={setSelectedUser}
       />
 
