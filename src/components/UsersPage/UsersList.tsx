@@ -6,7 +6,6 @@ import { Button } from '../ui/button';
 interface UsersListProps {
   users: User[];
   onUserClick: (user: User) => void;
-    onRefresh: () => void;
 }
 
 const UsersList: React.FC<UsersListProps> = ({ users, onUserClick }) => {
