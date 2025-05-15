@@ -54,7 +54,7 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  background-color: #0a0c0b;
+  background-color: #b59f9f;
   background-size: 600% 600%;
   animation: gradientBackground 20s ease infinite;
 }
@@ -96,7 +96,7 @@ body {
   z-index: 1000;
   font-size: 42rem;
   font-weight: 900;
-  color: rgba(248, 248, 248, 0.08);
+  color: rgb(0, 0, 0);
   opacity: 1;
   pointer-events: none;
   user-select: none;

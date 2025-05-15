@@ -6,15 +6,17 @@ import { Button } from '../ui/button';
 interface UsersListProps {
   users: User[];
   onUserClick: (user: User) => void;
+    onRefresh: () => void;
 }
 
 const UsersList: React.FC<UsersListProps> = ({ users, onUserClick }) => {
   return (
     <div>
-      <Table style={{maxWidth: '2000px', margin: '2rem auto' }}>
+      <Table style={{maxWidth: '2000px', margin: '2rem auto', color: 'black',
+          backgroundColor: 'white', }}>
         <thead>
           <tr>
-            <th style={{ padding: '1rem', fontSize: '1.5rem', textAlign: 'left', backgroundColor: '#f4f4f4' }}>
+            <th style={{ padding: '1rem', fontSize: '1.5rem', textAlign: 'left',color:'red', backgroundColor: '#f4f4f4' }}>
               Name
             </th>
             <th style={{ padding: '1rem', fontSize: '1.5rem', textAlign: 'right', backgroundColor: '#f4f4f4' }}>
