@@ -37,10 +37,13 @@ const UsersPage: React.FC = () => {
 
   return (
     <div style={{ padding: '1rem' }}>
-      <UserSearchBar value={filter} onChange={setFilter} onRefresh={fetchUsers}/>
+      <UserSearchBar value={filter} onChange={setFilter} onRefresh={function (): void {
+        throw new Error('Function not implemented.');
+      } } />
 
       <UsersList
         users={filteredUsers}
+        onRefresh={fetchUsers}
         onUserClick={setSelectedUser}
       />
 

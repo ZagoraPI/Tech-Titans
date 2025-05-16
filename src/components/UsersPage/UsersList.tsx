@@ -12,8 +12,7 @@ interface UsersListProps {
 const UsersList: React.FC<UsersListProps> = ({ users, onUserClick }) => {
   return (
     <div>
-      <Table style={{maxWidth: '2000px', margin: '2rem auto', color: 'black',
-          backgroundColor: 'white', }}>
+      <Table style={{maxWidth: '2000px', margin: '2rem auto', color: 'black', backgroundColor: 'white', }}>
         <thead>
           <tr>
             <th style={{ padding: '1rem', fontSize: '1.5rem', textAlign: 'left',color:'red', backgroundColor: '#f4f4f4' }}>

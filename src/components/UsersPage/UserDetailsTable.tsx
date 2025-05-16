@@ -19,25 +19,38 @@ const UserDetails: React.FC<UserDetailsProps> = ({ user, onClose }) => (
       height: 'auto',
       width: '400px',
       background: '#0000',
-      boxShadow: '-4px 0 10px rgba(0, 0, 0, 0.2)',
+      boxShadow: '-4px 0 10px rgba(247, 10, 10, 0.2)',
       padding: '2rem',
       zIndex: 1,
       animation: 'slideRight 0.3s ease forwards',
     }}
   >
     <h2 style={{ marginBottom: '1rem' }}>{user.name}</h2>
-    <table style={{ width: '100%', marginBottom: '1.5rem' }}>
-      <tbody>
-        <tr><td style={td}>Name:</td><td style={td}>{user.name}</td></tr>
-        <tr><td style={td}>ID:</td><td style={td}>{user.id}</td></tr>
-        <tr><td style={td}>Email:</td><td style={td}>{user.email}</td></tr>
-        <tr><td style={td}>Phone:</td><td style={td}>{user.phone}</td></tr>
-        <tr>
-          <td style={td}>Address:</td>
-          <td style={td}>{user.address?.street}, {user.address?.city}</td>
-        </tr>
-      </tbody>
-    </table>
+<table style={{ width: '100%', marginBottom: '1.5rem' }}>
+  <tbody>
+    <tr>
+      <td style={{ ...td, color: 'black' }}>Name:</td> {/* black */}
+      <td style={td}>{user.name}</td>
+    </tr>
+    <tr>
+      <td style={{ ...td, color: 'white' }}>ID:</td> {/* white */}
+      <td style={td}>{user.id}</td>
+    </tr>
+    <tr>
+      <td style={{ ...td, color: 'white' }}>Email:</td> {/* white */}
+      <td style={td}>{user.email}</td>
+    </tr>
+    <tr>
+      <td style={{ ...td, color: 'white' }}>Phone:</td> {/* white */}
+      <td style={td}>{user.phone}</td>
+    </tr>
+    <tr>
+      <td style={{ ...td, color: 'white' }}>Address:</td> {/* white */}
+      <td style={td}>{user.address?.street}, {user.address?.city}</td>
+    </tr>
+  </tbody>
+</table>
+
     <Button onClick={onClose} style={{ background: '#007BFF', color: '#fff', padding: '0.5rem 1rem' }}>
       Close
     </Button>
