@@ -11,7 +11,7 @@ interface UsersListProps {
 const UsersList: React.FC<UsersListProps> = ({ users, onUserClick }) => {
   const tableStyle = {
     maxWidth: '2000px',
-    margin: '2rem auto',
+    margin: '1rem',
     color: 'black',
     backgroundColor: 'rgba(255, 255, 255, 0.88)',
   };
@@ -74,7 +74,7 @@ const UsersList: React.FC<UsersListProps> = ({ users, onUserClick }) => {
             </tr>
           ))}
         </tbody>
-      </Table>
+      </Table>   
     </div>
   );
 };
