@@ -29,23 +29,23 @@ const UserDetails: React.FC<UserDetailsProps> = ({ user, onClose }) => (
 <table style={{ width: '100%', marginBottom: '1.5rem' }}>
   <tbody>
     <tr>
-      <td style={{ ...td, color: 'black' }}>Name:</td> {/* black */}
+      <td style={{ ...td, color: 'black' }}>Name:</td> 
       <td style={td}>{user.name}</td>
     </tr>
     <tr>
-      <td style={{ ...td, color: 'white' }}>ID:</td> {/* white */}
+      <td style={{ ...td, color: 'white' }}>ID:</td> 
       <td style={td}>{user.id}</td>
     </tr>
     <tr>
-      <td style={{ ...td, color: 'white' }}>Email:</td> {/* white */}
+      <td style={{ ...td, color: 'white' }}>Email:</td> 
       <td style={td}>{user.email}</td>
     </tr>
     <tr>
-      <td style={{ ...td, color: 'white' }}>Phone:</td> {/* white */}
+      <td style={{ ...td, color: 'white' }}>Phone:</td> 
       <td style={td}>{user.phone}</td>
     </tr>
     <tr>
-      <td style={{ ...td, color: 'white' }}>Address:</td> {/* white */}
+      <td style={{ ...td, color: 'white' }}>Address:</td> 
       <td style={td}>{user.address?.street}, {user.address?.city}</td>
     </tr>
   </tbody>
