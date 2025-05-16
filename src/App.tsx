@@ -49,7 +49,7 @@ function App() {
         element={
           <>
             <h1> <b> Welcome to ZagoraPI </b> </h1>
-            <div className="WIP">WIP</div>
+      
  
             <div className="p-4">
               <TheJjForm />
