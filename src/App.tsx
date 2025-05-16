@@ -48,9 +48,9 @@ function App() {
         path="/"
         element={
           <>
-            <h1> <b> Welcome to ZagoraPI </b> </h1>
-      
- 
+
+           <h1 style={{ position: "relative", top: "-150px" }}><b>Welcome to ZagoraPI</b></h1>
+
             <div className="p-4">
               <TheJjForm />
               <Link
