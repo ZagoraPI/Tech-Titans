@@ -12,7 +12,7 @@ const td = { padding: '0.5rem', fontSize: '1rem', borderBottom: '1px solid #ddd'
 const UserDetails: React.FC<UserDetailsProps> = ({ user, onClose }) => (
   <div
     style={{
-      position: 'fixed',
+      position: 'absolute',
       top: '50%',
       left: '60%',
       transform: 'translate(0, -50%)',

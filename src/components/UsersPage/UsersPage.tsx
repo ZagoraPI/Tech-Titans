@@ -44,7 +44,6 @@ const UsersPage: React.FC = () => {
 
       <UsersList
         users={filteredUsers}
-        onRefresh={fetchUsers}
         onUserClick={setSelectedUser}
       />
 

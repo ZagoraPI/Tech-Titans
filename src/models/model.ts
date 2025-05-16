@@ -1,4 +1,5 @@
 export interface User {
+    company: any;
     id: number;
     name: string;
     username: string;
