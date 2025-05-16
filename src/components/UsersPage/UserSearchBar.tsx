@@ -14,7 +14,7 @@ const UserSearchBar: React.FC<Props> = ({ value, onChange }) => {
   return (
     <>
 
-    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem',}}>
     <Button
       onClick={() => navigate(-1)}
       style={{
@@ -32,7 +32,6 @@ const UserSearchBar: React.FC<Props> = ({ value, onChange }) => {
     >
       <img
         src="https://www.svgrepo.com/show/67631/back-arrow.svg"
-        
         style={{ height: '24px', width: '24px' }}
       />
     </Button>
