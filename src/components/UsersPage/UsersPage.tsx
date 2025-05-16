@@ -30,16 +30,17 @@ const UsersPage: React.FC = () => {
   }, []);
 
   const filteredUsers = users.filter(user =>
-    user.name.toLowerCase().includes(filter.toLowerCase()));
+    user.name.toLowerCase().includes(filter.toLowerCase()) ||
+    user.id.toString() === filter
+  );
+  
 
   if (loading) return <p>Loading users...</p>;
   if (error) return <p>{error}</p>;
 
   return (
     <div style={{ padding: '1rem' }}>
-      <UserSearchBar value={filter} onChange={setFilter} onRefresh={function (): void {
-        throw new Error('Function not implemented.');
-      } } />
+      <UserSearchBar value={filter} onChange={setFilter} />
 
       <UsersList
         users={filteredUsers}

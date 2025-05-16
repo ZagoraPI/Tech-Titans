@@ -7,17 +7,16 @@ import { useNavigate } from 'react-router-dom';
 interface Props {
   value: string;
   onChange: (val: string) => void;
-  onRefresh: () => void;
 }
 
-const UserSearchBar: React.FC<Props> = ({ value, onChange, onRefresh }) => {
+const UserSearchBar: React.FC<Props> = ({ value, onChange }) => {
   const navigate = useNavigate();
   return (
     <>
 
     <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
     <Button
-      onClick={() => navigate('/')}
+      onClick={() => navigate(-1)}
       style={{
         display: 'flex',
         alignItems: 'center',
@@ -57,7 +56,7 @@ const UserSearchBar: React.FC<Props> = ({ value, onChange, onRefresh }) => {
         }} />
         
         <Button
-          onClick={onRefresh}
+          onClick={() => window.location.reload()}
           style={{
             width: 'auto',
             padding: '0 1.5rem',
