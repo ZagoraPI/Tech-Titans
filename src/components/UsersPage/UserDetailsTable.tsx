@@ -1,6 +1,7 @@
 import React from 'react';
 import { User } from '@/models/model';
 import { Button } from '../ui/button';
+import UsersList from './UsersList';
 
 interface UserDetailsProps {
   user: User;
@@ -12,7 +13,6 @@ const td = { padding: '0.5rem', fontSize: '1rem', borderBottom: '1px solid #ddd'
 const UserDetails: React.FC<UserDetailsProps> = ({ user, onClose }) => (
   <div
     style={{
-      position: 'fixed',
       top: '50%',
       left: '60%',
       transform: 'translate(0, -50%)',
