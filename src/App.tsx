@@ -68,9 +68,8 @@ function App() {
               <PopoverContent>Place content for the popover here.</PopoverContent>
             </Popover>
 
-            <div className="justify-center flex flex-row">
+            <div style={{ display: "flex", alignItems: "center", position: "relative", top: "-326px", left: "550px" }}>
               <ThemeSwitch />
-              <TheJj />
             </div>
 
             {count > 0 && (
