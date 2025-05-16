@@ -60,7 +60,7 @@ const UserSearchBar: React.FC<Props> = ({ value, onChange }) => {
           style={{
             width: 'auto',
             padding: '0 1.5rem',
-            backgroundColor: 'grey',
+            backgroundColor: 'white',
             color: '#000',
             border: '2px solid black',
             cursor: 'pointer',
