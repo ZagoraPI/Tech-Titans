@@ -48,29 +48,37 @@ function App() {
         path="/"
         element={
           <>
-            <h1> <b> Welcome to ZagoraPI </b> </h1>
-      
- 
-            <div className="p-4">
-              <TheJjForm />
+
+           <h1 style={{ position: "relative", top: "-170px" }}><b>Welcome to ZagoraPI</b></h1>
+
+            <div className="bottom-right-stack">
               <Link
                 to="contact-form-page"
-                className="inline-flex items-center gap-2 px-4 py-2 border border-blue-600 text-blue-600 font-medium rounded-xl hover:bg-blue-100 transition-all duration-200"
+                className="inline-flex items-center gap-2 px-4 py-2 border border-gray-150 font-medium rounded-xl transition-all duration-200 hover:bg-gray-200"
+                style={{ color: '#918f8f' }}
               >
                 <MailIcon className="w-5 h-5" />
                 The Jj Contact Form
               </Link>
             </div>
 
+          <div style={{ display: "flex", alignItems: "center", position: "relative", top: "-160px", left: "540px" }}>
+              <TheJj />
+            </div>
+
+            <div style={{display: "flex", alignItems: "center", position: "relative", top: "-195px" }}>
             <Martin />
+            </div>
+
+          <div style={{position:"relative", top: "-215px", left: "-305px"}}>
             <Popover>
               <PopoverTrigger>Open</PopoverTrigger>
               <PopoverContent>Place content for the popover here.</PopoverContent>
             </Popover>
+           </div>
 
-            <div className="justify-center flex flex-row">
+            <div style={{ display: "flex", alignItems: "center", position: "relative", top: "-315px", left: "535px" }}>
               <ThemeSwitch />
-              <TheJj />
             </div>
 
             {count > 0 && (
@@ -84,27 +92,32 @@ function App() {
               </div>
             )}
 
-            <div style={{ marginBottom: "50px", marginLeft: "40px" }}>
+            <div style={{position: "relative", alignItems:"center", top: "-355px", left: "-420px"}}>
               <h2>Bozhilkata React UseState HOOK :</h2>
               <p>I am {activated ? "on" : "off"}.</p>
               <Button type="button" onClick={() => setActivated(!activated)}>
                 {activated ? "Deactivate me!" : "Activate me!"}
               </Button>
             </div>
-            <Checkbox />
 
+            <div style={{ position: "relative", top: "-350px", left: "-300px" }}>
+            <Checkbox />
+            </div>
+
+            <div style={{ alignItems:"center", position: "relative", top: "-475px", left: "690px" }}>
             <Accordion type="single" collapsible>
               <AccordionItem value="item-1">
                 <AccordionTrigger>Is it accessible????</AccordionTrigger>
                 <AccordionContent>Maybe idk :3</AccordionContent>
               </AccordionItem>
             </Accordion>
+            </div>
 
-            <div className="card">
+            <div style={{ position: "relative", bottom: "-160px"}}>
               <button onClick={() => setCount(count + 1)}>
                 count is {count}
               </button>
-              <TextBox count1={count} style={{ color: 'white', backgroundColor: 'blue' }} />
+              <TextBox count1={count} />
             </div>
 
             <div className="bottom-left-container">
@@ -125,27 +138,19 @@ function App() {
               </Link>
             </div>
             
-            <div style={{ position: 'fixed', bottom: '240px', right: '20px' }}>
-              <PetarForm />
+            <div style={{ position: "relative", top: "180px", left: "790px" }}>
+              <Vladilena_Form />
             </div>
-            <div style={{ position: 'fixed', bottom: '200px', right: '20px' }}>
-              <VladoForm />
+
+            <div className="bottom-right-stack" 
+            style={{ bottom: '60px',  }}>
+                {[PetarForm, VladoForm,TheJjForm, MartinForm, HrisaForm, SaturnForm, EgorkaForm, PreslyForm,].map((Form, idx) => (
+              <div key={idx} className="form-button-wrapper">
+                <Form />
+              </div>
+              ))}
             </div>
-            <div style={{ position: 'fixed', bottom: '160px', right: '20px' }}>
-              <MartinForm />
-            </div>
-            <div style={{ position: 'fixed', bottom: '120px', right: '20px' }}>
-              <HrisaForm />
-            </div>
-            <div style={{ position: 'fixed', bottom: '80px', right: '20px' }}>
-              <SaturnForm />
-            </div>
-            <div style={{ position: 'fixed', bottom: '40px', right: '20px' }}>
-              <EgorkaForm />
-            </div>
-            <div style={{ position: 'fixed', bottom: '0px', right: '20px' }}>
-              <PreslyForm />
-            </div>
+
           </>
         }
       />
