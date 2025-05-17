@@ -10,7 +10,7 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  background-color: #121212;
+  background-color: #0f0f0fb4;
   background-position: center;
   background-size: cover;
   background-size: 600% 600%;
@@ -19,14 +19,14 @@ body {
 }
 
 button,.btn {
-  background-color: #918f8f;
+  background-color: #202020;
   color: white;
   padding: 10px;
   border-radius: 6px;
   border: none;
   cursor: pointer;
-  background-color: #918f8f(--primary);
-   color: #918f8f(--primary-foreground); 
+  background-color: #202020(--primary);
+   color: #202020(--primary-foreground); 
 }
 
 .logo {
@@ -102,7 +102,7 @@ form,
 }
 
 .form-button-wrapper {
-  background-color: #918f8f;
+  background-color: #202020;
   color: white;
   border-radius: 8px;
   padding: 0px 1px;
