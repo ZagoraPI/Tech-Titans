@@ -62,7 +62,7 @@ function App() {
               </Link>
             </div>
 
-          <div style={{ display: "flex", alignItems: "center", position: "relative", top: "-160px", left: "555px" }}>
+          <div style={{ display: "flex", alignItems: "center", position: "relative", top: "-160px", left: "540px" }}>
               <TheJj />
             </div>
 
@@ -77,7 +77,7 @@ function App() {
             </Popover>
            </div>
 
-            <div style={{ display: "flex", alignItems: "center", position: "relative", top: "-315px", left: "550px" }}>
+            <div style={{ display: "flex", alignItems: "center", position: "relative", top: "-315px", left: "535px" }}>
               <ThemeSwitch />
             </div>
 
@@ -92,18 +92,19 @@ function App() {
               </div>
             )}
 
-            <div style={{ marginBottom: "50px", marginLeft: "40px" }}>
+            <div style={{position: "relative", alignItems:"center", top: "-355px", left: "-420px"}}>
               <h2>Bozhilkata React UseState HOOK :</h2>
               <p>I am {activated ? "on" : "off"}.</p>
               <Button type="button" onClick={() => setActivated(!activated)}>
                 {activated ? "Deactivate me!" : "Activate me!"}
               </Button>
             </div>
-            <div style={{ position: "relative", top: "-50px", left: "-120px" }}>
+
+            <div style={{ position: "relative", top: "-350px", left: "-300px" }}>
             <Checkbox />
             </div>
 
-            <div >
+            <div style={{ alignItems:"center", position: "relative", top: "-475px", left: "690px" }}>
             <Accordion type="single" collapsible>
               <AccordionItem value="item-1">
                 <AccordionTrigger>Is it accessible????</AccordionTrigger>
@@ -112,11 +113,11 @@ function App() {
             </Accordion>
             </div>
 
-            <div className="card">
+            <div style={{ position: "relative", bottom: "-160px"}}>
               <button onClick={() => setCount(count + 1)}>
                 count is {count}
               </button>
-              <TextBox count1={count} style={{ color: 'white', backgroundColor: 'blue' }} />
+              <TextBox count1={count} />
             </div>
 
             <div className="bottom-left-container">
@@ -137,6 +138,10 @@ function App() {
               </Link>
             </div>
             
+            <div style={{ position: "relative", top: "180px", left: "790px" }}>
+              <Vladilena_Form />
+            </div>
+
             <div className="bottom-right-stack" 
             style={{ bottom: '60px',  }}>
                 {[PetarForm, VladoForm,TheJjForm, MartinForm, HrisaForm, SaturnForm, EgorkaForm, PreslyForm,].map((Form, idx) => (
