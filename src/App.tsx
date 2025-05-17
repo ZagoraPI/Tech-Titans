@@ -52,7 +52,6 @@ function App() {
            <h1 style={{ position: "relative", top: "-150px" }}><b>Welcome to ZagoraPI</b></h1>
 
             <div className="p-4">
-              <TheJjForm />
               <Link
                 to="contact-form-page"
                 className="inline-flex items-center gap-2 px-4 py-2 border border-blue-600 text-blue-600 font-medium rounded-xl hover:bg-blue-100 transition-all duration-200"
@@ -124,27 +123,14 @@ function App() {
               </Link>
             </div>
             
-            <div style={{ position: 'fixed', bottom: '240px', right: '20px' }}>
-              <PetarForm />
+            <div className="bottom-right-stack">
+                {[PetarForm, VladoForm,TheJjForm, MartinForm, HrisaForm, SaturnForm, EgorkaForm, PreslyForm,].map((Form, idx) => (
+              <div key={idx} className="form-button-wrapper">
+                <Form />
+              </div>
+              ))}
             </div>
-            <div style={{ position: 'fixed', bottom: '200px', right: '20px' }}>
-              <VladoForm />
-            </div>
-            <div style={{ position: 'fixed', bottom: '160px', right: '20px' }}>
-              <MartinForm />
-            </div>
-            <div style={{ position: 'fixed', bottom: '120px', right: '20px' }}>
-              <HrisaForm />
-            </div>
-            <div style={{ position: 'fixed', bottom: '80px', right: '20px' }}>
-              <SaturnForm />
-            </div>
-            <div style={{ position: 'fixed', bottom: '40px', right: '20px' }}>
-              <EgorkaForm />
-            </div>
-            <div style={{ position: 'fixed', bottom: '0px', right: '20px' }}>
-              <PreslyForm />
-            </div>
+
           </>
         }
       />
