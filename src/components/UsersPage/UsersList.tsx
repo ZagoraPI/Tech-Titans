@@ -9,73 +9,50 @@ interface UsersListProps {
 }
 
 const UsersList: React.FC<UsersListProps> = ({ users, onUserClick }) => {
-  const tableStyle = {
-    maxWidth: '2000px',
-    margin: '1rem',
-    color: 'black',
-    backgroundColor: 'rgba(255, 255, 255, 0.88)',
-  };
-
-  const headerCellStyle = {
-    padding: '1rem',
-    fontSize: '1.5rem',
-    textAlign: 'center' as const,
-    backgroundColor: 'rgba(255, 255, 255, 0.88)',
-  };
-
-  const rowCellStyle = {
-    padding: '1.5rem',
-    fontSize: '1.2rem',
-    textAlign: 'right' as const,
-  };
-
-  const rowStyle = {
-    border: '2px solid rgba(41, 41, 41, 0.2)',
-    cursor: 'pointer',
-  };
-
   return (
-    <div>
-      <Table style={tableStyle}>
-        <thead>
-          <tr>
-            <th style={headerCellStyle}>ID</th>
-            <th style={headerCellStyle}>Name</th>
-            <th style={headerCellStyle}>Username</th>
-            <th style={headerCellStyle}>Email</th>
-            <th style={headerCellStyle}>City</th>
-            <th style={headerCellStyle}>Company</th>
-            <th style={headerCellStyle}>Details</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((user) => (
-            <tr
-              key={user.id}
-              onClick={() => onUserClick(user)}
-              style={rowStyle}
-            >
-              <td style={{ ...rowCellStyle, textAlign: 'left' }}>{user.id}</td>
-              <td style={rowCellStyle}>{user.name}</td>
-              <td style={rowCellStyle}>{user.username}</td>
-              <td style={rowCellStyle}>{user.email}</td>
-              <td style={rowCellStyle}>{user.address?.city || '-'}</td>
-              <td style={rowCellStyle}>{user.company?.name || '-'}</td>
-              <td style={rowCellStyle}>
-                <Button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onUserClick(user);
-                  }}
-                >
-                  details
-                </Button>
-              </td>
+   
+      <div className=" w-350 overflow-x-auto rounded-none shadow-sm bg-white">
+        <Table className="w-full table-auto text-sm text-gray-800 w-full">
+          <thead className="bg-gray-100 text-gray-700"> 
+            <tr>
+              <th className="p-4 text-left text-base font-semibold">ID</th>
+              <th className="p-4 text-left text-base font-semibold">Name</th>
+              <th className="p-4 text-left text-base font-semibold">Username</th>
+              <th className="p-4 text-left text-base font-semibold">Email</th>
+              <th className="p-4 text-left text-base font-semibold">City</th>
+              <th className="p-4 text-left text-base font-semibold">Company</th>
+              <th className="p-4 text-left text-base font-semibold">Details</th>
             </tr>
-          ))}
-        </tbody>
-      </Table>   
-    </div>
+          </thead>
+          <tbody>
+            {users.map((user) => (
+              <tr
+                key={user.id}
+                onClick={() => onUserClick(user)}
+                className="hover:bg-gray-50 transition cursor-pointer border-b"
+              >
+                <td className="p-4">{user.id}</td>
+                <td className="p-4">{user.name}</td>
+                <td className="p-4">{user.username}</td>
+                <td className="p-4">{user.email}</td>
+                <td className="p-4">{user.address?.city || '-'}</td>
+                <td className="p-4">{user.company?.name || '-'}</td>
+                <td className="p-4">
+                  <Button
+                    variant="outline"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onUserClick(user);
+                    }}
+                  >
+                    Details
+                  </Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </div>
   );
 };
 
