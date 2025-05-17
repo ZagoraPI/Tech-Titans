@@ -49,25 +49,35 @@ function App() {
         element={
           <>
 
-           <h1 style={{ position: "relative", top: "-150px" }}><b>Welcome to ZagoraPI</b></h1>
+           <h1 style={{ position: "relative", top: "-170px" }}><b>Welcome to ZagoraPI</b></h1>
 
-            <div className="p-4">
+            <div className="bottom-right-stack">
               <Link
                 to="contact-form-page"
-                className="inline-flex items-center gap-2 px-4 py-2 border border-blue-600 text-blue-600 font-medium rounded-xl hover:bg-blue-100 transition-all duration-200"
+                className="inline-flex items-center gap-2 px-4 py-2 border border-gray-150 font-medium rounded-xl transition-all duration-200 hover:bg-gray-200"
+                style={{ color: '#918f8f' }}
               >
                 <MailIcon className="w-5 h-5" />
                 The Jj Contact Form
               </Link>
             </div>
 
+          <div style={{ display: "flex", alignItems: "center", position: "relative", top: "-160px", left: "555px" }}>
+              <TheJj />
+            </div>
+
+            <div style={{display: "flex", alignItems: "center", position: "relative", top: "-195px" }}>
             <Martin />
+            </div>
+
+          <div style={{position:"relative", top: "-215px", left: "-305px"}}>
             <Popover>
               <PopoverTrigger>Open</PopoverTrigger>
               <PopoverContent>Place content for the popover here.</PopoverContent>
             </Popover>
+           </div>
 
-            <div style={{ display: "flex", alignItems: "center", position: "relative", top: "-325px", left: "550px" }}>
+            <div style={{ display: "flex", alignItems: "center", position: "relative", top: "-315px", left: "550px" }}>
               <ThemeSwitch />
             </div>
 
@@ -89,14 +99,18 @@ function App() {
                 {activated ? "Deactivate me!" : "Activate me!"}
               </Button>
             </div>
+            <div style={{ position: "relative", top: "-50px", left: "-120px" }}>
             <Checkbox />
+            </div>
 
+            <div >
             <Accordion type="single" collapsible>
               <AccordionItem value="item-1">
                 <AccordionTrigger>Is it accessible????</AccordionTrigger>
                 <AccordionContent>Maybe idk :3</AccordionContent>
               </AccordionItem>
             </Accordion>
+            </div>
 
             <div className="card">
               <button onClick={() => setCount(count + 1)}>
@@ -123,7 +137,8 @@ function App() {
               </Link>
             </div>
             
-            <div className="bottom-right-stack">
+            <div className="bottom-right-stack" 
+            style={{ bottom: '60px',  }}>
                 {[PetarForm, VladoForm,TheJjForm, MartinForm, HrisaForm, SaturnForm, EgorkaForm, PreslyForm,].map((Form, idx) => (
               <div key={idx} className="form-button-wrapper">
                 <Form />
