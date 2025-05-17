@@ -18,7 +18,6 @@
 }
 
 body {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) , url("./assets/SpaceBGimg.jpeg");
   background-position: center;
   background-size: cover; 
   fill-opacity: 0.5;
@@ -55,7 +54,7 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  background: linear-gradient(270deg, #facc15, #fb923c, #ef4444, #6b21a8, #3b82f6, #10b981, #4b5563);
+  background-color: #121212;
   background-size: 600% 600%;
   animation: gradientBackground 20s ease infinite;
 }
@@ -79,3 +78,10 @@ body {
   bottom: 2rem;
   left: 2rem;
 }
+
+
+
+
+
+
+

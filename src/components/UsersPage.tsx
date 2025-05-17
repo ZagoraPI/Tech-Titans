@@ -1,19 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { User } from '@/models/model';
-import UsersList from './UsersList';
-import { Input } from './ui/input';
-import UserDetails from './UserDetails';
+
+interface User {
+  id: number;
+  name: string;
+  username: string;
+  email: string;
+  phone: string;
+  address: {
+    street: string;
+    suite: string;
+    city: string;
+    zipcode: string;
+  };
+}
 
 const UsersPage: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [filter, setFilter] = useState<string>('');
-  const [selectedUser, setSelectedUser] = useState<User | null>(null);
-
-  const fetchUsers = () => {
-    setLoading(true);
+  useEffect(() => {
     axios
       .get<User[]>('https://jsonplaceholder.typicode.com/users')
       .then((res) => {
@@ -24,50 +31,30 @@ const UsersPage: React.FC = () => {
         setError('Failed to fetch users');
         setLoading(false);
       });
-  };
+  }, []); // Empty dependency array = runs once on mount
 
-  useEffect(() => {
-    fetchUsers();
-  }, []);
+  if (loading) {
+    return <p>Loading users...</p>;
+  }
 
-  const filteredUsers = users.filter(user =>
-    user.name.toLowerCase().includes(filter.toLowerCase())
-  );
-
-  if (loading) return <p>Loading users...</p>;
-  if (error) return <p>{error}</p>;
+  if (error) {
+    return <p>{error}</p>;
+  }
 
   return (
-    <div style={{ padding: '1rem' }}>
-      <Input
-        type="text"
-        placeholder="Filter users by name"
-        value={filter}
-        onChange={(e) => setFilter(e.target.value)}
-        style={{
-          marginBottom: '1rem',
-          padding: '0.75rem',
-          fontSize: '1rem',
-          width: '100%',
-          maxWidth: '400px',
-          borderRadius: '4px',
-          border: '1px solid #ccc',
-        }}
-      />
-
-      <UsersList
-        users={filteredUsers}
-         onRefresh={fetchUsers}
-           onUserClick={(user: User) => setSelectedUser(user)}
-      />
-
-        {selectedUser && (
-         <UserDetails
-          user={selectedUser}
-           onClose={() => setSelectedUser(null)}
-         />
-        )}
-    </div>
+    <ul>
+      {users.map((user) => (
+        <li key={user.id} style={{ marginBottom: '1rem' }}>
+        <strong>{user.name}</strong> ({user.username})<br />
+        Email: {user.email}<br />
+        Phone: {user.phone}<br />
+        Address: {user.address.street},
+                {user.address.suite},
+              {user.address.city} - {user.address.zipcode}
+      </li>
+      
+      ))}
+    </ul>
   );
 };
 

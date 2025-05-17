@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import axios from 'axios';
-import UsersPage from '@/components/UsersPage'; 
+import UsersPage from '@/components/UsersPage/UsersPage'; 
 import '@testing-library/jest-dom';
 
 jest.mock('axios');
