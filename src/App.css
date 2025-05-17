@@ -18,14 +18,15 @@ body {
   fill-opacity: 0.5;
 }
 
-button,
-.btn {
+button,.btn {
   background-color: #918f8f;
   color: white;
   padding: 10px;
   border-radius: 6px;
   border: none;
   cursor: pointer;
+  background-color: #918f8f(--primary);
+   color: #918f8f(--primary-foreground); 
 }
 
 .logo {
