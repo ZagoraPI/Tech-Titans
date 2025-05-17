@@ -68,7 +68,7 @@ function App() {
               <PopoverContent>Place content for the popover here.</PopoverContent>
             </Popover>
 
-            <div style={{ display: "flex", alignItems: "center", position: "relative", top: "-326px", left: "550px" }}>
+            <div style={{ display: "flex", alignItems: "center", position: "relative", top: "-325px", left: "550px" }}>
               <ThemeSwitch />
             </div>
 

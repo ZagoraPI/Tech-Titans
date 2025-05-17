@@ -22,6 +22,14 @@ body {
   background-size: cover; 
   fill-opacity: 0.5;
  }
+
+ button {
+  background-color: rgb(145, 143, 143);
+  color: rgb(255, 255, 255);
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+}
  
 @keyframes logo-spin {
   from {
