@@ -35,7 +35,6 @@ const UserSearchBar: React.FC<Props> = ({ value, onChange }) => {
       />
     </Button>
 
-
       <Input
         type="Search for user"
         placeholder="Search for user"
