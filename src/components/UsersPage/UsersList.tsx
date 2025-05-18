@@ -10,10 +10,9 @@ interface UsersListProps {
 
 const UsersList: React.FC<UsersListProps> = ({ users, onUserClick }) => {
   return (
-   
-      <div className="  ">
-        <Table className="w-full table-auto text-sm text-gray-800 w-full">
-          <thead className="bg-gray-100 text-gray-700"> 
+
+      <Table className="table-auto text-sm m-0">
+          <thead className="bg-gray-100">
             <tr>
               <th className="p-4 text-left text-base font-semibold">ID</th>
               <th className="p-4 text-left text-base font-semibold">Name</th>
@@ -24,34 +23,24 @@ const UsersList: React.FC<UsersListProps> = ({ users, onUserClick }) => {
               <th className="p-4 text-left text-base font-semibold">Details</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="bg-gray-100">
             {users.map((user) => (
-              <tr
-                key={user.id}
-                onClick={() => onUserClick(user)}
-                className="hover:bg-gray-50 transition cursor-pointer border-b"
-              >
-                <td className="p-4">{user.id}</td>
-                <td className="p-4">{user.name}</td>
-                <td className="p-4">{user.username}</td>
-                <td className="p-4">{user.email}</td>
-                <td className="p-4">{user.address?.city || '-'}</td>
-                <td className="p-4">{user.company?.name || '-'}</td>
-                <td className="p-4">
-                  <Button
-                    variant="outline"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onUserClick(user);
-                    }}
-                  >Details</Button>
+              <tr key={user.id}>
+                <td className="p-2">{user.id}</td>
+                <td className="p-2">{user.name}</td>
+                <td className="p-2">{user.username}</td>
+                <td className="p-2">{user.email}</td>
+                <td className="p-2">{user.address?.city || '-'}</td>
+                <td className="p-2">{user.company?.name || '-'}</td>
+                <td className="p-2">
+                  <Button onClick={() => onUserClick(user)}>Details</Button>
                 </td>
               </tr>
             ))}
           </tbody>
         </Table>
-      </div>
-  );
+ 
+      );
 };
 
 export default UsersList;
