@@ -4,7 +4,22 @@
   padding: 2rem;
   text-align: center;
 }
+.users-page {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  color: white;
+}
 
+.search-bar,
+.user-list,
+.user-table {
+  width: 100%;
+  max-width: 8000px;
+  text-align: left; 
+}
 body {
   min-height: 100vh;
   margin: 0;

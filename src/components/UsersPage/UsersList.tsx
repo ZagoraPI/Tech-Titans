@@ -11,7 +11,7 @@ interface UsersListProps {
 const UsersList: React.FC<UsersListProps> = ({ users, onUserClick }) => {
   return (
    
-      <div className=" w-350 overflow-x-auto rounded-none shadow-sm bg-white">
+      <div className=" w-280 overflow-x-auto rounded-none shadow-sm bg-white">
         <Table className="w-full table-auto text-sm text-gray-800 w-full">
           <thead className="bg-gray-100 text-gray-700"> 
             <tr>
