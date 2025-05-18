@@ -57,11 +57,11 @@ const UserDetails: React.FC<UserDetailsProps> = ({ user, onClose }) => (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
           <div>
             <strong>Lat:</strong>
-            <span style={{ marginLeft: '7px' }}>{user.geo?.lat}</span>
+            <span style={{ marginLeft: '7px' }}>{user.address?.geo?.lat}</span>
           </div>
           <div>
             <strong>Lng:</strong>
-            <span style={{ marginLeft: '7px' }}>{user.geo?.lng}</span>
+            <span style={{ marginLeft: '7px' }}>{user.address?.geo?.lng}</span>
           </div>
         </div>
       </td>
