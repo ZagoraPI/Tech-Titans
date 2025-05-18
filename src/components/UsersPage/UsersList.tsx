@@ -10,37 +10,35 @@ interface UsersListProps {
 
 const UsersList: React.FC<UsersListProps> = ({ users, onUserClick }) => {
   return (
-
-      <Table className="table-auto text-sm m-0">
-          <thead className="bg-gray-100">
-            <tr>
-              <th className="p-4 text-left text-base font-semibold">ID</th>
-              <th className="p-4 text-left text-base font-semibold">Name</th>
-              <th className="p-4 text-left text-base font-semibold">Username</th>
-              <th className="p-4 text-left text-base font-semibold">Email</th>
-              <th className="p-4 text-left text-base font-semibold">City</th>
-              <th className="p-4 text-left text-base font-semibold">Company</th>
-              <th className="p-4 text-left text-base font-semibold">Details</th>
-            </tr>
-          </thead>
-          <tbody className="bg-gray-100">
-            {users.map((user) => (
-              <tr key={user.id}>
-                <td className="p-2">{user.id}</td>
-                <td className="p-2">{user.name}</td>
-                <td className="p-2">{user.username}</td>
-                <td className="p-2">{user.email}</td>
-                <td className="p-2">{user.address?.city || '-'}</td>
-                <td className="p-2">{user.company?.name || '-'}</td>
-                <td className="p-2">
-                  <Button onClick={() => onUserClick(user)}>Details</Button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
- 
-      );
+    <Table className="table-auto text-sm w-fit m-0">
+      <thead className="bg-gray-100">
+        <tr>
+          <th className="p-4 text-left text-base font-semibold">ID</th>
+          <th className="p-4 text-left text-base font-semibold">Name</th>
+          <th className="p-4 text-left text-base font-semibold">Username</th>
+          <th className="p-4 text-left text-base font-semibold">Email</th>
+          <th className="p-4 text-left text-base font-semibold">City</th>
+          <th className="p-4 text-left text-base font-semibold">Company</th>
+          <th className="p-4 text-left text-base font-semibold">Details</th>
+        </tr>
+      </thead>
+      <tbody className="bg-gray-100">
+        {users.map((user) => (
+          <tr key={user.id}>
+            <td className="p-2">{user.id}</td>
+            <td className="p-2">{user.name}</td>
+            <td className="p-2">{user.username}</td>
+            <td className="p-2">{user.email}</td>
+            <td className="p-2">{user.address?.city || '-'}</td>
+            <td className="p-2">{user.company?.name || '-'}</td>
+            <td className="p-2">
+              <Button onClick={() => onUserClick(user)}>Details</Button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </Table>
+  );
 };
 
 export default UsersList;

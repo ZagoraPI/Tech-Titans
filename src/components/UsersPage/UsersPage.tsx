@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { User } from '@/models/model';
 import UsersList from './UsersList';
-import UserDetails from './UserDetails';
+import UserDetails from './UserDetailsTable';
 import UserSearchBar from './UserSearchBar';
 
 const UsersPage: React.FC = () => {
@@ -39,9 +39,8 @@ const UsersPage: React.FC = () => {
   if (error) return <p>{error}</p>;
 
   return (
-    <div style={{ padding: '1rem' }}>
+    <div className="px-0">
       <UserSearchBar value={filter} onChange={setFilter} />
-
       <UsersList
         users={filteredUsers}
         onUserClick={setSelectedUser}
