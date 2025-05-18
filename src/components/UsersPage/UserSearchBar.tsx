@@ -1,7 +1,6 @@
 import React from 'react';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
-import { User } from '@/models/model';
 import { useNavigate } from 'react-router-dom';
 
 interface Props {
