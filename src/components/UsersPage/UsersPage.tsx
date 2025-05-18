@@ -6,6 +6,10 @@ import UserDetails from './UserDetails';
 import UserSearchBar from './UserSearchBar';
 
 const UsersPage: React.FC = () => {
+  const fullWidthStyle = {
+    width: '100vw',
+    marginLeft: 'calc(-50vw + 50%)',
+  };
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -35,8 +39,8 @@ const UsersPage: React.FC = () => {
   if (error)   return <p className="p-4 text-red-600">{error}</p>;
 
   return (
-    <div className="flex flex-row items-start p-0 m-0 w-full max-w-none">
-      <div className="flex flex-col">
+    <div className="flex flex-row items-start p-0 m-0 w-full max-w-none" style={fullWidthStyle}>
+      <div className="flex flex-col" style={{ paddingLeft: '0' }}>
         <UserSearchBar value={filter} onChange={setFilter} />
         <div className="w-fit p-0 m-0">
           <UsersList users={filteredUsers} onUserClick={setSelectedUser} />
