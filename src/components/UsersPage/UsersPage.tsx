@@ -12,45 +12,43 @@ const UsersPage: React.FC = () => {
   const [filter, setFilter] = useState('');
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
 
-  const fetchUsers = () => {
+  const fetchUsers = async () => {
     setLoading(true);
-    axios
-      .get<User[]>('https://jsonplaceholder.typicode.com/users')
-      .then((res) => {
-        setUsers(res.data);
-        setLoading(false);
-      })
-      .catch(() => {
-        setError('Failed to fetch users');
-        setLoading(false);
-      });};
+    try {
+      const res = await axios.get<User[]>('https://jsonplaceholder.typicode.com/users');
+      setUsers(res.data);
+    } catch {
+      setError('Failed to fetch users');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     fetchUsers();
   }, []);
 
-  const filteredUsers = users.filter(user =>
+  const filteredUsers = users.filter((user) =>
     user.name.toLowerCase().includes(filter.toLowerCase()) ||
     user.id.toString() === filter
   );
-  
 
-  if (loading) return <p>Loading users...</p>;
-  if (error) return <p>{error}</p>;
+  if (loading) return <p className="p-4 text-gray-600">Loading users...</p>;
+  if (error) return <p className="p-4 text-red-600">{error}</p>;
 
   return (
-    <div className="px-0">
+    <div className="flex flex-col items-start px-4 py-2 space-y-4">
       <UserSearchBar value={filter} onChange={setFilter} />
-      <UsersList
-        users={filteredUsers}
-        onUserClick={setSelectedUser}
-      />
+      
+      <div className="w-full overflow-x-auto">
+        <UsersList users={filteredUsers} onUserClick={setSelectedUser} />
+      </div>
 
       {selectedUser && (
-        <UserDetails
-          user={selectedUser}
-          onClose={() => setSelectedUser(null)}
-        />)}
-        </div>);};
+        <UserDetails user={selectedUser} onClose={() => setSelectedUser(null)} />
+      )}
+    </div>
+  );
+};
 
 export default UsersPage;
