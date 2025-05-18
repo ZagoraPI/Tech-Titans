@@ -39,21 +39,19 @@ const UsersPage: React.FC = () => {
   if (error) return <p>{error}</p>;
 
   return (
-     <div className="users-page">
-      <div className="search-bar">
-        <UserSearchBar value={filter} onChange={setFilter} />
-      </div>  
+     <div style={{ padding: '1rem' }}>
+      <UserSearchBar value={filter} onChange={setFilter} />
 
-      <div className="user-list">
-        <UsersList users={filteredUsers} onUserClick={setSelectedUser} />
-      </div>
+      <UsersList
+        users={filteredUsers}
+        onUserClick={setSelectedUser}
+      />
 
-      <div className="user-table">
-        {selectedUser && (
-          <UserDetails user={selectedUser} onClose={() => setSelectedUser(null)} />
-        )}
-      </div>
-    </div>
-  );};
+      {selectedUser && (
+        <UserDetails
+          user={selectedUser}
+          onClose={() => setSelectedUser(null)}
+        />)}
+        </div>);};
 
 export default UsersPage;
