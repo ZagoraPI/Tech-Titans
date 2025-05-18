@@ -7,10 +7,6 @@ import { Routes, Route } from 'react-router-dom';
 import { Alert, AlertTitle, AlertDescription } from "./components/ui/alert";
 import { Button } from "@/components/ui/button";
 
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger,
-} from "@/components/ui/Accordion.tsx";
-
-import { Checkbox } from "./components/Checkbox.tsx";
 import { Popover, PopoverContent, PopoverTrigger } from "./components/Popover.tsx";
 import { Vladilena_Form } from "./components/Vladilena_Form/Vladilena_Form.tsx";
 import { ThemeSwitch } from "./components/Niki_Components/ThemeSwitch.tsx";
@@ -98,19 +94,6 @@ function App() {
               <Button type="button" onClick={() => setActivated(!activated)}>
                 {activated ? "Deactivate me!" : "Activate me!"}
               </Button>
-            </div>
-
-            <div style={{ position: "relative", top: "-350px", left: "-300px" }}>
-            <Checkbox />
-            </div>
-
-            <div style={{ alignItems:"center", position: "relative", top: "-475px", left: "690px" }}>
-            <Accordion type="single" collapsible>
-              <AccordionItem value="item-1">
-                <AccordionTrigger>Is it accessible????</AccordionTrigger>
-                <AccordionContent>Maybe idk :3</AccordionContent>
-              </AccordionItem>
-            </Accordion>
             </div>
 
             <div style={{ position: "relative", bottom: "-160px"}}>
