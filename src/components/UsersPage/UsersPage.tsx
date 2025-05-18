@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { User } from '@/models/model';
 import UsersList from './UsersList';
-import UserDetails from './UserDetailsTable';
+import UserDetails from './UserDetails';
 import UserSearchBar from './UserSearchBar';
 
 const UsersPage: React.FC = () => {
@@ -24,24 +24,23 @@ const UsersPage: React.FC = () => {
     }
   };
 
-  useEffect(() => {
-    fetchUsers();
-  }, []);
+  useEffect(() => { fetchUsers(); }, []);
 
-  const filteredUsers = users.filter((user) =>
-    user.name.toLowerCase().includes(filter.toLowerCase()) ||
-    user.id.toString() === filter
+  const filteredUsers = users.filter(u =>
+    u.name.toLowerCase().includes(filter.toLowerCase()) ||
+    u.id.toString() === filter
   );
 
-  if (loading) return <p className="p-4 text-gray-600">Loading users...</p>;
-  if (error) return <p className="p-4 text-red-600">{error}</p>;
+  if (loading) return <p className="p-4 text-gray-600">Loading…</p>;
+  if (error)   return <p className="p-4 text-red-600">{error}</p>;
 
   return (
-    <div className="flex flex-col items-start px-4 py-2 space-y-4">
-      <UserSearchBar value={filter} onChange={setFilter} />
-      
-      <div className="w-full overflow-x-auto">
-        <UsersList users={filteredUsers} onUserClick={setSelectedUser} />
+    <div className="flex flex-row items-start p-0 m-0 w-full max-w-none">
+      <div className="flex flex-col">
+        <UserSearchBar value={filter} onChange={setFilter} />
+        <div className="w-fit p-0 m-0">
+          <UsersList users={filteredUsers} onUserClick={setSelectedUser} />
+        </div>
       </div>
 
       {selectedUser && (

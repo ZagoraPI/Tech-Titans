@@ -15,14 +15,13 @@ const tdStyle = {
 
 const UserDetails: React.FC<UserDetailsProps> = ({ user, onClose }) => (
   <div style={{
-    position: 'fixed',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
     background: '#fff',
     padding: '1rem',
     width: '400px',
     border: '1px solid #ccc',
+    marginLeft: '20px',
+    opacity: 1,
+    animation: 'slideIn 0.3s ease-out',
   }}>
     <h3>{user.name}</h3>
     <table>

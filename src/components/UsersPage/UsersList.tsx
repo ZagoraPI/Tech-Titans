@@ -10,6 +10,7 @@ interface UsersListProps {
 
 const UsersList: React.FC<UsersListProps> = ({ users, onUserClick }) => {
   return (
+    <div className="overflow-x-auto">
     <Table className="table-auto text-sm w-fit m-0">
       <thead className="bg-gray-100">
         <tr>
@@ -38,6 +39,7 @@ const UsersList: React.FC<UsersListProps> = ({ users, onUserClick }) => {
         ))}
       </tbody>
     </Table>
+    </div>
   );
 };
 
