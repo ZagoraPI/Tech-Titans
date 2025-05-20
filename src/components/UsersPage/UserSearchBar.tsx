@@ -12,60 +12,73 @@ interface Props {
 const UserSearchBar: React.FC<Props> = ({ value, onChange, onRefresh }) => {
   const navigate = useNavigate();
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.5rem',
+        width: '100%',
+        marginBottom: '1rem',
+        maxWidth: '100%',
+      }}
+    >
       <Button
         onClick={() => navigate(-1)}
         style={{
+          minWidth: '2.5rem',//40px
+          width: '3.3rem',
+          height: '3.3rem',
+          padding: 0,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          padding: '0.75rem 1.5rem',
           backgroundColor: 'white',
-          border: '2px solid black',
-          borderRadius: '4px',
+          borderRadius: '0.5rem',
           cursor: 'pointer',
-          height: '60px',
-          boxSizing: 'border-box',
         }}
       >
         <img
           src="https://www.svgrepo.com/show/67631/back-arrow.svg"
-          style={{ height: '24px', width: '24px' }}
+          style={{ height: '1.25rem', width: '1.25rem' }}
         />
       </Button>
       <Input
-        type="Search for user"
+        type="text"
         placeholder="Search for user"
         value={value}
         onChange={(e) => onChange(e.target.value)}
         style={{
-          fontSize: '1.2rem',
-          width: '100%',
-          maxWidth: '400px',
-          borderRadius: '6px',
-          border: '5px solid #000',
-          height: '60px',
+          fontSize: '1.3rem',
+          borderRadius: '0.5rem',
+          border: '0.125rem solid #000',
+          height: '3.3rem',
           boxSizing: 'border-box',
           color: 'black',
           backgroundColor: 'white',
+          flex: 1,
         }}
       />
       <Button
         onClick={onRefresh}
         style={{
-          width: 'auto',
-          padding: '0 1.5rem',
+          minWidth: '2.5rem',
+          width: '3.3rem',
+          height: '3.3rem',
+          padding: 0,
           backgroundColor: 'white',
           color: '#000',
-          border: '2px solid black',
+          border: '0.125rem solid black',
           cursor: 'pointer',
-          fontSize: '1rem',
-          borderRadius: '4px',
-          height: '60px',
-          boxSizing: 'border-box',
+          fontSize: '1.25rem',
+          borderRadius: '0.5rem',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
       >
-        Refresh
+       <img src="https://cdn.iconscout.com/icon/free/png-256/free-refresh-icon-download-in-svg-png-gif-file-formats--reload-sync-loading-user-interface-pack-icons-1502252.png" 
+       style={{ height: '1.5rem', width: '1.5rem' }}
+        />
       </Button>
     </div>
   );

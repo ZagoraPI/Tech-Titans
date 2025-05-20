@@ -40,9 +40,17 @@ const UsersPage: React.FC = () => {
 
   return (
     <div className="flex flex-row items-start p-0 m-0 w-full max-w-none" style={fullWidthStyle}>
-      <div className="flex flex-col" style={{ paddingLeft: '0' }}>
-        <UserSearchBar value={filter} onChange={setFilter} onRefresh={fetchUsers} />
-        <div className="w-fit p-0 m-0">
+      <div className="flex flex-col" style={{ paddingLeft: '0', width: '100%', marginLeft: '2rem' }}>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+            width: 'fit-content',
+            margin: 0,
+          }}
+        >
+          <UserSearchBar value={filter} onChange={setFilter} onRefresh={fetchUsers} />
           <UsersList users={filteredUsers} onUserClick={setSelectedUser} />
         </div>
       </div>
