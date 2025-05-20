@@ -7,7 +7,6 @@ interface UserDetailsProps {
   onClose: () => void;
 }
 
-// old td style, unchanged
 const tdBase: React.CSSProperties = {
   padding: '0.5rem',
   fontSize: '1rem',
@@ -17,25 +16,23 @@ const tdBase: React.CSSProperties = {
 const UserDetails: React.FC<UserDetailsProps> = ({ user, onClose }) => (
   <div
     style={{
-      background: '#fff',                       // new: white
-      padding: '2rem',                          // old used 2rem
-      width: '600px',                           // keep old width
-      border: '1px solid #ccc',                 // light border
-      marginLeft: '20px',                       // new spacing from left
-      boxShadow: '0 2px 8px rgba(0,0,0,0.1)',    // subtle shadow
+      background: '#fff',                       
+      padding: '2rem',                         
+      width: '600px',                           
+      border: '1px solid #ccc',                 
+      marginLeft: '20px',                       
+      boxShadow: '0 2px 8px rgba(0,0,0,0.1)',    
       zIndex: 1,
       position: 'relative',
-      animation: 'slideIn 0.3s ease-out',       // new animation
+      animation: 'slideIn 0.3s ease-out',       
     }}
   >
-    {/* old header text */}
     <h2 style={{ marginBottom: '20px' }}>
       {user.id} — {user.name} — {user.id}
     </h2>
 
     <table style={{ width: '100%' }}>
       <tbody>
-        {/* Address */}
         <tr>
           <td
             style={{
@@ -76,7 +73,6 @@ const UserDetails: React.FC<UserDetailsProps> = ({ user, onClose }) => (
           </td>
         </tr>
 
-        {/* Geo */}
         <tr>
           <td
             style={{
@@ -109,7 +105,6 @@ const UserDetails: React.FC<UserDetailsProps> = ({ user, onClose }) => (
           </td>
         </tr>
 
-        {/* Phone */}
         <tr>
           <td
             style={{
@@ -134,7 +129,6 @@ const UserDetails: React.FC<UserDetailsProps> = ({ user, onClose }) => (
           </td>
         </tr>
 
-        {/* Website */}
         <tr>
           <td
             style={{
@@ -159,7 +153,6 @@ const UserDetails: React.FC<UserDetailsProps> = ({ user, onClose }) => (
           </td>
         </tr>
 
-        {/* Company */}
         <tr>
           <td
             style={{
