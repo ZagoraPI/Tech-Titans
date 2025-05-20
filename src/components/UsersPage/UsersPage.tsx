@@ -66,7 +66,7 @@ const UsersPage: React.FC = () => {
           margin: 0,
         }}
       >
-        <div style={{ marginLeft: '2rem', marginTop: '2rem'}}>
+        <div style={{ marginLeft: '2rem', marginTop: '2rem', marginBottom: '10rem' }}>
           <UserSearchBar value={filter} onChange={setFilter} onRefresh={fetchUsers} />
           <UsersList
             users={filteredUsers}
