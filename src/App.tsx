@@ -115,19 +115,18 @@ function App() {
               </Link>
             </div>
 
-            <div className="bottom-left-container">
+            <div className="relative-container">
               <Link to="/users-page">
                 <Button>Users Page</Button>
+                <h2 style={{ fontSize: "2rem", marginTop: "10px" }}>This is the Users Page:</h2>
               </Link>
             </div>
             
-            <div style={{ position: "relative", top: "180px", left: "790px" }}>
-              <Vladilena_Form />
-            </div>
+
 
             <div className="bottom-right-stack" 
             style={{ bottom: '60px',  }}>
-                {[PetarForm, VladoForm,TheJjForm, MartinForm, HrisaForm, SaturnForm, EgorkaForm, PreslyForm,].map((Form, idx) => (
+                {[PetarForm, VladoForm,TheJjForm, MartinForm, HrisaForm, SaturnForm, EgorkaForm, PreslyForm,Vladilena_Form].map((Form, idx) => (
               <div key={idx} className="form-button-wrapper">
                 <Form />
               </div>
