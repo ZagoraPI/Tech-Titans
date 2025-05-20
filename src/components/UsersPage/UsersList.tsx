@@ -14,25 +14,25 @@ const UsersList: React.FC<UsersListProps> = ({ users, onUserClick }) => {
     <Table className="table-auto text-sm w-fit m-0">
       <thead className="bg-gray-100">
         <tr>
-          <th className="p-4 text-left text-base font-semibold">ID</th>
-          <th className="p-4 text-left text-base font-semibold">Name</th>
-          <th className="p-4 text-left text-base font-semibold">Username</th>
-          <th className="p-4 text-left text-base font-semibold">Email</th>
-          <th className="p-4 text-left text-base font-semibold">City</th>
-          <th className="p-4 text-left text-base font-semibold">Company</th>
-          <th className="p-4 text-left text-base font-semibold">Details</th>
+          <th className="p-4 text-left text-base font-semibold text-black">ID</th>
+          <th className="p-4 text-left text-base font-semibold text-black">Name</th>
+          <th className="p-4 text-left text-base font-semibold text-black">Username</th>
+          <th className="p-4 text-left text-base font-semibold text-black">Email</th>
+          <th className="p-4 text-left text-base font-semibold text-black">City</th>
+          <th className="p-4 text-left text-base font-semibold text-black">Company</th>
+          <th className="p-4 text-left text-base font-semibold text-black">Details</th>
         </tr>
       </thead>
       <tbody className="bg-gray-100">
         {users.map((user) => (
           <tr key={user.id}>
-            <td className="p-2">{user.id}</td>
-            <td className="p-2">{user.name}</td>
-            <td className="p-2">{user.username}</td>
-            <td className="p-2">{user.email}</td>
-            <td className="p-2">{user.address?.city || '-'}</td>
-            <td className="p-2">{user.company?.name || '-'}</td>
-            <td className="p-2">
+            <td className="p-2 text-black text-left">{user.id}</td>
+            <td className="p-2 text-black text-left">{user.name}</td>
+            <td className="p-2 text-black text-left">{user.username}</td>
+            <td className="p-2 text-black text-left">{user.email}</td>
+            <td className="p-2 text-black text-left">{user.address?.city || '-'}</td>
+            <td className="p-2 text-black text-left">{user.company?.name || '-'}</td>
+            <td className="p-2 text-black text-left">
               <Button onClick={() => onUserClick(user)}>Details</Button>
             </td>
           </tr>
