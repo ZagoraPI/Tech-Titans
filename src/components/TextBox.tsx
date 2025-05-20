@@ -23,7 +23,7 @@ const TextBox: React.FC<TextBoxProps> = ({ count1, style }) => {
       type="text"
       value={romanize(count1)}
       readOnly
-      style={{ ...style, color: 'white', backgroundColor: 'blue' }}
+      style={{ ...style, color: 'white', backgroundColor: "gray" }}
     />
   );
 };
