@@ -25,7 +25,7 @@ const UserSearchBar: React.FC<Props> = ({ value, onChange, onRefresh }) => {
       <Button
         onClick={() => navigate(-1)}
         style={{
-          minWidth: '2.5rem',//40px
+          minWidth: '2.5rem',
           width: '3.3rem',
           height: '3.3rem',
           padding: 0,

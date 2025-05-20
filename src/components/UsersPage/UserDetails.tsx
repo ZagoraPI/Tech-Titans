@@ -16,19 +16,21 @@ const tdBase: React.CSSProperties = {
 const UserDetails: React.FC<UserDetailsProps> = ({ user, onClose }) => (
   <div
     style={{
-      background: '#fff',                       
-      padding: '2rem',  
-      color: "black",                       
-      width: '600px',                           
-      border: '1px solid #ccc',                 
-      marginLeft: '20px',                       
-      boxShadow: '0 2px 8px rgba(0,0,0,0.1)',    
+      background: '#fff',
+      padding: '2rem 2rem 1.44rem 2rem',
+      color: "black",
+      width: '600px',
+      border: '1px solid #ccc',
+      borderRadius: '0.5rem',
+      overflow: 'hidden',
+      marginLeft: '20px',
+      boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
       zIndex: 1,
       position: 'relative',
-      animation: 'slideIn 0.3s ease-out',       
+      animation: 'slideIn 0.3s ease-out',
     }}
   >
-    <h2 style={{ marginBottom: '20px' }}>
+    <h2 style={{ marginTop: 0, marginBottom: '20px' }}>
       {user.id} {user.name}
     </h2>
 
