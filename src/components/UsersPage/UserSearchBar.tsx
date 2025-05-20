@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 interface Props {
   value: string;
   onChange: (val: string) => void;
-  onRefresh?: () => void; // Add this line
+  onRefresh?: () => void;
 }
 
 const UserSearchBar: React.FC<Props> = ({ value, onChange, onRefresh }) => {
@@ -51,7 +51,7 @@ const UserSearchBar: React.FC<Props> = ({ value, onChange, onRefresh }) => {
         }}
       />
       <Button
-        onClick={onRefresh} // Use the prop instead of window.location.reload()
+        onClick={onRefresh}
         style={{
           width: 'auto',
           padding: '0 1.5rem',
