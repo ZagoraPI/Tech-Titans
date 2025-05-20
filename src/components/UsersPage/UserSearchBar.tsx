@@ -6,35 +6,33 @@ import { useNavigate } from 'react-router-dom';
 interface Props {
   value: string;
   onChange: (val: string) => void;
+  onRefresh?: () => void; // Add this line
 }
 
-const UserSearchBar: React.FC<Props> = ({ value, onChange }) => {
+const UserSearchBar: React.FC<Props> = ({ value, onChange, onRefresh }) => {
   const navigate = useNavigate();
   return (
-    <>
-
-    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem',}}>
-    <Button
-      onClick={() => navigate(-1)}
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '0.75rem 1.5rem',
-        backgroundColor: 'white',
-        border: '2px solid black',
-        borderRadius: '4px',
-        cursor: 'pointer',
-        height: '60px',
-        boxSizing: 'border-box',
-      }}
-    >
-      <img
-        src="https://www.svgrepo.com/show/67631/back-arrow.svg"
-        style={{ height: '24px', width: '24px' }}
-      />
-    </Button>
-
+    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+      <Button
+        onClick={() => navigate(-1)}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '0.75rem 1.5rem',
+          backgroundColor: 'white',
+          border: '2px solid black',
+          borderRadius: '4px',
+          cursor: 'pointer',
+          height: '60px',
+          boxSizing: 'border-box',
+        }}
+      >
+        <img
+          src="https://www.svgrepo.com/show/67631/back-arrow.svg"
+          style={{ height: '24px', width: '24px' }}
+        />
+      </Button>
       <Input
         type="Search for user"
         placeholder="Search for user"
@@ -46,31 +44,30 @@ const UserSearchBar: React.FC<Props> = ({ value, onChange }) => {
           maxWidth: '400px',
           borderRadius: '6px',
           border: '5px solid #000',
-          height: '60px', 
+          height: '60px',
           boxSizing: 'border-box',
           color: 'black',
           backgroundColor: 'white',
-        }} />
-        
-        <Button
-          onClick={() => window.location.reload()}
-          style={{
-            width: 'auto',
-            padding: '0 1.5rem',
-            backgroundColor: 'white',
-            color: '#000',
-            border: '2px solid black',
-            cursor: 'pointer',
-            fontSize: '1rem',
-            borderRadius: '4px',
-            height: '60px',
-            boxSizing: 'border-box',
-          }}
-        >
-          Refresh
-        </Button>
-      </div>  
-        </>
+        }}
+      />
+      <Button
+        onClick={onRefresh} // Use the prop instead of window.location.reload()
+        style={{
+          width: 'auto',
+          padding: '0 1.5rem',
+          backgroundColor: 'white',
+          color: '#000',
+          border: '2px solid black',
+          cursor: 'pointer',
+          fontSize: '1rem',
+          borderRadius: '4px',
+          height: '60px',
+          boxSizing: 'border-box',
+        }}
+      >
+        Refresh
+      </Button>
+    </div>
   );
 };
 

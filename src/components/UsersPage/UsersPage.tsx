@@ -41,12 +41,11 @@ const UsersPage: React.FC = () => {
   return (
     <div className="flex flex-row items-start p-0 m-0 w-full max-w-none" style={fullWidthStyle}>
       <div className="flex flex-col" style={{ paddingLeft: '0' }}>
-        <UserSearchBar value={filter} onChange={setFilter} />
+        <UserSearchBar value={filter} onChange={setFilter} onRefresh={fetchUsers} />
         <div className="w-fit p-0 m-0">
           <UsersList users={filteredUsers} onUserClick={setSelectedUser} />
         </div>
       </div>
-
       {selectedUser && (
         <UserDetails user={selectedUser} onClose={() => setSelectedUser(null)} />
       )}
