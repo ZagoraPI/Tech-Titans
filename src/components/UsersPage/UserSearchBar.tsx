@@ -6,71 +6,79 @@ import { useNavigate } from 'react-router-dom';
 interface Props {
   value: string;
   onChange: (val: string) => void;
+  onRefresh?: () => void;
 }
 
-const UserSearchBar: React.FC<Props> = ({ value, onChange }) => {
+const UserSearchBar: React.FC<Props> = ({ value, onChange, onRefresh }) => {
   const navigate = useNavigate();
   return (
-    <>
-
-    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem',}}>
-    <Button
-      onClick={() => navigate(-1)}
+    <div
       style={{
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center',
-        padding: '0.75rem 1.5rem',
-        backgroundColor: 'white',
-        border: '2px solid black',
-        borderRadius: '4px',
-        cursor: 'pointer',
-        height: '60px',
-        boxSizing: 'border-box',
+        gap: '0.5rem',
+        width: '100%',
+        marginBottom: '1rem',
+        maxWidth: '100%',
       }}
     >
-      <img
-        src="https://www.svgrepo.com/show/67631/back-arrow.svg"
-        style={{ height: '24px', width: '24px' }}
-      />
-    </Button>
-
+      <Button
+        onClick={() => navigate(-1)}
+        style={{
+          minWidth: '2.5rem',
+          width: '3.3rem',
+          height: '3.3rem',
+          padding: 0,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: 'white',
+          borderRadius: '0.5rem',
+          cursor: 'pointer',
+        }}
+      >
+        <img
+          src="https://www.svgrepo.com/show/67631/back-arrow.svg"
+          style={{ height: '1.25rem', width: '1.25rem' }}
+        />
+      </Button>
       <Input
-        type="Search for user"
+        type="text"
         placeholder="Search for user"
         value={value}
         onChange={(e) => onChange(e.target.value)}
         style={{
-          fontSize: '1.2rem',
-          width: '100%',
-          maxWidth: '400px',
-          borderRadius: '6px',
-          border: '5px solid #000',
-          height: '60px', 
+          fontSize: '1.3rem',
+          borderRadius: '0.5rem',
+          height: '3.3rem',
           boxSizing: 'border-box',
           color: 'black',
           backgroundColor: 'white',
-        }} />
-        
-        <Button
-          onClick={() => window.location.reload()}
-          style={{
-            width: 'auto',
-            padding: '0 1.5rem',
-            backgroundColor: 'white',
-            color: '#000',
-            border: '2px solid black',
-            cursor: 'pointer',
-            fontSize: '1rem',
-            borderRadius: '4px',
-            height: '60px',
-            boxSizing: 'border-box',
-          }}
-        >
-          Refresh
-        </Button>
-      </div>  
-        </>
+          flex: 1,
+        }}
+      />
+      <Button
+        onClick={onRefresh}
+        style={{
+          minWidth: '2.5rem',
+          width: '3.3rem',
+          height: '3.3rem',
+          padding: 0,
+          backgroundColor: 'white',
+          color: '#000',
+          cursor: 'pointer',
+          fontSize: '1.25rem',
+          borderRadius: '0.5rem',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+       <img src="https://cdn.iconscout.com/icon/free/png-256/free-refresh-icon-download-in-svg-png-gif-file-formats--reload-sync-loading-user-interface-pack-icons-1502252.png" 
+       style={{ height: '1.5rem', width: '1.5rem' }}
+        />
+      </Button>
+    </div>
   );
 };
 

@@ -5,13 +5,20 @@ import { Button } from '../ui/button';
 
 interface UsersListProps {
   users: User[];
-  onUserClick: (user: User) => void;
+  onUserClick: (user: User, idx: number) => void;
+  rowRefs: React.MutableRefObject<(HTMLTableRowElement | null)[]>;
+  nameRefs: React.MutableRefObject<(HTMLTableCellElement | null)[]>;
 }
 
-const UsersList: React.FC<UsersListProps> = ({ users, onUserClick }) => {
-  return (
-    <div className="overflow-x-auto">
-    <Table className="table-auto text-sm w-fit m-0">
+const UsersList: React.FC<UsersListProps> = ({ users, onUserClick, rowRefs, nameRefs }) => (
+  <div className="overflow-x-auto">
+    <Table
+      className="table-auto text-sm w-fit m-0"
+      style={{
+        borderRadius: '0.5rem',
+        overflow: 'hidden',
+      }}
+    >
       <thead className="bg-gray-100">
         <tr>
           <th className="p-4 text-left text-base font-semibold text-black">ID</th>
@@ -24,23 +31,30 @@ const UsersList: React.FC<UsersListProps> = ({ users, onUserClick }) => {
         </tr>
       </thead>
       <tbody className="bg-gray-100">
-        {users.map((user) => (
-          <tr key={user.id}>
+        {users.map((user, idx,) => (
+          <tr
+            key={user.id}
+            ref={el => rowRefs.current[idx] = el}
+          >
             <td className="p-2 text-black text-left">{user.id}</td>
-            <td className="p-2 text-black text-left">{user.name}</td>
+            <td
+              className="p-2 text-black text-left"
+              ref={el => nameRefs.current[idx] = el}
+            >
+              {user.name}
+            </td>
             <td className="p-2 text-black text-left">{user.username}</td>
             <td className="p-2 text-black text-left">{user.email}</td>
             <td className="p-2 text-black text-left">{user.address?.city || '-'}</td>
             <td className="p-2 text-black text-left">{user.company?.name || '-'}</td>
             <td className="p-2 text-black text-left">
-              <Button onClick={() => onUserClick(user)}>Details</Button>
+              <Button onClick={() => onUserClick(user, idx)}>Details</Button>
             </td>
           </tr>
         ))}
       </tbody>
     </Table>
-    </div>
-  );
-};
+  </div>
+);
 
 export default UsersList;
