@@ -15,7 +15,7 @@ const UsersList: React.FC<UsersListProps> = ({ users, onUserClick }) => {
         className="table-auto text-sm w-fit m-0"
         style={{
           borderRadius: '0.5rem',        
-          overflow: 'hidden',       // Ensures radius is visible on children
+          overflow: 'hidden',  
         }}
       >
         <thead className="bg-gray-100">
