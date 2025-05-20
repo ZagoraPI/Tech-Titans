@@ -17,7 +17,8 @@ const UserDetails: React.FC<UserDetailsProps> = ({ user, onClose }) => (
   <div
     style={{
       background: '#fff',                       
-      padding: '2rem',                         
+      padding: '2rem',  
+      color: "black",                       
       width: '600px',                           
       border: '1px solid #ccc',                 
       marginLeft: '20px',                       
@@ -28,7 +29,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({ user, onClose }) => (
     }}
   >
     <h2 style={{ marginBottom: '20px' }}>
-      {user.id} — {user.name} — {user.id}
+      {user.id} {user.name}
     </h2>
 
     <table style={{ width: '100%' }}>
@@ -193,7 +194,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({ user, onClose }) => (
 
     <Button
       onClick={onClose}
-      style={{ background: '#007BFF', color: '#fff', padding: '0.5rem 1rem', marginTop: '1rem' }}
+      style={{ background: 'black', color: 'white', padding: '0.5rem 1rem', marginTop: '1rem'}}
     >
       Close
     </Button>
