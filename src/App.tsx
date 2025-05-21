@@ -6,7 +6,6 @@ import { Routes, Route } from 'react-router-dom';
 
 import { Button } from "@/components/ui/button";
 
-import { Popover, PopoverContent, PopoverTrigger } from "./components/Popover.tsx";
 import { Vladilena_Form } from "./components/Vladilena_Form/Vladilena_Form.tsx";
 import { ThemeSwitch } from "./components/Niki_Components/ThemeSwitch.tsx";
 import TextBox from "./components/TextBox.tsx";
