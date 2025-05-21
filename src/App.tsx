@@ -34,7 +34,7 @@ import { MailIcon } from "lucide-react";
 
 function App() {
   const [count, setCount] = useState(0);
- 
+  const [activated, setActivated] = useState(false);
 
   return (
     <Routes>
@@ -43,7 +43,14 @@ function App() {
         element={
           <>
             <h1> <b> Welcome to ZagoraPI </b> </h1>
- 
+            
+            <div style={{position: "relative", alignItems:"center", top: "15px", left: "10px"}}>
+              <h2>Bozhilkata React UseState HOOK :</h2>
+                  <p>I am {activated ? "on" : "off"}.</p>
+                  <Button type="button" onClick={() => setActivated(!activated)}>
+                    {activated ? "Deactivate me!" : "Activate me!"}
+                  </Button>
+            </div>
 
           <div style={{ display: "flex", alignItems: "center", position: "relative", top: "200px", left: "189px" }}>
               <TheJj />
@@ -56,6 +63,8 @@ function App() {
             <div style={{ alignItems: "center", position: "relative", left: "186px" }}>
               <ThemeSwitch />
             </div>
+
+            
 
             <div className="bottom-left-container">
               <Link to="/forms">

@@ -23,7 +23,7 @@ const MapView: React.FC<MapViewProps> = ({ users}) => {
   return (
     <div
      className="w-full h-[800px] rounded-lg overflow-hidden shadow-md"
-     style={{ marginLeft: '32rem', top: '9rem', position: 'absolute', width: '30rem', height: '20rem',outline: '3px solid #f3f4f6' }}
+     style={{ marginLeft: '31rem', top: '36rem', position: 'absolute', width: '30rem', height: '20rem',outline: '3px solid #f3f4f6' }}
     >
       
       <MapContainer
