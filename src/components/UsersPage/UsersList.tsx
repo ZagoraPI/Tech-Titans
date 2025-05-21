@@ -34,12 +34,12 @@ const UsersList: React.FC<UsersListProps> = ({ users, onUserClick, rowRefs, name
         {users.map((user, idx,) => (
           <tr
             key={user.id}
-            ref={el => rowRefs.current[idx] = el}
+            ref={el => { rowRefs.current[idx] = el; }}
           >
             <td className="p-2 text-black text-left">{user.id}</td>
             <td
               className="p-2 text-black text-left"
-              ref={el => nameRefs.current[idx] = el}
+              ref={el => { nameRefs.current[idx] = el; }}
             >
               {user.name}
             </td>

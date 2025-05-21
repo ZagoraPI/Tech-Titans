@@ -87,8 +87,8 @@ const UsersPage: React.FC = () => {
               maxWidth: '32rem',
               zIndex: 10,
               alignSelf: 'flex-start',
-              top: detailsPanelTop,
-              transition: 'top 0.2s',
+              top: 390,
+              transition: 'top 0.0s',
             }}
           >
             <UserDetails user={selectedUser} onClose={() => setSelectedUser(null)} />

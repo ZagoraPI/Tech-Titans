@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { User } from '@/models/model';
 import { Button } from '../ui/button';
 
@@ -19,14 +19,17 @@ const UserDetails: React.FC<UserDetailsProps> = ({ user, onClose }) => (
       background: '#fff',
       padding: '2rem 2rem 1.44rem 2rem',
       color: "black",
-      width: '600px',
+      width: '400px',
       border: '1px solid #ccc',
       borderRadius: '0.5rem',
       overflow: 'hidden',
-      marginLeft: '20px',
       boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-      zIndex: 1,
-      position: 'relative',
+      zIndex: 1000,
+      position: 'fixed',
+      top: '46.1.599%',
+      left: '47.7%',
+      transform: 'translate(-50%, -50%) translateX(200px)',
+      marginLeft: 0,
       animation: 'slideIn 0.3s ease-out',
     }}
   >
@@ -216,4 +219,8 @@ const UserDetails: React.FC<UserDetailsProps> = ({ user, onClose }) => (
   </div>
 );
 
+
+
 export default UserDetails;
+
+
