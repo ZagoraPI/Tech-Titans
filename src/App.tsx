@@ -34,7 +34,7 @@ import { MailIcon } from "lucide-react";
 
 function App() {
   const [count, setCount] = useState(0);
-  const [activated, setActivated] = useState(false);
+ 
 
   return (
     <Routes>
