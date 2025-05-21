@@ -17,7 +17,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({ user, onClose }) => (
   <div
     style={{
       background: '#fff',
-      padding: '2rem 2rem 1.44rem 2rem',
+      padding: '2rem 2rem 2rem 2rem',
       color: "black",
       width: '400px',
       border: '1px solid #ccc',
@@ -25,10 +25,13 @@ const UserDetails: React.FC<UserDetailsProps> = ({ user, onClose }) => (
       overflow: 'hidden',
       boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
       zIndex: 1000,
-      position: 'fixed',
-      top: '46.1.599%',
-      left: '47.7%',
-      transform: 'translate(-50%, -50%) translateX(200px)',
+      position: 'relative',
+      top: 'unset',
+      left: 'unset',
+      transform: 'unset',
+      height: '100%', // fill parent
+      display: 'flex',
+      flexDirection: 'column',
       marginLeft: 0,
       animation: 'slideIn 0.3s ease-out',
     }}

@@ -6,11 +6,9 @@ import { Button } from '../ui/button';
 interface UsersListProps {
   users: User[];
   onUserClick: (user: User, idx: number) => void;
-  rowRefs: React.MutableRefObject<(HTMLTableRowElement | null)[]>;
-  nameRefs: React.MutableRefObject<(HTMLTableCellElement | null)[]>;
 }
 
-const UsersList: React.FC<UsersListProps> = ({ users, onUserClick, rowRefs, nameRefs }) => (
+const UsersList: React.FC<UsersListProps> = ({ users, onUserClick }) => (
   <div className="overflow-x-auto">
     <Table
       className="table-auto text-sm w-fit m-0"
@@ -31,18 +29,10 @@ const UsersList: React.FC<UsersListProps> = ({ users, onUserClick, rowRefs, name
         </tr>
       </thead>
       <tbody className="bg-gray-100">
-        {users.map((user, idx,) => (
-          <tr
-            key={user.id}
-            ref={el => rowRefs.current[idx] = el}
-          >
+        {users.map((user, idx) => (
+          <tr key={user.id}>
             <td className="p-2 text-black text-left">{user.id}</td>
-            <td
-              className="p-2 text-black text-left"
-              ref={el => nameRefs.current[idx] = el}
-            >
-              {user.name}
-            </td>
+            <td className="p-2 text-black text-left">{user.name}</td>
             <td className="p-2 text-black text-left">{user.username}</td>
             <td className="p-2 text-black text-left">{user.email}</td>
             <td className="p-2 text-black text-left">{user.address?.city || '-'}</td>
