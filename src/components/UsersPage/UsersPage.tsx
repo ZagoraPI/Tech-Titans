@@ -4,6 +4,7 @@ import { User } from '@/models/model';
 import UsersList from './UsersList';
 import UserDetails from './UserDetails';
 import UserSearchBar from './UserSearchBar';
+import MapView from './MapView';
 
 const UsersPage: React.FC = () => {
   const fullWidthStyle = {
@@ -77,6 +78,8 @@ const UsersPage: React.FC = () => {
             }}
           >
             <UserDetails user={selectedUser} onClose={() => setSelectedUser(null)} />
+               <MapView
+        users={[selectedUser]} />
           </div>
         )}
       </div>
