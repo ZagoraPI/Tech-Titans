@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { User } from '@/models/model';
 import UsersList from './UsersList';
@@ -40,7 +40,7 @@ const UsersPage: React.FC = () => {
   };
 
   if (loading) return <p className="p-4 text-gray-600">Loading…</p>;
-  if (error)   return <p className="p-4 text-red-600">{error}</p>;
+  if (error) return <p className="p-4 text-red-600">{error}</p>;
 
   return (
     <div className="flex flex-row items-start p-0 m-0 w-full max-w-none" style={fullWidthStyle}>
@@ -54,25 +54,22 @@ const UsersPage: React.FC = () => {
           minHeight: 0,
         }}
       >
-        <div style={{ marginLeft: '2rem', marginTop: '0.5rem', marginBottom: '0', display: 'flex', flexDirection: 'column', flex: 1 }}>
+        <div style={{ marginLeft: '2rem', marginTop: '0.5rem', display: 'flex', flexDirection: 'column', flex: 1 }}>
           <UserSearchBar value={filter} onChange={setFilter} onRefresh={fetchUsers} />
-          <UsersList
-            users={filteredUsers}
-            onUserClick={handleUserClick}
-          />
+          <UsersList users={filteredUsers} onUserClick={handleUserClick} />
         </div>
         {selectedUser && (
           <div
             style={{
               marginLeft: '0.5rem',
-              marginTop: '5rem',         // move it lower (adjust as needed)
+              marginTop: '5rem',
               background: '#fff',
               borderRadius: '0.5rem',
               boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
               minWidth: '18rem',
               maxWidth: '33rem',
               zIndex: 10,
-              alignSelf: 'center',      // center vertically in the flex row
+              alignSelf: 'center',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'flex-start',
