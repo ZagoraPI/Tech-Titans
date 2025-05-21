@@ -44,10 +44,18 @@ function App() {
         path="/"
         element={
           <>
+<<<<<<< Updated upstream
 
            <h1 style={{ position: "relative", top: "-170px" }}><b>Welcome to ZagoraPI</b></h1>
 
             <div className="bottom-right-stack">
+=======
+            <h1> <b> Welcome to ZagoraPI </b> </h1>
+            {/* <div className="WIP">WIP</div> */}
+ 
+            <div className="p-4">
+              <TheJjForm />
+>>>>>>> Stashed changes
               <Link
                 to="contact-form-page"
                 className="inline-flex items-center gap-2 px-4 py-2 border border-gray-150 font-medium rounded-xl transition-all duration-200 hover:bg-gray-200"
