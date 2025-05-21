@@ -10,13 +10,7 @@ interface UsersListProps {
 
 const UsersList: React.FC<UsersListProps> = ({ users, onUserClick }) => (
   <div className="overflow-x-auto">
-    <Table
-      className="table-auto text-sm w-fit m-0"
-      style={{
-        borderRadius: '0.5rem',
-        overflow: 'hidden',
-      }}
-    >
+    <Table className="table-auto text-sm w-fit m-0" style={{ borderRadius: '0.5rem', overflow: 'hidden' }}>
       <thead className="bg-gray-100">
         <tr>
           <th className="p-4 text-left text-base font-semibold text-black">ID</th>
