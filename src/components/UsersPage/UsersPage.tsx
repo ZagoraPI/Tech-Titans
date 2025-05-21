@@ -4,6 +4,7 @@ import { User } from '@/models/model';
 import UsersList from './UsersList';
 import UserDetails from './UserDetails';
 import UserSearchBar from './UserSearchBar';
+import MapView from './MapView';
 
 const UsersPage: React.FC = () => {
   const fullWidthStyle = {
@@ -65,7 +66,7 @@ const UsersPage: React.FC = () => {
           width: 'fit-content',
           margin: 0,
         }}
-      >
+       >
         <div style={{ marginLeft: '2rem', marginTop: '2rem', marginBottom: '10rem' }}>
           <UserSearchBar value={filter} onChange={setFilter} onRefresh={fetchUsers} />
           <UsersList
@@ -92,6 +93,8 @@ const UsersPage: React.FC = () => {
             }}
           >
             <UserDetails user={selectedUser} onClose={() => setSelectedUser(null)} />
+               <MapView
+        users={[selectedUser]} />
           </div>
         )}
       </div>
