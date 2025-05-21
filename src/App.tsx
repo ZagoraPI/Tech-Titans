@@ -4,10 +4,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 
-import { Alert, AlertTitle, AlertDescription } from "./components/ui/alert";
 import { Button } from "@/components/ui/button";
 
-import { Popover, PopoverContent, PopoverTrigger } from "./components/Popover.tsx";
 import { Vladilena_Form } from "./components/Vladilena_Form/Vladilena_Form.tsx";
 import { ThemeSwitch } from "./components/Niki_Components/ThemeSwitch.tsx";
 import TextBox from "./components/TextBox.tsx";
@@ -44,75 +42,48 @@ function App() {
         path="/"
         element={
           <>
+            <h1> <b> Welcome to ZagoraPI </b> </h1>
+ 
 
-           <h1 style={{ position: "relative", top: "-170px" }}><b>Welcome to ZagoraPI</b></h1>
-
-            <div className="bottom-right-stack">
-              <Link
-                to="contact-form-page"
-                className="inline-flex items-center gap-2 px-4 py-2 border border-gray-150 font-medium rounded-xl transition-all duration-200 hover:bg-gray-200"
-                style={{ color: '#918f8f' }}
-              >
-                <MailIcon className="w-5 h-5" />
-                The Jj Contact Form
-              </Link>
-            </div>
-
-          <div style={{ display: "flex", alignItems: "center", position: "relative", top: "-160px", left: "540px" }}>
+          <div style={{ display: "flex", alignItems: "center", position: "relative", top: "200px", left: "189px" }}>
               <TheJj />
             </div>
 
-            <div style={{display: "flex", alignItems: "center", position: "relative", top: "-195px" }}>
+            <div style={{display: "flex", alignItems: "center", position: "relative", top: "-20px" }}>
             <Martin />
             </div>
 
-          <div style={{position:"relative", top: "-215px", left: "-305px"}}>
-            <Popover>
-              <PopoverTrigger>Open</PopoverTrigger>
-              <PopoverContent>Place content for the popover here.</PopoverContent>
-            </Popover>
-           </div>
-
-            <div style={{ display: "flex", alignItems: "center", position: "relative", top: "-315px", left: "535px" }}>
+            <div style={{ alignItems: "center", position: "relative", left: "186px" }}>
               <ThemeSwitch />
-            </div>
-
-            {count > 0 && (
-              <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 w-full max-w-sm">
-                <Alert>
-                  <AlertTitle>Notification</AlertTitle>
-                  <AlertDescription>
-                    The button has been pressed {count} times
-                  </AlertDescription>
-                </Alert>
-              </div>
-            )}
-
-            <div style={{position: "relative", alignItems:"center", top: "-355px", left: "-420px"}}>
-              <h2>Bozhilkata React UseState HOOK :</h2>
-              <p>I am {activated ? "on" : "off"}.</p>
-              <Button type="button" onClick={() => setActivated(!activated)}>
-                {activated ? "Deactivate me!" : "Activate me!"}
-              </Button>
-            </div>
-
-            <div style={{ position: "relative", bottom: "-160px"}}>
-              <button onClick={() => setCount(count + 1)}>
-                count is {count}
-              </button>
-              <TextBox count1={count} />
             </div>
 
             <div className="bottom-left-container">
               <Link to="/forms">
                 <Button
-                  style={{ position: 'fixed', bottom: '80px', left: '32px' }}
+                  style={{ position: 'fixed', bottom: '90px', left: '32px' }}
                   variant="outline"
                   className="bg-blue-600 text-white hover:bg-blue-700"
                 >
                   Go to Niki Forms
                 </Button>
               </Link>
+
+              <Link
+                to="contact-form-page"
+                className="inline-flex items-center gap-2 px-4 py-2 border border-gray-150 font-medium rounded-xl transition-all duration-200 hover:bg-gray-200"
+                style={{ color: '#918f8f', position: 'fixed', bottom: '40px'}}
+              >
+                <MailIcon className="w-5 h-5" />
+                The Jj Contact Form
+              </Link>
+
+
+                <div style={{ position: "fixed", bottom: "20px", left: "816px" }}>
+              <button onClick={() => setCount(count + 1)}>
+                count is {count}
+              </button>
+              <TextBox count1={count} />
+            </div>
             </div>
 
             <div className="relative-container">
@@ -126,7 +97,7 @@ function App() {
 
             <div className="bottom-right-stack" 
             style={{ bottom: '60px',  }}>
-                {[PetarForm, VladoForm,TheJjForm, MartinForm, HrisaForm, SaturnForm, EgorkaForm, PreslyForm,Vladilena_Form].map((Form, idx) => (
+                {[PetarForm, VladoForm,TheJjForm, MartinForm, HrisaForm, SaturnForm, EgorkaForm, PreslyForm,Vladilena_Form,TheJjForm].map((Form, idx) => (
               <div key={idx} className="form-button-wrapper">
                 <Form />
               </div>
