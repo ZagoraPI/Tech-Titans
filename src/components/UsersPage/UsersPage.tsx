@@ -64,18 +64,19 @@ const UsersPage: React.FC = () => {
         {selectedUser && (
           <div
             style={{
-              marginLeft: '0.01rem',
+              marginLeft: '0.5rem',
+              marginTop: '5rem',         // move it lower (adjust as needed)
               background: '#fff',
               borderRadius: '0.5rem',
               boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-              minWidth: '24rem',
-              maxWidth: '32rem',
+              minWidth: '18rem',
+              maxWidth: '33rem',
               zIndex: 10,
-              alignSelf: 'stretch', // <-- stretch to match table height
-              height: '100%',       // <-- fill parent height
+              alignSelf: 'center',      // center vertically in the flex row
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'flex-start',
+              overflow: 'hidden',
             }}
           >
             <UserDetails user={selectedUser} onClose={() => setSelectedUser(null)} />
@@ -85,5 +86,6 @@ const UsersPage: React.FC = () => {
     </div>
   );
 };
+
 
 export default UsersPage;

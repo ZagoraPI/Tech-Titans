@@ -17,7 +17,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({ user, onClose }) => (
   <div
     style={{
       background: '#fff',
-      padding: '2rem 2rem 2rem 2rem',
+      padding: '1rem',
       color: "black",
       width: '400px',
       border: '1px solid #ccc',
@@ -29,7 +29,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({ user, onClose }) => (
       top: 'unset',
       left: 'unset',
       transform: 'unset',
-      height: '100%', // fill parent
+      height: '100%',
       display: 'flex',
       flexDirection: 'column',
       marginLeft: 0,
