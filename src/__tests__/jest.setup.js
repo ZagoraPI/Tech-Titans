@@ -13,3 +13,13 @@ global.ResizeObserver = class {
   unobserve() {}
   disconnect() {}
 };
+
+const React = require("react");
+
+// Mock react-leaflet components
+jest.mock("react-leaflet", () => ({
+  MapContainer: ({ children }) => <div>{children}</div>,
+  TileLayer: () => <div />,
+  Marker: ({ children }) => <div>{children}</div>,
+  Popup: ({ children }) => <div>{children}</div>,
+}));
