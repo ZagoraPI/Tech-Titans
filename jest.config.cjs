@@ -1,17 +1,23 @@
 const { pathsToModuleNameMapper } = require("ts-jest");
-const { compilerOptions } = require("./tsconfig");
+const tsconfig = require("./tsconfig.json");
 
 module.exports = {
   roots: ["<rootDir>"],
   preset: "ts-jest",
   testEnvironment: "jsdom",
   testMatch: ["<rootDir>/src/**/*.test.{js,jsx,ts,tsx}"],
-  modulePaths: [compilerOptions.baseUrl],
-  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths ?? {}, { prefix: "<rootDir>/" }),
-  transform: {
-    "^.+\\.tsx?$": "ts-jest",
-    ".+\\.(css|less|sass|scss|png|jpg|gif|ttf|woff|woff2|svg)$": "jest-transform-stub",
+  modulePaths: [tsconfig.compilerOptions.baseUrl],
+  moduleNameMapper: {
+    ...pathsToModuleNameMapper(tsconfig.compilerOptions.paths || {}, {
+      prefix: "<rootDir>/",
+    }),
+    "\\.(css|less|sass|scss|png|jpg|jpeg|gif|svg)$": "identity-obj-proxy",
   },
-  transformIgnorePatterns: ["/node_modules/(?!react-router)"],
+  transform: {
+    "^.+\\.(ts|tsx|js|jsx)$": "ts-jest",
+  },
+  transformIgnorePatterns: [
+    "/node_modules/(?!react-leaflet|@react-leaflet/core|leaflet)/",
+  ],
   setupFilesAfterEnv: ["<rootDir>/src/__tests__/jest.setup.js"],
 };

@@ -1,28 +1,51 @@
+:root {
+  --primary: #202020;
+  --primary-foreground: white;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: rgba(15, 15, 15, 0.7);
+  background-position: center;
+  background-size: 600% 600%;
+  animation: gradientBackground 20s ease infinite;
+}
+
+button,
+.btn {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
-  will-change: filter;
   transition: filter 300ms;
+  will-change: filter;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-body {
-  background-position: center;
-  background-size: cover; 
-  fill-opacity: 0.5;
- }
- 
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -33,30 +56,12 @@ body {
 }
 
 @keyframes gradientBackground {
-  0% {
+  0%, 100% {
     background-position: 0% 50%;
   }
   50% {
     background-position: 100% 50%;
   }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-form {
-  background-color: transparent; 
-  backdrop-filter: blur(5px); 
-  padding: 2rem;
-  border-radius: 1rem;
-}
-body {
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  background-color: #121212;
-  background-size: 600% 600%;
-  animation: gradientBackground 20s ease infinite;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -65,8 +70,17 @@ body {
   }
 }
 
-.card {
+.card,
+.form-card {
   padding: 2em;
+}
+
+form,
+.form-card {
+  background-color: transparent;
+  backdrop-filter: blur(5px);
+  padding: 2rem;
+  border-radius: 1rem;
 }
 
 .read-the-docs {
@@ -79,9 +93,37 @@ body {
   left: 2rem;
 }
 
+.bottom-right-stack {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
 
+.form-button-wrapper {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: 8px;
+  padding: 0 1px;
+  min-width: 1px;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
 
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 
-
-
+@import "leaflet/dist/leaflet.css";
 

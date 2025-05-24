@@ -5,78 +5,40 @@ import { Button } from '../ui/button';
 
 interface UsersListProps {
   users: User[];
-  onUserClick: (user: User) => void;
+  onUserClick: (user: User, idx: number) => void;
 }
 
-const UsersList: React.FC<UsersListProps> = ({ users, onUserClick }) => {
-  const tableStyle = {
-    maxWidth: '2000px',
-    margin: '1rem',
-    color: 'black',
-    backgroundColor: 'rgba(255, 255, 255, 0.88)',
-  };
-
-  const headerCellStyle = {
-    padding: '1rem',
-    fontSize: '1.5rem',
-    textAlign: 'center' as const,
-    backgroundColor: 'rgba(255, 255, 255, 0.88)',
-  };
-
-  const rowCellStyle = {
-    padding: '1.5rem',
-    fontSize: '1.2rem',
-    textAlign: 'right' as const,
-  };
-
-  const rowStyle = {
-    border: '2px solid rgba(41, 41, 41, 0.2)',
-    cursor: 'pointer',
-  };
-
-  return (
-    <div>
-      <Table style={tableStyle}>
-        <thead>
-          <tr>
-            <th style={headerCellStyle}>ID</th>
-            <th style={headerCellStyle}>Name</th>
-            <th style={headerCellStyle}>Username</th>
-            <th style={headerCellStyle}>Email</th>
-            <th style={headerCellStyle}>City</th>
-            <th style={headerCellStyle}>Company</th>
-            <th style={headerCellStyle}>Details</th>
+const UsersList: React.FC<UsersListProps> = ({ users, onUserClick }) => (
+  <div className="overflow-x-auto">
+    <Table className="table-auto text-sm w-fit m-0" style={{ borderRadius: '0.5rem', overflow: 'hidden' }}>
+      <thead className="bg-gray-100">
+        <tr>
+          <th className="p-4 text-left text-base font-semibold text-black">ID</th>
+          <th className="p-4 text-left text-base font-semibold text-black">Name</th>
+          <th className="p-4 text-left text-base font-semibold text-black">Username</th>
+          <th className="p-4 text-left text-base font-semibold text-black">Email</th>
+          <th className="p-4 text-left text-base font-semibold text-black">City</th>
+          <th className="p-4 text-left text-base font-semibold text-black">Company</th>
+          <th className="p-4 text-left text-base font-semibold text-black">Details</th>
+        </tr>
+      </thead>
+      <tbody className="bg-gray-100">
+        {users.map((user, idx) => (
+          <tr key={user.id}>
+            <td className="p-2 text-black text-left">{user.id}</td>
+            <td className="p-2 text-black text-left">{user.name}</td>
+            <td className="p-2 text-black text-left">{user.username}</td>
+            <td className="p-2 text-black text-left">{user.email}</td>
+            <td className="p-2 text-black text-left">{user.address?.city || '-'}</td>
+            <td className="p-2 text-black text-left">{user.company?.name || '-'}</td>
+            <td className="p-2 text-black text-left">
+              <Button onClick={() => onUserClick(user, idx)}>Details</Button>
+            </td>
           </tr>
-        </thead>
-        <tbody>
-          {users.map((user) => (
-            <tr
-              key={user.id}
-              onClick={() => onUserClick(user)}
-              style={rowStyle}
-            >
-              <td style={{ ...rowCellStyle, textAlign: 'left' }}>{user.id}</td>
-              <td style={rowCellStyle}>{user.name}</td>
-              <td style={rowCellStyle}>{user.username}</td>
-              <td style={rowCellStyle}>{user.email}</td>
-              <td style={rowCellStyle}>{user.address?.city || '-'}</td>
-              <td style={rowCellStyle}>{user.company?.name || '-'}</td>
-              <td style={rowCellStyle}>
-                <Button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onUserClick(user);
-                  }}
-                >
-                  details
-                </Button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>   
-    </div>
-  );
-};
+        ))}
+      </tbody>
+    </Table>
+  </div>
+);
 
 export default UsersList;
