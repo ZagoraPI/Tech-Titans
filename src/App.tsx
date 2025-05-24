@@ -9,9 +9,6 @@ import { Button } from "@/components/ui/button";
 import { Vladilena_Form } from "./components/Vladilena_Form/Vladilena_Form.tsx";
 import { ThemeSwitch } from "./components/Niki_Components/ThemeSwitch.tsx";
 import TextBox from "./components/TextBox.tsx";
-import TheJj from "./components/TheJj.tsx";
-
-import Martin from './components/MartinComp.tsx';
 
 import { MartinForm } from './components/Martin-Form/MartinForm.tsx';
 import { PetarForm } from './components/Petar(Bozhilkata) Components/PetarForm.tsx';
@@ -42,29 +39,13 @@ function App() {
         path="/"
         element={
           <>
-            <h1> <b> Welcome to ZagoraPI </b> </h1>
-            
-            <div style={{position: "relative", alignItems:"center", top: "15px", left: "10px"}}>
-              <h2>Bozhilkata React UseState HOOK :</h2>
-                  <p>I am {activated ? "on" : "off"}.</p>
-                  <Button type="button" onClick={() => setActivated(!activated)}>
-                    {activated ? "Deactivate me!" : "Activate me!"}
-                  </Button>
-            </div>
+            <h1 style={{bottom: '220px',position: 'relative'}}>
+            <b>Welcome to ZagoraPI</b>
+            </h1>
 
-          <div style={{ display: "flex", alignItems: "center", position: "relative", top: "200px", left: "189px" }}>
-              <TheJj />
-            </div>
-
-            <div style={{display: "flex", alignItems: "center", position: "relative", top: "-20px" }}>
-            <Martin />
-            </div>
-
-            <div style={{ alignItems: "center", position: "relative", left: "186px" }}>
+            <div style={{ alignItems: "center", position: "relative", left: "950px", bottom: "285px" }}>
               <ThemeSwitch />
             </div>
-
-            
 
             <div className="bottom-left-container">
               <Link to="/forms">
@@ -87,7 +68,7 @@ function App() {
               </Link>
 
 
-                <div style={{ position: "fixed", bottom: "20px", left: "816px" }}>
+                <div style={{ position: "fixed", bottom: "45px", left: "730px" }}>
               <button onClick={() => setCount(count + 1)}>
                 count is {count}
               </button>
@@ -97,8 +78,9 @@ function App() {
 
             <div className="relative-container">
               <Link to="/users-page">
-                <Button>Users Page</Button>
-                <h2 style={{ fontSize: "2rem", marginTop: "10px" }}>This is the Users Page:</h2>
+                <h2 style={{ fontSize: "2rem", bottom: '170px', position: "relative" }}>
+                 <b>Users Page:</b>
+                </h2>
               </Link>
             </div>
             
